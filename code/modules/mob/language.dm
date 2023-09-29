@@ -491,6 +491,97 @@
 					"tizan","chka","tagan","dobry","okt","boda","veta","idi","cyk","blyt","hui","na",
 					"udi","litchki","casa","linka","toly","anatov","vich","vech","vuch","toi","ka","vod")
 
+/datum/language/codespeak
+	name = "Syndicate Codespeak"
+	desc = "Developed by covert Syndicate affiliates to convey information from agent to agent in public spaces, designed to mimic various languages to the unaffiliated ear."
+	speech_verb = list("enunciates", "growls", "articulates")
+	exclaim_verbs = list("exaggerates", "snarls")
+	colour = list("say_quote", "gutter", "com_srus")
+	key = "cs"
+	space_chance = 100
+	flags = RESTRICTED | WHITELISTED
+	english_names = 1
+
+	var/list/possible_languages = list(
+					list("merol", "muspi", "rolod", "tis", "tema", "rutetcesnoc", "gnicsipida", "tile",
+						"des", "od", "domsuie", "ropmet", "tnudidicni", "tu", "erobal", "te", "erolod",
+						"angam", "auqila", "tu", "mine", "da", "minim", "mainev", "siuq", "durtson",
+						"noitaticrexe", "ocmallu", "sirobal", "isin", "tu", "piuqila", "xe", "ae", "odommoc",
+						"tauqesnoc", "siud", "etua", "eruri", "rolod", "ni", "tiredneherper", "ni",
+						"etatpulov", "tilev", "esse", "mullic", "erolod", "ue", "taiguf", "allun",
+						"rutairap", "ruetpecxe", "tnis", "taceacco", "tatadipuc", "non", "tnediorp", "tnus",
+						"ni", "apluc", "iuq", "aiciffo", "tnuresed", "tillom", "mina", "di", "tse", "murobal"),
+					list("neyd","rab","atob","keyv","ovt","vols","vals","neys","puod","hav","zal","zolg","tey",
+						"teyn","ad","yks","valg","zalg","zten","tamood","taz","hcom","zob",
+						"ymoc","darv","edarv","yat","ilb","ya","von","nvil","vlot","zalg","zilg",
+						"yuo","tez","tvey","tad","tatob","ven","yvon","yzv","von","ohs","hsbo","yksad",
+						"yek","yeks","yksvo","ayaks","bib","veik","neduts","rav","lub","nayv",
+						"noizt","ayav","kaym","onig","olov","malo","itim","onin","vonem","vorep",
+						"yksado","vort","ikin","onavi","votsod","lokos","apuo","movrep","lehcs",
+						"nazit","akhc","nagat","yrbod","tko","adob","atev","idi","kyc","tylb","iuh","an",
+						"idu","ikhctil","asac","aknil","ylot","votana","hciv","hcev","hcuv","iot","ak","dov"),
+					list("arg","ab","ab","herb","arb","har","rud","ar","or","org","og","reb","rab","heg","heh","arg"))
+
+	var/list/possible_speech_verb = list("enunciates", "growls", "articulates")
+	var/list/possible_exclaim_verb = list("exaggerates", "snarls")
+	var/list/possible_colour = list("say_quote", "gutter", "com_srus")
+
+/datum/language/codespeak/scramble(input)
+	syllables = pick(possible_languages)
+	speech_verb = pick(possible_speech_verb)
+	exclaim_verbs = pick(possible_exclaim_verb)
+	colour = pick(possible_colour)
+	if(!syllables || !syllables.len)
+		return stars(input)
+
+	// If the input is cached already, move it to the end of the cache and return it
+	if(input in scramble_cache)
+		var/n = scramble_cache[input]
+		scramble_cache -= input
+		scramble_cache[input] = n
+		return n
+
+	var/input_size = length(input)
+	var/scrambled_text = ""
+	var/capitalize = 1
+	while(length(scrambled_text) < input_size)
+		var/next = pick(syllables)
+		if(capitalize)
+			next = capitalize(next)
+			capitalize = 0
+		scrambled_text += next
+		var/chance = rand(100)
+		if(!isnull(join_override))
+			scrambled_text += join_override
+		else if(chance <= 5)
+			scrambled_text += ". "
+			capitalize = 1
+		else if(chance > 5 && chance <= space_chance)
+			scrambled_text += " "
+
+	scrambled_text = trim(scrambled_text)
+	var/ending = copytext(scrambled_text, length(scrambled_text))
+	if(ending == "." || ending == "-")
+		scrambled_text = copytext(scrambled_text,1,length(scrambled_text)-1)
+	var/input_ending = copytext(input, input_size)
+	if(input_ending in list("!","?","."))
+		scrambled_text += input_ending
+
+	// Add it to cache, cutting old entries if the list is too long
+	scramble_cache[input] = scrambled_text
+	if(scramble_cache.len > SCRAMBLE_CACHE_LEN)
+		scramble_cache.Cut(1, scramble_cache.len-SCRAMBLE_CACHE_LEN-1)
+
+
+	return scrambled_text
+
+/datum/language/codespeak/proc/get_spoken_verb(msg_end)
+    switch(msg_end)
+        if("!")
+            return pick(possible_exclaim_verb)
+        if("?")
+            return ask_verb
+    return pick(speech_verb)
 /datum/language/xenocommon
 	name = "Xenomorph"
 	colour = "alien"
