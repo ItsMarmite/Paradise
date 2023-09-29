@@ -525,7 +525,7 @@
 
 /datum/language/codespeak/scramble(input)
 	syllables = pick(possible_languages)
-	if(!syllables || !syllables.len)
+	if(!syllables || !length(syllables))
 		return stars(input)
 
 	// If the input is cached already, move it to the end of the cache and return it
@@ -577,7 +577,8 @@
 	return pick(possible_speech_verb)
 
 /datum/language/codespeak/format_message_radio(message)
-	return "<span class='[pick(possible_colour)]'>[message]</span>"
+	colour = pick(possible_colour)
+	return "<span class='[colour]'>[message]</span>"
 
 /datum/language/xenocommon
 	name = "Xenomorph"
