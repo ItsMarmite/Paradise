@@ -568,7 +568,7 @@
 
 	return scrambled_text
 
-/datum/language/codespeak/proc/get_spoken_verb(msg_end)
+/datum/language/codespeak/get_spoken_verb(msg_end)
 	switch(msg_end)
 		if("!")
 			return pick(possible_speech_verb)
@@ -576,7 +576,7 @@
 			return ask_verb
 	return pick(possible_speech_verb)
 
-/datum/language/proc/format_message_radio(message)
+/datum/language/codespeak/format_message_radio(message)
 	return "<span class='[pick(possible_colour)]'>[message]</span>"
 
 /datum/language/xenocommon
