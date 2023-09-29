@@ -494,9 +494,6 @@
 /datum/language/codespeak
 	name = "Syndicate Codespeak"
 	desc = "Developed by covert Syndicate affiliates to convey information from agent to agent in public spaces, designed to mimic various languages to the unaffiliated ear."
-	speech_verb = list("enunciates", "growls", "articulates")
-	exclaim_verbs = list("exaggerates", "snarls")
-	colour = list("say_quote", "gutter", "com_srus")
 	key = "cs"
 	space_chance = 100
 	flags = RESTRICTED | WHITELISTED
@@ -572,16 +569,19 @@
 	if(scramble_cache.len > SCRAMBLE_CACHE_LEN)
 		scramble_cache.Cut(1, scramble_cache.len-SCRAMBLE_CACHE_LEN-1)
 
-
 	return scrambled_text
 
 /datum/language/codespeak/proc/get_spoken_verb(msg_end)
-    switch(msg_end)
-        if("!")
-            return pick(possible_exclaim_verb)
-        if("?")
-            return ask_verb
-    return pick(speech_verb)
+	switch(msg_end)
+		if("!")
+			return pick(possible_speech_verb)
+		if("?")
+			return ask_verb
+	return pick(possible_speech_verb)
+
+/datum/language/proc/format_message_radio(message)
+	return "<span class='[pick(possible_colour)]'>[message]</span>"
+
 /datum/language/xenocommon
 	name = "Xenomorph"
 	colour = "alien"
