@@ -525,9 +525,6 @@
 
 /datum/language/codespeak/scramble(input)
 	syllables = pick(possible_languages)
-	speech_verb = pick(possible_speech_verb)
-	exclaim_verbs = pick(possible_exclaim_verb)
-	colour = pick(possible_colour)
 	if(!syllables || !syllables.len)
 		return stars(input)
 
