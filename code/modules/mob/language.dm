@@ -19,6 +19,7 @@
 	var/list/space_chance = 55                  // Likelihood of getting a space in the random scramble string.
 	var/follow = 0                              // Applies to HIVEMIND languages - should a follow link be included for dead mobs?
 	var/english_names = 0                       // Do we want English names by default, no matter what?
+	var/list/possible_colour = list("say_quote", "gutter", "com_srus") // Used in Codespeak.
 	var/list/scramble_cache = list()
 	/// Do we want to override the word-join character for scrambled text? If null, defaults to " " or ". "
 	var/join_override
@@ -494,7 +495,8 @@
 /datum/language/codespeak
 	name = "Syndicate Codespeak"
 	desc = "Developed by covert Syndicate affiliates to convey information from agent to agent in public spaces, designed to mimic various languages to the unaffiliated ear."
-	key = "cs"
+	colour = "possible_colour"
+	key = "8"
 	space_chance = 100
 	flags = RESTRICTED | WHITELISTED
 	english_names = 1
@@ -521,7 +523,6 @@
 
 	var/list/possible_speech_verb = list("enunciates", "growls", "articulates")
 	var/list/possible_exclaim_verb = list("exaggerates", "snarls")
-	var/list/possible_colour = list("say_quote", "gutter", "com_srus")
 
 /datum/language/codespeak/scramble(input)
 	syllables = pick(possible_languages)
@@ -576,8 +577,11 @@
 			return ask_verb
 	return pick(possible_speech_verb)
 
+/datum/language/codespeak/format_message(message)
+	return "<span class='message'><span class='[possible_colour]'>[message]</span></span>"
+
 /datum/language/codespeak/format_message_radio(message)
-	return "<span class='[pick(possible_colour)]'>[message]</span>"
+	return "<span class='[possible_colour]'>[message]</span>"
 
 /datum/language/xenocommon
 	name = "Xenomorph"
