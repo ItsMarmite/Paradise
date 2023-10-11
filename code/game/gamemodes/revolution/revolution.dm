@@ -156,9 +156,75 @@
 			living_rev.apply_status_effect(STATUS_EFFECT_REVOLUTION_PROTECT)
 		return TRUE
 
+
+//////////////////////////////////////////////////////////////////////////////
+//Deals with announcing headrevs converting a certain percentage of crew.
+//////////////////////////////////////////////////////////////////////////////
+
+/datum/game_mode/proc/rev_threshold_check()
+	var/list/living_players = get_living_players(exclude_nonhuman = TRUE, exclude_offstation = TRUE)
+	var/players = length(living_players)
+	var/revolutionaries = get_revolutionaries() // Don't count the Head Revolutionaries, todo.
+	if(players >= REV_POPULATION_THRESHOLD)
+		// Highpop
+		reaction_percent = REV_REACTION_HIGH
+		spark_number = round(REV_SPARK_HIGH * (players - revolutionaries))
+		reacton_number = round(REV_REACTION_HIGH * (players - revolutionaries))
+	else
+		// Lowpop
+		reaction_percent = REV_REACTION_LOW
+		spark_number = round(REV_SPARK_LOW * (players - revolutionaries))
+		reaction_number = round(REV_REACTION_LOW * (players - revolutionaries))
+
+/datum/game_mode/proc/get_revs(separate = FALSE)
+	var/revolutionaries = 0
+	for(var/I in revolutionaries)
+		var/datum/mind/M = I
+		if(ishuman(M.current) && !M.current.has_status_effect(STATUS_EFFECT_SUMMONEDGHOST))
+			revolutionaries++
+	if(separate)
+		return list(revolutionaries)
+	else
+		return revolutionaries
+
+/datum/game_mode/proc/check_revolution_size()
+	var/rev_players = get_revs()
+
+	if(rev_reacton)
+		if(rev_players < reaction_number / 2)
+		return
+
+	if((rev_players >= reaction_number) && !rev_spark)
+		rev_spark()
+		return
+
+	if( >= reaction_number)
+		rev_reaction()
+
+/datum/game_mode/proc/rev()
+	rev_reaction = TRUE
+	for(var/datum/mind/M in revolutionaries)
+		if(!ishuman(M.current))
+			continue
+		SEND_SOUND(M.current, sound('sound/hallucinations/i_see_you2.ogg'))
+		to_chat(M.current, "<span class='.revendanger'The spark of revolution has been lit onboard the [station_name()]. Reactionary forces may soon become aware.</span>")
+		addtimer(CALLBACK(src, PROC_REF(rise), M.current), 20 SECONDS)
+
+
+/datum/game_mode/proc/rev_reaction()
+	rev_reaction = TRUE
+	for(var/datum/mind/M in revolutionaries)
+		if(!ishuman(M.current))
+			continue
+		SEND_SOUND(M.current, sound('sound/effects/revascendalert.ogg'))
+		to_chat(M.current, "<span class='.revendanger'>The time has come, workers of the station unite! You have nothing to lose but your chains!</span>")
+		addtimer(CALLBACK(src, PROC_REF(ascend), M.current), 20 SECONDS)
+	GLOB.major_announcement.Announce(GLOB.major_announcement.Announce("We've recently detected signs of unrest and potential revolution onboard the [station_name()]. This message is a call to action for all employees. It's time to choose Nanotrasen - all employees onboard the [station_name()] are to be mindshielded at once. Failure to comply with this directive is not an option. Non-compliance may result violation of the terms of your contract.", "Central Command Human Resources", 'sound/AI/commandreport.ogg'))
+
 //////////////////////////////////////////////////////////////////////
 //Announces the end of the game with all relavent information stated//
 //////////////////////////////////////////////////////////////////////
+
 /datum/game_mode/revolution/declare_completion()
 	if(finished == REV_VICTORY)
 		SSticker.mode_result = "revolution win - heads killed"
