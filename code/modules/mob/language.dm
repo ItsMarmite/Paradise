@@ -143,9 +143,6 @@
 /datum/language/noise/format_message(message)
 	return "<span class='message'><span class='[colour]'>[message]</span></span>"
 
-/datum/language/noise/format_message_radio(message)
-	return "<span class='[colour]'>[message]</span>"
-
 /datum/language/noise/get_talkinto_msg_range(message)
 	// if you make a loud noise (screams etc), you'll be heard from 4 tiles over instead of two
 	return (copytext(message, length(message)) == "!") ? 4 : 2
