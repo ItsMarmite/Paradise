@@ -67,7 +67,23 @@
 	lowering_to_announcement_text = "The immediate threat has passed. Security may no longer have weapons drawn at all times, but may continue to have them visible. Random searches are still allowed."
 	elevating_to_announcement_title = "Attention! Security level elevated to Blue."
 	elevating_to_announcement_text = "The station has received reliable information about possible hostile activity on the station. Security staff may have weapons visible and random searches are permitted."
-
+/**
+ * AMBER
+ *
+ * Subversive threats
+ */
+/datum/security_level/amber
+	name = "amber"
+	number_level = SEC_LEVEL_AMBER
+	elevating_to_sound = 'sound/misc/notice1.ogg'
+	ai_announcement_sound = 'sound/AI/red.ogg'
+	color = "red"
+	status_display_mode = STATUS_DISPLAY_ALERT
+	status_display_data = "redalert"
+	lowering_to_announcement_title = "Attention! Security level lowered to Amber!"
+	lowering_to_announcement_text = "The station's self-destruct mechanism has been deactivated, but there is still an immediate and serious threat to the station. Security may have weapons unholstered at all times. Random searches are allowed and advised."
+	elevating_to_announcement_title = "Attention! Security level elevated to Amber!"
+	elevating_to_announcement_text = "There is an immediate and serious threat to the station. Security may have weapons unholstered at all times. Random searches are allowed and advised."
 /**
  * RED
  *
