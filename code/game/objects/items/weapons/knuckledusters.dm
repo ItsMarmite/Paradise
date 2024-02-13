@@ -50,8 +50,8 @@
 		squishy.receive_damage(trauma) // Probably not so good for your organs to have your already broken ribs punched hard by a metal object
 
 /obj/item/melee/knuckleduster/syndie
-	name = "suspicious knuckleduster"
-	desc = "For feeling like a real Tacticool Elite when threatening to punch someone to death."
+	name = "tactical knuckleduster"
+	desc = "For feeling like a real Tactical  Elite when threatening to punch someone to death."
 	icon_state = "knuckleduster_syndie"
 	force = 15
 	throwforce = 5
