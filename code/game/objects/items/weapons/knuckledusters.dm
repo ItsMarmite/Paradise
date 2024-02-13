@@ -30,7 +30,7 @@
 		flags &= ~(NODROP | ABSTRACT)
 
 /obj/item/melee/knuckleduster/attack/(mob/living/user)
-	hitsound = pick('sound/weapons/punch1.ogg', 'sound/weapons/punch2.ogg', 'sound/weapons/punch3.ogg', 
+	hitsound = pick('sound/weapons/punch1.ogg', 'sound/weapons/punch2.ogg', 'sound/weapons/punch3.ogg',
 'sound/weapons/punch4.ogg')
 	return ..()
 
@@ -50,8 +50,8 @@
 		squishy.receive_damage(trauma) // Probably not so good for your organs to have your already broken ribs punched hard by a metal object
 
 /obj/item/melee/knuckleduster/syndie
-	name = "syndicate knuckleduster"
-	desc = "For feeling like a real Syndicate Elite when threatening to punch someone to death."
+	name = "suspicious knuckleduster"
+	desc = "For feeling like a real Tacticool Elite when threatening to punch someone to death."
 	icon_state = "knuckleduster_syndie"
 	force = 15
 	throwforce = 5
