@@ -823,3 +823,17 @@
 			index++
 
 		return "[output]and \a [A[index]]"
+
+///////////
+//CLOAKS//
+///////////
+
+/obj/item/clothing/accessory/cloak // Command cloaks
+	name = "cloak"
+	desc = "For standing dramatically in the space wind and questioning who spawned the base type."
+	icon_state = "cloak"
+	item_color = "cloak"
+/obj/item/clothing/accessory/cloak/hos
+	name = "Head of Security Cloak"
+	icon_state = "hoscloak"
+	item_color = "hoscloak"
