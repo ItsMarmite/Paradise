@@ -196,6 +196,7 @@
 		/datum/job/engineer = /obj/item/organ/internal/cyberimp/brain/wire_interface,
 		/datum/job/virologist = /obj/item/organ/internal/cyberimp/mouth/breathing_tube,
 		/datum/job/warden = /obj/item/organ/internal/cyberimp/arm/flash,
+		/datum/job/dispatch = /obj/item/organ/internal/cyberimp/eyes/hud/diagnostic,
 		/datum/job/judge = /obj/item/organ/internal/cyberimp/arm/telebaton,
 		/datum/job/explorer = /obj/item/organ/internal/cyberimp/arm/toolset,
 		/datum/job/nanotrasenrep = /obj/item/organ/internal/heart/cybernetic/upgraded,

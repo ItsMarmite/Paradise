@@ -113,7 +113,46 @@
 	satchel = /obj/item/storage/backpack/satchel_sec
 	dufflebag = /obj/item/storage/backpack/duffel/security
 
+/datum/job/dispatch
+	title = "Dispatch Officer"
+	flag = JOB_DISPATCH
+	department_flag = JOBCAT_ENGSEC
+	total_positions = 1
+	spawn_positions = 1
+	job_department_flags = DEP_FLAG_SECURITY
+	supervisors = "the warden"
+	department_head = list("Head of Security")
+	selection_color = "#ffeeee"
+	access = list(ACCESS_SECURITY, ACCESS_SEC_DOORS, ACCESS_BRIG, ACCESS_ARMORY, ACCESS_COURT, ACCESS_MAINT_TUNNELS, ACCESS_WEAPONS)
+	minimal_player_age = 21
+	exp_map = list(EXP_TYPE_SECURITY = 600)
+	blacklisted_disabilities = list(DISABILITY_FLAG_BLIND, DISABILITY_FLAG_DEAF, DISABILITY_FLAG_MUTE, DISABILITY_FLAG_DIZZY, DISABILITY_FLAG_NERVOUS, DISABILITY_FLAG_LISP)
+	missing_limbs_allowed = FALSE
+	outfit = /datum/outfit/job/dispatch
+/datum/outfit/job/dispatch
+	name = "Dispatch Officer"
+	jobtype = /datum/job/dispatch
 
+	uniform = /obj/item/clothing/under/rank/security/warden
+	suit = /obj/item/clothing/suit/armor/vest/warden/alt
+	gloves = /obj/item/clothing/gloves/color/black
+	shoes = /obj/item/clothing/shoes/jackboots
+	head = /obj/item/clothing/head/warden
+	l_ear = /obj/item/radio/headset/headset_sec/alt
+	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
+	id = /obj/item/card/id/warden
+	l_pocket = /obj/item/flash
+	suit_store = /obj/item/gun/energy/disabler
+	pda = /obj/item/pda/warden
+	backpack_contents = list(
+		/obj/item/restraints/handcuffs = 1
+	)
+
+	bio_chips = list(/obj/item/bio_chip/mindshield)
+
+	backpack = /obj/item/storage/backpack/security
+	satchel = /obj/item/storage/backpack/satchel_sec
+	dufflebag = /obj/item/storage/backpack/duffel/security
 
 /datum/job/detective
 	title = "Detective"
