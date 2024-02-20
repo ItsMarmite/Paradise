@@ -344,6 +344,12 @@
 		/obj/item/ammo_box/magazine/wt550m9
 		)
 
+/obj/item/storage/belt/security/webbing/blueshield
+	name = "blueshield webbing"
+	desc = "Unique and versatile chest rig, can hold security gear."
+	icon_state = "blueshieldwebbing"
+	item_state = "blueshieldwebbing"
+
 /obj/item/storage/belt/soulstone
 	name = "soul stone belt"
 	desc = "Designed for ease of access to the shards during a fight, as to not let a single enemy spirit slip away"
