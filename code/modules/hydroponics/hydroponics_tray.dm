@@ -12,7 +12,7 @@
 	var/pestlevel = 0		//The amount of pests in the tray (max 10)
 	var/weedlevel = 0		//The amount of weeds in the tray (max 10)
 	var/yieldmod = 1		//Nutriment's effect on yield
-	var/mutmod = 1			//Nutriment's effect on mutations
+	var/mutmod = 0			//Nutriment's effect on mutations
 	var/toxic = 0			//Toxicity in the tray?
 	var/age = 0				//Current age
 	var/dead = FALSE		//Is it dead?
@@ -141,6 +141,11 @@
 		myseed.forceMove(src)
 
 	if(self_sustaining)
+		// Always use EZ for self-sustaining trays.
+		// Want mutations or increased yield? Take care of your trays.
+		yieldmod = 1
+		mutmod = 0
+
 		adjustNutri(1)
 		adjustWater(rand(3,5))
 		adjustWeeds(-2)
@@ -497,11 +502,7 @@
 				to_chat(user, "<span class='warning'>The plant shrivels and burns.</span>")
 			if(81 to 90)
 				mutatespecie()
-			if(66 to 80)
-				hardmutate()
-			if(41 to 65)
-				mutate()
-			if(21 to 41)
+			if(21 to 80)
 				to_chat(user, "<span class='notice'>The plants don't seem to react...</span>")
 			if(11 to 20)
 				mutateweed()
@@ -509,12 +510,6 @@
 				mutatepest(user)
 			else
 				to_chat(user, "<span class='notice'>Nothing happens...</span>")
-
-	// 2 or 1 units is enough to change the yield and other stats.// Can change the yield and other stats, but requires more than mutagen
-	else if(S.has_reagent("mutagen", 2) || S.has_reagent("radium", 5) || S.has_reagent("uranium", 5))
-		hardmutate()
-	else if(S.has_reagent("mutagen", 1) || S.has_reagent("radium", 2) || S.has_reagent("uranium", 2))
-		mutate()
 
 	// After handling the mutating, we now handle the damage from adding crude radioactives...
 	if(S.has_reagent("uranium", 1))
@@ -527,8 +522,13 @@
 	// Nutriments
 	if(S.has_reagent("eznutriment", 1))
 		yieldmod = 1
-		mutmod = 1
+		mutmod = 0
 		adjustNutri(round(S.get_reagent_amount("eznutriment") * 1))
+
+	if(S.has_reagent("mutriment", 1))
+		yieldmod = 1
+		mutmod = 1
+		adjustNutri(round(S.get_reagent_amount("mutriment") * 1))
 
 	if(S.has_reagent("left4zednutriment", 1))
 		yieldmod = 0
