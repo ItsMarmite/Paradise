@@ -188,12 +188,12 @@
 	removable = FALSE
 	use_power_cost = DEFAULT_CHARGE_DRAIN*10
 	incompatible_modules = list(/obj/item/mod/module/hydraulic)
-	cooldown_time = 4 SECONDS
+	cooldown_time = 1.1 SECONDS
 	overlay_state_inactive = "module_hydraulic"
 	overlay_state_active = "module_hydraulic_active"
 	use_mod_colors = TRUE
 	/// Time it takes to launch
-	var/launch_time = 2 SECONDS
+	var/launch_time = 1 SECONDS
 	/// The overlay used to show that you are charging.
 	var/image/charge_up_overlay
 
