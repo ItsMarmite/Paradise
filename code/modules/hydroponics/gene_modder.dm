@@ -427,8 +427,9 @@
 			if(i > 1)
 				name += "/"
 				ui_name += "/"
-			name += "[core_genes[i].value]"
-			ui_name += "[core_genes[i].value]"
+			var/datum/plat_gene/core_gene = core_genes[i]
+			name += "[core_gene.value]"
+			ui_name += "[core_gene.value]"
 
 		name += " (plant data disk)"
 
