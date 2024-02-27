@@ -658,20 +658,17 @@
 		adjustHealth(round(S.get_reagent_amount("cryoxadone") * 3))
 		adjustToxic(-round(S.get_reagent_amount("cryoxadone") * 3))
 
-	// Ammonia is bad ass.
+	// Ammonia heals and feeds plants
 	if(S.has_reagent("ammonia", 1))
 		adjustHealth(round(S.get_reagent_amount("ammonia") * 0.5))
 		adjustNutri(round(S.get_reagent_amount("ammonia") * 1))
-		if(myseed)
-			myseed.adjust_yield(round(S.get_reagent_amount("ammonia") * 0.01))
 
-	// Saltpetre is used for gardening IRL, to simplify highly, it speeds up growth and strengthens plants
+	// Saltpetre is used for gardening IRL, but for us, it's just another
+	// way to heal plants
 	if(S.has_reagent("saltpetre", 1))
 		var/salt = S.get_reagent_amount("saltpetre")
 		adjustHealth(round(salt * 0.25))
-		if(myseed)
-			myseed.adjust_production(-round(salt/100)-prob(salt%100))
-			myseed.adjust_potency(round(salt*0.50))
+
 	// Ash is also used IRL in gardening, as a fertilizer enhancer and weed killer
 	if(S.has_reagent("ash", 1))
 		adjustHealth(round(S.get_reagent_amount("ash") * 0.25))
@@ -682,8 +679,6 @@
 	if(S.has_reagent("diethylamine", 1))
 		adjustHealth(round(S.get_reagent_amount("diethylamine") * 1))
 		adjustNutri(round(S.get_reagent_amount("diethylamine") * 2))
-		if(myseed)
-			myseed.adjust_yield(round(S.get_reagent_amount("diethylamine") * 0.02))
 		adjustPests(-rand(1,2))
 
 	// Compost, effectively
