@@ -15,12 +15,7 @@
 	var/list/trait_genes = list()
 
 	var/datum/plant_gene/target
-	var/max_potency = 50 // See RefreshParts() for how these work
-	var/max_yield = 2
-	var/min_production = 12
-	var/max_endurance = 10 // IMPT: ALSO AFFECTS LIFESPAN
-	var/min_weed_chance = 67
-	var/min_weed_rate = 10
+	var/seeds_for_core = 5
 
 /obj/machinery/plantgenes/Initialize(mapload)
 	. = ..()
@@ -51,36 +46,26 @@
 	QDEL_NULL(disk)
 	return ..()
 
-/obj/machinery/plantgenes/RefreshParts() // Comments represent the max you can set per tier, respectively. seeds.dm [219] clamps these for us but we don't want to mislead the viewer.
-	for(var/obj/item/stock_parts/manipulator/M in component_parts)
-		if(M.rating > 3)
-			max_potency = 95
-		else
-			max_potency = initial(max_potency) + (M.rating**3) // 51,58,77,95 	 Clamps at 100
-
-		max_yield = initial(max_yield) + (M.rating*2) // 4,6,8,10 	Clamps at 10
-
-	for(var/obj/item/stock_parts/scanning_module/SM in component_parts)
-		if(SM.rating > 3) //If you create t5 parts I'm a step ahead mwahahaha!
-			min_production = 1
-		else
-			min_production = 12 - (SM.rating * 3) //9,6,3,1. Requires if to avoid going below clamp [1]
-
-		max_endurance = initial(max_endurance) + (SM.rating * 25) // 35,60,85,100	Clamps at 10min 100max
-
-	for(var/obj/item/stock_parts/micro_laser/ML in component_parts)
-		var/weed_rate_mod = ML.rating * 2.5
-		min_weed_rate = FLOOR(10-weed_rate_mod, 1) // 7,5,2,0	Clamps at 0 and 10	You want this low
-		min_weed_chance = 67-(ML.rating*16) // 48,35,19,3 	Clamps at 0 and 67	You want this low
+/obj/machinery/plantgenes/RefreshParts()
+	var/total_rating = 0
+	for(var/obj/item/stock_parts/S in component_parts)
+		total_rating += S.rating
 
 	for(var/obj/item/circuitboard/plantgenes/vaultcheck in component_parts)
 		if(istype(vaultcheck, /obj/item/circuitboard/plantgenes/vault)) // TRAIT_DUMB BOTANY TUTS
-			max_potency = 100
-			max_yield = 10
-			min_production = 1
-			max_endurance = 100
-			min_weed_chance = 0
-			min_weed_rate = 0
+			total_rating = 12
+
+	switch(clamp(total_rating, 1, 12))
+		if(1 to 3)
+			seeds_for_core = 5
+		if(4 to 6)
+			seeds_for_core = 4
+		if(7 to 9)
+			seeds_for_core = 3
+		if(10 to 11)
+			seeds_for_core = 2
+		else
+			seeds_for_core = 1
 
 /obj/machinery/plantgenes/update_icon_state()
 	if((stat & (BROKEN|NOPOWER)))
@@ -202,8 +187,8 @@
 
 	if(disk)
 		var/disk_name = "Empty Disk"
-		if(disk.gene)
-			disk_name = disk.gene.get_name()
+		if(disk.gene || disk.is_core)
+			disk_name = disk.ui_name
 		if(disk.read_only)
 			disk_name = "[disk_name] (Read Only)"
 		var/can_insert = FALSE
@@ -213,7 +198,7 @@
 			"name" = disk_name,
 			"can_insert" = can_insert,
 			"can_extract" = !disk.read_only,
-			"is_core" = istype(disk?.gene, /datum/plant_gene/core)
+			"is_core" = disk?.is_core && (disk.seeds_needed <= disk.seeds_scanned)
 		)
 
 	data["modal"] = ui_modal_data(src)
@@ -262,27 +247,28 @@
 			seed.variant_prompt(user, src)
 			// uses the default byond prompt, but it works
 
+		if("extract_core")
+			var/dat = "Are you sure you want to extract all core genes from the [seed]? The sample will be destroyed in process!"
+			var/prev_seeds = 0
+			if(disk.is_core && disk.core_matches(seed))
+				prev_seeds = disk.seeds_scanned
+			if(seeds_for_core > prev_seeds + 1)
+				var/remaining = seeds_for_core - prev_seeds - 1
+				dat += " This device needs [seeds_for_core] samples to produce a usable core gene disk. You will need [remaining] more samples with identical core genes."
+
+			ui_modal_boolean(src, action, dat, yes_text = "Extract", no_text = "Cancel", delegate = PROC_REF(gene_extract_core))
+
+		if("replace_core")
+			ui_modal_boolean(src, action, "Are you sure you want to replace ALL core genes of the [seed]?" , yes_text = "Replace", no_text = "Cancel", delegate = PROC_REF(gene_replace_core))
+
 		if("extract")
-			var/dat = "Are you sure you want to extract [target.get_name()] gene from the [seed]? The sample will be destroyed in process!"
-			if(istype(target, /datum/plant_gene/core))
-				var/datum/plant_gene/core/core_gene = target
-				var/genemod_var = core_gene.get_genemod_variable(src) // polymorphism my beloved
-
-				if((core_gene.use_max && core_gene.value < genemod_var) || (!core_gene.use_max && core_gene.value > genemod_var))
-					var/gene_name = lowertext(core_gene.name)
-					dat += " This device's extraction capabilities are currently limited to [genemod_var] [gene_name]. \
-							Target gene will be degraded to [genemod_var] [gene_name] on extraction."
-
-			ui_modal_boolean(src, action, dat, yes_text = "Extract", no_text = "Cancel", delegate = PROC_REF(gene_extract))
-
-		if("replace")
-			ui_modal_boolean(src, action, "Are you sure you want to replace [target.get_name()] gene with [disk.gene.get_name()]?", yes_text = "Replace", no_text = "Cancel", delegate = PROC_REF(gene_replace))
+			ui_modal_boolean(src, action, "Are you sure you want to extract [target.get_name()] gene from the [seed]? The sample will be destroyed in process!", yes_text = "Extract", no_text = "Cancel", delegate = PROC_REF(gene_extract))
 
 		if("remove")
 			ui_modal_boolean(src, action, "Are you sure you want to remove [target.get_name()] gene from the [seed]" , yes_text = "Remove", no_text = "Cancel", delegate = PROC_REF(gene_remove))
 
 		if("insert")
-			if(!istype(disk.gene, /datum/plant_gene/core) && disk.gene.can_add(seed))
+			if(!disk.is_core && disk.gene.can_add(seed))
 				seed.genes += disk.gene.Copy()
 				if(istype(disk.gene, /datum/plant_gene/reagent))
 					seed.reagents_from_genes()
@@ -304,14 +290,9 @@
 /obj/machinery/plantgenes/proc/gene_extract()
 	if(!disk || disk.read_only)
 		return
+	disk.is_core = FALSE
+	disk.core_genes = list()
 	disk.gene = target.Copy()
-	if(istype(disk.gene, /datum/plant_gene/core))
-		var/datum/plant_gene/core/core_gene = disk.gene
-		var/genemod_var = core_gene.get_genemod_variable(src)
-		if(core_gene.use_max)
-			core_gene.value = max(core_gene.value, genemod_var)
-		else
-			core_gene.value = min(core_gene.value, genemod_var)
 
 	disk.update_name()
 	QDEL_NULL(seed)
@@ -319,17 +300,39 @@
 	update_genes()
 	target = null
 
-/obj/machinery/plantgenes/proc/gene_replace()
-	if(!disk?.gene)
+/obj/machinery/plantgenes/proc/gene_extract_core()
+	if(!disk || disk.read_only)
 		return
-	if(!istype(target, /datum/plant_gene/core))
+	disk.seeds_needed = seeds_for_core
+	if(disk.core_matches(seed))
+		disk.seeds_scanned += 1
+	else
+		disk.seeds_scanned = 1
+		disk.is_core = TRUE
+		disk.gene = null
+		disk.core_genes = list()
+		for(var/datum/plant_gene/core/gene in core_genes)
+			var/datum/plant_gene/core/C = gene.Copy()
+			disk.core_genes += C
+
+	disk.update_name()
+	QDEL_NULL(seed)
+	update_icon(UPDATE_OVERLAYS)
+	update_genes()
+	target = null
+
+/obj/machinery/plantgenes/proc/gene_replace_core()
+	if(!disk?.is_core)
 		return
-	if(!istype(disk.gene, target.type))
-		return // you can't replace a endurance gene with a weed chance gene, etc
-	seed.genes -= target
-	var/datum/plant_gene/core/C = disk.gene.Copy()
-	seed.genes += C
-	C.apply_stat(seed)
+	if(disk.seeds_scanned < disk.seeds_needed)
+		return
+	for(var/datum/plant_gene/gene in seed.genes)
+		if(istype(gene, /datum/plant_gene/core))
+			seed.genes -= gene
+	for(var/datum/plant_gene/core/gene in disk.core_genes)
+		var/datum/plant_gene/core/C = gene.Copy()
+		seed.genes += C
+		C.apply_stat(seed)
 	repaint_seed()
 	update_genes()
 	target = null
@@ -382,8 +385,17 @@
 	desc = "A disk for storing plant genetic data."
 	icon_state = "datadisk_hydro"
 	materials = list(MAT_METAL=30, MAT_GLASS=10)
-	var/datum/plant_gene/gene
+	var/ui_name = "Empty Disk"
+	var/is_core = FALSE
 	var/read_only = 0 //Well, it's still a floppy disk
+
+	// For non-core genes
+	var/datum/plant_gene/gene
+
+	// For core genes
+	var/list/core_genes = list()
+	var/seeds_scanned = 0
+	var/seeds_needed = 5
 
 /obj/item/disk/plantgene/New()
 	..()
@@ -402,11 +414,39 @@
 	. = ..()
 	if(HAS_TRAIT(src, TRAIT_CMAGGED))
 		name = "nuclear authentication disk"
+		ui_name = "nuclear authentication disk?"
 		return
-	if(gene)
-		name = "[gene.get_name()] (Plant Data Disk)"
+	if(!is_core && gene)
+		name = "[gene.get_name()] (plant data disk)"
+		ui_name = "[gene.get_name()]"
+	else if(is_core)
+		name = ""
+		if(seeds_scanned < seeds_needed)
+			name +=  "[round(seeds_scanned/seeds_needed*100,1)]% of "
+		name += "Core genes "
+		ui_name = "Core "
+		for(var/i in 1 to length(core_genes))
+			if(i > 1)
+				name += "/"
+				ui_name += "/"
+			name += "[core_genes[i].value]"
+			ui_name += "[core_genes[i].value]"
+
+		name += " (plant data disk)"
+
+		if(seeds_scanned < seeds_needed)
+			ui_name +=  " ([round(seeds_scanned/seeds_needed*100,1)]%)"
 	else
 		name = "plant data disk"
+		ui_name = "Empty Disk"
+
+/obj/item/disk/plantgene/proc/core_matches(obj/item/seeds/seed)
+	if(!is_core)
+		return FALSE
+	for(var/datum/plant_gene/core/gene in core_genes)
+		if(gene.value != seed.get_gene(gene.type).value)
+			return FALSE
+	return TRUE
 
 /obj/item/disk/plantgene/update_desc()
 	. = ..()
