@@ -427,7 +427,7 @@
 			if(i > 1)
 				name += "/"
 				ui_name += "/"
-			var/datum/plat_gene/core_gene = core_genes[i]
+			var/datum/plant_gene/core/core_gene = core_genes[i]
 			name += "[core_gene.value]"
 			ui_name += "[core_gene.value]"
 
@@ -443,7 +443,8 @@
 	if(!is_core)
 		return FALSE
 	for(var/datum/plant_gene/core/gene in core_genes)
-		if(gene.value != seed.get_gene(gene.type).value)
+		var/datum/plant_gene/core/seed_gene = seed.get_gene(gene.type)
+		if(gene.value != seed_gene.value)
 			return FALSE
 	return TRUE
 
