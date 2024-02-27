@@ -186,9 +186,7 @@
 	data["disk"] = list()
 
 	if(disk)
-		var/disk_name = "Empty Disk"
-		if(disk.gene || disk.is_core)
-			disk_name = disk.ui_name
+		var/disk_name = disk.ui_name
 		if(disk.read_only)
 			disk_name = "[disk_name] (Read Only)"
 		var/can_insert = FALSE
