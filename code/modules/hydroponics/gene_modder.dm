@@ -246,7 +246,7 @@
 			// uses the default byond prompt, but it works
 
 		if("extract_core")
-			var/dat = "Are you sure you want to extract all core genes from the [seed]? The sample will be destroyed in process!"
+			var/dat = "Are you sure you want to extract all core genes from the [seed]? The sample will be destroyed in the process!"
 			var/prev_seeds = 0
 			if(disk.is_core && disk.core_matches(seed))
 				prev_seeds = disk.seeds_scanned
@@ -260,7 +260,7 @@
 			ui_modal_boolean(src, action, "Are you sure you want to replace ALL core genes of the [seed]?" , yes_text = "Replace", no_text = "Cancel", delegate = PROC_REF(gene_replace_core))
 
 		if("extract")
-			ui_modal_boolean(src, action, "Are you sure you want to extract [target.get_name()] gene from the [seed]? The sample will be destroyed in process!", yes_text = "Extract", no_text = "Cancel", delegate = PROC_REF(gene_extract))
+			ui_modal_boolean(src, action, "Are you sure you want to extract [target.get_name()] gene from the [seed]? The sample will be destroyed in the process!", yes_text = "Extract", no_text = "Cancel", delegate = PROC_REF(gene_extract))
 
 		if("remove")
 			ui_modal_boolean(src, action, "Are you sure you want to remove [target.get_name()] gene from the [seed]" , yes_text = "Remove", no_text = "Cancel", delegate = PROC_REF(gene_remove))

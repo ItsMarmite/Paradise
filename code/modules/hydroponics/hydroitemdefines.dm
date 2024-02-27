@@ -292,7 +292,6 @@
 /obj/item/reagent_containers/glass/bottle/nutrient/mut
 	name = "jug of Mutrient"
 	desc = "Contains a fertilizer that causes mild mutations with each harvest."
-	icon = 'icons/obj/chemical.dmi'
 	icon_state = "plastic_jug_mut"
 	list_reagents = list("mutriment" = 80)
 

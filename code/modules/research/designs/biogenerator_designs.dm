@@ -105,7 +105,7 @@
 	build_type = BIOGENERATOR
 	materials = list(MAT_BIOMASS = 15)
 	build_path = /obj/item/reagent_containers/glass/bottle/nutrient/mut
-	category = list("initial","Botany Chemicals")
+	category = list("initial", "Botany Chemicals")
 
 /datum/design/l4z_nut
 	name = "Left 4 Zed"

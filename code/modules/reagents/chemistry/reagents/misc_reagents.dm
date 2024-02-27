@@ -615,7 +615,7 @@
 /datum/reagent/plantnutriment/mut
 	name = "Mutriment"
 	id = "mutriment"
-	description = "Plant nutriment designed to trigger mild genetic drift"
+	description = "Plant nutriment designed to trigger mild genetic drift."
 	color = "#376400" // RBG: 50, 100, 0
 	tox_prob = 10
 	taste_description = "change"
