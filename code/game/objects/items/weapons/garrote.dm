@@ -4,8 +4,7 @@
  * 	Improvised garrotes
  */
 
-/// 12TC traitor item
-/obj/item/garrote
+/obj/item/garrote // 12TC traitor item
 	name = "fiber wire"
 	desc = "A length of razor-thin wire with an elegant wooden handle on either end.<br>You suspect you'd have to be behind the target to use this weapon effectively."
 	icon_state = "garrot_wrap"
@@ -28,8 +27,7 @@
 	else
 		icon_state = "garrot_[improvised ? "I_" : ""][HAS_TRAIT(src, TRAIT_WIELDED) ? "un" : ""]wrap"
 
-/// Made via tablecrafting
-/obj/item/garrote/improvised
+/obj/item/garrote/improvised // Made via tablecrafting
 	name = "garrote"
 	desc = "A length of cable with a shoddily-carved wooden handle tied to either end.<br>You suspect you'd have to be behind the target to use this weapon effectively."
 	icon_state = "garrot_I_wrap"
