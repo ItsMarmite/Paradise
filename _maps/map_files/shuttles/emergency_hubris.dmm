@@ -1,410 +1,772 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"a" = (
+"aG" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/turf/simulated/floor/mineral/plasma,
+/area/space)
+"bG" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/simulated/floor/mineral/plasma,
+/area/space)
+"cG" = (
+/obj/machinery/computer/secure_data,
+/turf/simulated/floor/mineral/plasma,
+/area/space)
+"cK" = (
+/turf/simulated/floor/mineral/plasma,
+/area/space)
+"db" = (
+/obj/effect/spawner/window/reinforced/plasma/grilled,
+/turf/simulated/floor/mineral/plasma,
+/area/space)
+"dg" = (
+/obj/structure/table/glass/reinforced/plasma,
+/obj/item/pizzabox/pizza_bomb/autoarm,
+/turf/simulated/floor/mineral/plasma,
+/area/space)
+"eh" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
+/turf/simulated/floor/light/disco,
+/area/space)
+"eA" = (
 /turf/space,
+/area/space)
+"eI" = (
+/obj/machinery/computer/communications,
+/turf/simulated/floor/mineral/plasma,
+/area/space)
+"fm" = (
+/obj/machinery/economy/vending/cigarette/syndicate/free,
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/turf/simulated/floor/mineral/plasma,
+/area/space)
+"gf" = (
+/obj/structure/table/glass/reinforced/plasma,
+/turf/simulated/floor/mineral/plasma,
+/area/space)
+"gW" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/simulated/floor/light/disco,
+/area/space)
+"jo" = (
+/obj/structure/chair/sofa/corp/left,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/simulated/floor/mineral/plasma,
+/area/space)
+"kN" = (
+/turf/simulated/floor/light/disco,
+/area/space)
+"kQ" = (
+/obj/structure/table/glass/reinforced/plasma,
+/obj/item/desk_bell{
+	pixel_x = 7;
+	pixel_y = 7;
+	anchored = 1
+	},
+/turf/simulated/floor/mineral/plasma,
+/area/space)
+"kU" = (
+/obj/structure/chair/sofa/corp/left{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/turf/simulated/floor/mineral/plasma,
+/area/space)
+"lp" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/simulated/floor/mineral/plasma,
+/area/space)
+"lt" = (
+/obj/structure/chair/stool/bar{
+	dir = 4
+	},
+/turf/simulated/floor/mineral/plasma,
+/area/space)
+"lW" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 8
+	},
+/turf/simulated/floor/mineral/plasma,
+/area/space)
+"mm" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/turf/simulated/floor/mineral/plasma,
+/area/space)
+"mx" = (
+/obj/structure/chair/sofa/corp/corner,
+/obj/effect/turf_decal/stripes/line{
+	dir = 5
+	},
+/turf/simulated/floor/mineral/plasma,
+/area/space)
+"mD" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/simulated/floor/mineral/plasma,
+/area/space)
+"mX" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/turf/simulated/floor/mineral/plasma,
+/area/space)
+"nC" = (
+/obj/machinery/computer/atmos_alert{
+	dir = 8
+	},
+/turf/simulated/floor/mineral/plasma,
+/area/space)
+"nL" = (
+/obj/structure/sign/barsign{
+	emagged = 1
+	},
+/turf/simulated/wall/mineral/plasma,
+/area/space)
+"oG" = (
+/obj/structure/table/glass/reinforced/plasma,
+/obj/machinery/chem_dispenser/soda,
+/turf/simulated/floor/mineral/plasma,
+/area/space)
+"pa" = (
+/obj/structure/chair/sofa/corp/right,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/simulated/floor/mineral/plasma,
+/area/space)
+"qf" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
+/turf/simulated/floor/mineral/plasma,
+/area/space)
+"rc" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/turf/simulated/floor/light/disco,
+/area/space)
+"rO" = (
+/obj/effect/turf_decal/arrows{
+	dir = 1
+	},
+/turf/simulated/floor/mineral/plasma,
+/area/space)
+"sO" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 5
+	},
+/turf/simulated/floor/light/disco,
+/area/space)
+"tJ" = (
+/obj/machinery/computer/security,
+/turf/simulated/floor/mineral/plasma,
+/area/space)
+"vC" = (
+/obj/machinery/computer/med_data{
+	dir = 4
+	},
+/turf/simulated/floor/mineral/plasma,
+/area/space)
+"vO" = (
+/obj/structure/chair/sofa/corp/right{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/simulated/floor/mineral/plasma,
+/area/space)
+"wJ" = (
+/obj/structure/chair/sofa/corp/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/turf/simulated/floor/mineral/plasma,
+/area/space)
+"wZ" = (
+/obj/machinery/computer/aifixer,
+/turf/simulated/floor/mineral/plasma,
+/area/space)
+"xO" = (
+/obj/structure/table/glass/reinforced/plasma,
+/obj/item/paper_bin,
+/turf/simulated/floor/mineral/plasma,
+/area/space)
+"CF" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/turf/simulated/floor/light/disco,
+/area/space)
+"CL" = (
+/obj/structure/chair/sofa/corp,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/simulated/floor/mineral/plasma,
+/area/space)
+"CR" = (
+/obj/structure/chair/stool/bar{
+	dir = 8
+	},
+/turf/simulated/floor/mineral/plasma,
+/area/space)
+"Ea" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 1
+	},
+/turf/simulated/floor/mineral/plasma,
+/area/space)
+"Ep" = (
+/obj/machinery/computer/station_alert{
+	dir = 8
+	},
+/turf/simulated/floor/mineral/plasma,
+/area/space)
+"Es" = (
+/obj/structure/table/glass/plasma,
+/turf/simulated/floor/mineral/plasma,
+/area/space)
+"Fo" = (
+/obj/effect/turf_decal/stripes/line,
+/turf/simulated/floor/light/disco,
+/area/space)
+"FS" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 4
+	},
+/turf/simulated/floor/mineral/plasma,
+/area/space)
+"GU" = (
+/obj/machinery/economy/vending/cigarette/syndicate/free,
+/obj/effect/turf_decal/stripes/line{
+	dir = 5
+	},
+/turf/simulated/floor/mineral/plasma,
+/area/space)
+"Ha" = (
+/obj/structure/reagent_dispensers/fueltank/chem,
+/turf/simulated/wall/mineral/plasma,
+/area/space)
+"Hr" = (
+/obj/machinery/computer/emergency_shuttle,
+/turf/simulated/floor/mineral/plasma,
+/area/space)
+"HA" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/structure/extinguisher_cabinet{
+	name = "west bump";
+	pixel_x = -27
+	},
+/turf/simulated/floor/mineral/plasma,
+/area/space)
+"HR" = (
+/obj/structure/shuttle/engine/propulsion,
+/turf/simulated/floor/mineral/plasma,
+/area/space)
+"Jy" = (
+/turf/simulated/wall/mineral/plasma,
+/area/space)
+"Li" = (
+/obj/machinery/computer/crew{
+	dir = 4
+	},
+/turf/simulated/floor/mineral/plasma,
+/area/space)
+"LJ" = (
+/obj/machinery/economy/vending/boozeomat,
+/turf/simulated/floor/mineral/plasma,
+/area/space)
+"Pc" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/turf/simulated/floor/light/disco,
+/area/space)
+"Pk" = (
+/obj/structure/chair/stool/bar,
+/turf/simulated/floor/mineral/plasma,
+/area/space)
+"QS" = (
+/obj/structure/table/glass/reinforced/plasma,
+/obj/machinery/chem_dispenser/beer,
+/turf/simulated/floor/mineral/plasma,
+/area/space)
+"RX" = (
+/obj/structure/shuttle/engine/heater,
+/obj/structure/window/plasmareinforced{
+	dir = 1
+	},
+/turf/simulated/floor/mineral/plasma,
+/area/space)
+"SX" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/simulated/floor/light/disco,
+/area/space)
+"Uo" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/structure/extinguisher_cabinet{
+	name = "east bump";
+	pixel_x = 27
+	},
+/turf/simulated/floor/mineral/plasma,
+/area/space)
+"Vq" = (
+/obj/structure/table/glass/reinforced/plasma,
+/obj/item/eftpos/register,
+/turf/simulated/floor/mineral/plasma,
+/area/space)
+"VY" = (
+/obj/machinery/disco/immobile,
+/turf/simulated/floor/light/disco,
+/area/space)
+"YV" = (
+/obj/machinery/door/airlock/plasma/glass,
+/obj/effect/mapping_helpers/airlock/access/all/command,
+/turf/simulated/floor/mineral/plasma,
 /area/space)
 
 (1,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+eA
+eA
+eA
+eA
+eA
+eA
+eA
+eA
+eA
+eA
+eA
+eA
+eA
+eA
+eA
+eA
+eA
+eA
+eA
+eA
+eA
+eA
+eA
+eA
+eA
 "}
 (2,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+eA
+eA
+eA
+eA
+eA
+Jy
+db
+db
+db
+Jy
+eA
+eA
+eA
+eA
+eA
+Jy
+db
+db
+db
+db
+nL
+eA
+eA
+eA
+eA
 "}
 (3,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+eA
+eA
+Jy
+db
+Jy
+Jy
+wJ
+vO
+qf
+Jy
+Jy
+db
+db
+db
+Jy
+Jy
+fm
+lp
+lp
+qf
+Jy
+Jy
+Jy
+Jy
+eA
 "}
 (4,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+eA
+eA
+Jy
+vC
+Li
+Jy
+CL
+Es
+cK
+HA
+mD
+mD
+mD
+mD
+mD
+HA
+cK
+lt
+lt
+lt
+lp
+lp
+RX
+HR
+eA
 "}
 (5,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+eA
+Jy
+Jy
+lW
+lW
+Jy
+jo
+Es
+cK
+cK
+cK
+cK
+cK
+cK
+cK
+Pk
+gf
+gf
+gf
+gf
+cK
+gf
+RX
+HR
+eA
 "}
 (6,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+eA
+db
+cG
+cK
+cK
+db
+bG
+cK
+cK
+cK
+rc
+gW
+gW
+gW
+eh
+Pk
+gf
+cK
+cK
+cK
+cK
+dg
+RX
+HR
+eA
 "}
 (7,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+eA
+db
+tJ
+Ea
+cK
+YV
+cK
+cK
+rc
+gW
+kN
+kN
+kN
+kN
+Fo
+Pk
+kQ
+cK
+QS
+gf
+cK
+gf
+RX
+HR
+eA
 "}
 (8,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+eA
+db
+Hr
+rO
+cK
+db
+bG
+SX
+kN
+kN
+kN
+kN
+VY
+kN
+Fo
+Pk
+Vq
+cK
+LJ
+Ha
+cK
+dg
+RX
+HR
+eA
 "}
 (9,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+eA
+db
+eI
+Ea
+cK
+YV
+cK
+cK
+sO
+Pc
+kN
+kN
+kN
+kN
+Fo
+Pk
+xO
+cK
+oG
+gf
+cK
+gf
+RX
+HR
+eA
 "}
 (10,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+eA
+db
+wZ
+cK
+cK
+db
+bG
+cK
+cK
+cK
+sO
+Pc
+Pc
+Pc
+CF
+Pk
+gf
+cK
+cK
+cK
+cK
+dg
+RX
+HR
+eA
 "}
 (11,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+eA
+Jy
+Jy
+FS
+FS
+Jy
+pa
+Es
+cK
+cK
+cK
+cK
+cK
+cK
+cK
+Pk
+gf
+gf
+gf
+gf
+cK
+gf
+RX
+HR
+eA
 "}
 (12,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+eA
+eA
+Jy
+Ep
+nC
+Jy
+CL
+Es
+cK
+Uo
+aG
+aG
+aG
+aG
+aG
+Uo
+cK
+CR
+CR
+CR
+mX
+mX
+RX
+HR
+eA
 "}
 (13,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+eA
+eA
+Jy
+db
+Jy
+Jy
+mx
+kU
+mm
+Jy
+Jy
+db
+db
+db
+Jy
+Jy
+GU
+mX
+mX
+mm
+nL
+Jy
+Jy
+Jy
+eA
 "}
 (14,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+eA
+eA
+eA
+eA
+eA
+Jy
+db
+db
+db
+Jy
+eA
+eA
+eA
+eA
+eA
+Jy
+db
+db
+db
+db
+Jy
+eA
+eA
+eA
+eA
 "}
 (15,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+eA
+eA
+eA
+eA
+eA
+eA
+eA
+eA
+eA
+eA
+eA
+eA
+eA
+eA
+eA
+eA
+eA
+eA
+eA
+eA
+eA
+eA
+eA
+eA
+eA
 "}
