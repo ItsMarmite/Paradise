@@ -119,6 +119,12 @@
 	This escape shuttle boasts shields and numerous anti-personnel turrets guarding its perimeter to fend off meteors and enemy boarding attempts."
 	admin_notes = "Comes with turrets that will target simple mobs."
 
+/datum/map_template/shuttle/emergency/hubris
+	suffix = "hubris"
+	name = "STV Hubris"
+	description = "The Syndicate Transport Vessel Hubris is a recently hijacked Nanotrasen vessel that has been retrofitted as a weapon. \
+	There lay no greater irony than the tools of Nanotrasen burning and writhing within their precious 'plasma'."
+	admin_notes = "If you force this shuttle, expect mass shuttle grief. You have been warned."
 /datum/map_template/shuttle/ferry/base
 	suffix = "base"
 	name = "transport ferry"
