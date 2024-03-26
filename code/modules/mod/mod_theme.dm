@@ -993,6 +993,61 @@
 	//laser = 35 //50 same as
 	//energy = 15 // 25
 
+/datum/mod_theme/contractor
+	name = "contractor"
+	desc = "A Shellguard Munitions advanced security suit, offering greater speed and fire protection than the standard security model."
+	extended_desc = "A Shellguard Munitions advanced security suit, and their latest model. This variant has \
+		ditched the presence of a reinforced glass visor entirely, replacing it with a 'blast visor' utilizing a \
+		small camera on the left side to display the outside to the user. The plating on the suit has been \
+		dramatically increased, especially in the pauldrons, giving the wearer an imposing silhouette. \
+		Heatsinks line the sides of the suit, and greater technology has been used in insulating it against \
+		both corrosive environments and sudden impacts to the user's joints."
+	default_skin = "contractor"
+	armor_type_1 = /obj/item/mod/armor/mod_theme_contractor
+	resistance_flags = FIRE_PROOF
+	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT
+	slowdown_inactive = 0.75
+	slowdown_active = 0.25
+	ui_theme = "syndicate"
+	allowed_suit_storage = list(
+		/obj/item/ammo_box,
+		/obj/item/ammo_casing,
+		/obj/item/reagent_containers/spray/pepper,
+		/obj/item/restraints/handcuffs,
+		/obj/item/flash,
+		/obj/item/melee/baton,
+		/obj/item/gun,
+	)
+	skins = list(
+		"contractor" = list(
+			HELMET_FLAGS = list(
+				UNSEALED_LAYER = null,
+				UNSEALED_CLOTHING = THICKMATERIAL,
+				SEALED_CLOTHING = STOPSPRESSUREDMAGE | BLOCKHAIR,
+				UNSEALED_INVISIBILITY = HIDEFACE | HIDEMASK | HIDEEYES,
+				UNSEALED_COVER = HEADCOVERSMOUTH | HEADCOVERSEYES,
+			),
+			CHESTPLATE_FLAGS = list(
+				UNSEALED_CLOTHING = THICKMATERIAL,
+				SEALED_CLOTHING = STOPSPRESSUREDMAGE,
+				SEALED_INVISIBILITY = HIDEJUMPSUIT | HIDETAIL,
+			),
+			GAUNTLETS_FLAGS = list(
+				UNSEALED_CLOTHING = THICKMATERIAL,
+				SEALED_CLOTHING = STOPSPRESSUREDMAGE,
+				CAN_OVERSLOT = TRUE,
+			),
+			BOOTS_FLAGS = list(
+				UNSEALED_CLOTHING = THICKMATERIAL,
+				SEALED_CLOTHING = STOPSPRESSUREDMAGE,
+				CAN_OVERSLOT = TRUE,
+			),
+		),
+	)
+
+/obj/item/mod/armor/mod_theme_contractor
+	armor = list(MELEE = 30, BULLET = 25, LASER = 25, ENERGY = 15, BOMB = 40, RAD = 25, FIRE = INFINITY, ACID = 150)
+
 /datum/mod_theme/prototype
 	name = "prototype"
 	desc = "A prototype modular suit powered by locomotives. While it is comfortable and has a big capacity, it remains very bulky and power-inefficient."

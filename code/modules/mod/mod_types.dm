@@ -268,6 +268,26 @@
 	new /obj/item/clothing/mask/gas/syndicate(bag)
 	new /obj/item/tank/internals/emergency_oxygen/engi/syndi(bag)
 
+/obj/item/mod/control/pre_equipped/traitor_contractor
+	theme = /datum/mod_theme/contractor
+	applied_cell = /obj/item/stock_parts/cell/super
+	applied_modules = list(
+		/obj/item/mod/module/storage/syndicate,
+		/obj/item/mod/module/emp_shield,
+		/obj/item/mod/module/jetpack,
+		/obj/item/mod/module/flashlight,
+		/obj/item/mod/module/noslip,
+	)
+	default_pins = list(
+		/obj/item/mod/module/armor_booster,
+		/obj/item/mod/module/jetpack,
+	)
+
+/obj/item/mod/control/pre_equipped/traitor_contractor/Initialize(mapload)
+	. = ..()
+	new /obj/item/clothing/mask/gas/syndicate(bag)
+	new /obj/item/tank/internals/emergency_oxygen/engi/syndi(bag)
+
 /obj/item/mod/control/pre_equipped/nuclear
 	theme = /datum/mod_theme/syndicate
 	applied_cell = /obj/item/stock_parts/cell/hyper
