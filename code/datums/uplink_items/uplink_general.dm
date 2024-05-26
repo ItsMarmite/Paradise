@@ -605,7 +605,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/device_tools/bonerepair
 	name = "Prototype Nanite Autoinjector"
-	desc = "Stolen prototype full body repair nanites. On injection it will shut down body systems as it revitilizes limbs and organs."
+	desc = "Stolen prototype full body repair nanites. On injection it will shut down body systems as it revitilizes limbs and organs. Heals organics organs, cybernetic organs, and limbs to fully operational conditions."
 	reference = "NCAI"
 	item = /obj/item/reagent_containers/hypospray/autoinjector/nanocalcium
 	cost = 10
@@ -760,7 +760,8 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	desc = "A pinpointer that tracks any specified coordinates, DNA string, high value item or the nuclear authentication disk."
 	reference = "ADVP"
 	item = /obj/item/pinpointer/advpinpointer
-	cost = 20
+	cost = 10
+	can_discount = FALSE
 
 /datum/uplink_item/device_tools/ai_detector
 	name = "Artificial Intelligence Detector" // changed name in case newfriends thought it detected disguised ai's
