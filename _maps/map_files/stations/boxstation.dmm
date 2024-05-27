@@ -25963,17 +25963,6 @@
 	icon_state = "brown"
 	},
 /area/station/supply/sorting)
-"bDR" = (
-/obj/docking_port/stationary{
-	dir = 4;
-	dwidth = 3;
-	height = 5;
-	id = "mining_home";
-	name = "mining shuttle bay";
-	width = 7
-	},
-/turf/space,
-/area/space)
 "bDV" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
@@ -27137,17 +27126,13 @@
 	},
 /area/station/supply/sorting)
 "bIW" = (
-/obj/machinery/door/airlock/external{
-	id_tag = "mining_home";
-	locked = 1;
-	name = "Mining Dock Airlock"
-	},
-/obj/structure/fans/tiny,
-/turf/simulated/floor/plasteel,
-/area/station/supply/miningdock)
+/turf/simulated/wall/r_wall,
+/area/station/supply/storage)
 "bIX" = (
-/obj/structure/sign/vacuum/external,
-/turf/simulated/wall,
+/turf/simulated/floor/plasteel{
+	dir = 8;
+	icon_state = "brown"
+	},
 /area/station/supply/miningdock)
 "bIY" = (
 /turf/simulated/floor/plasteel{
@@ -27222,8 +27207,12 @@
 /turf/simulated/floor/plasteel,
 /area/station/hallway/primary/starboard/west)
 "bJi" = (
-/turf/simulated/wall,
-/area/space)
+/obj/machinery/mineral/equipment_vendor,
+/turf/simulated/floor/plasteel{
+	dir = 4;
+	icon_state = "brown"
+	},
+/area/station/supply/miningdock)
 "bJk" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
@@ -29736,7 +29725,6 @@
 	},
 /area/station/science/hallway)
 "bUU" = (
-/obj/effect/landmark/start/shaft_miner,
 /obj/machinery/hologram/holopad,
 /turf/simulated/floor/plasteel,
 /area/station/hallway/primary/central/west)
@@ -30483,10 +30471,10 @@
 /turf/simulated/floor/plasteel,
 /area/station/service/expedition)
 "bYH" = (
-/obj/machinery/computer/security/mining{
-	dir = 4
+/turf/simulated/floor/plasteel{
+	dir = 9;
+	icon_state = "brown"
 	},
-/turf/simulated/floor/plasteel,
 /area/station/supply/miningdock)
 "bYI" = (
 /obj/structure/disposalpipe/segment,
@@ -39418,7 +39406,6 @@
 /turf/simulated/floor/engine,
 /area/station/science/misc_lab)
 "cGf" = (
-/obj/machinery/mineral/equipment_vendor,
 /obj/machinery/hologram/holopad,
 /turf/simulated/floor/plasteel{
 	dir = 8;
@@ -40521,9 +40508,11 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/aft)
 "cJO" = (
-/obj/effect/landmark/start/shaft_miner,
-/turf/simulated/floor/plasteel,
-/area/station/hallway/primary/central/west)
+/turf/simulated/floor/plasteel{
+	dir = 10;
+	icon_state = "brown"
+	},
+/area/station/supply/miningdock)
 "cJP" = (
 /obj/machinery/door/poddoor/preopen{
 	name = "Biohazard Shutter";
@@ -56225,6 +56214,7 @@
 /obj/structure/chair/office/dark{
 	dir = 1
 	},
+/obj/effect/landmark/start/quartermaster,
 /turf/simulated/floor/carpet/royalblue,
 /area/station/supply/qm)
 "gmQ" = (
@@ -67965,6 +67955,11 @@
 	id = "CargoWaste"
 	},
 /obj/structure/lattice/catwalk,
+/obj/structure/fans/tiny/cargoshield,
+/obj/machinery/door/poddoor/shutters{
+	layer = 5;
+	name = "Cargo Bay Hangar"
+	},
 /turf/simulated/floor/plating,
 /area/station/supply/storage)
 "mqP" = (
@@ -75695,6 +75690,11 @@
 /area/station/hallway/primary/starboard/east)
 "qlY" = (
 /obj/structure/lattice/catwalk,
+/obj/structure/fans/tiny/cargoshield,
+/obj/machinery/door/poddoor/shutters{
+	layer = 5;
+	name = "Cargo Bay Hangar"
+	},
 /turf/simulated/floor/plating,
 /area/station/supply/storage)
 "qms" = (
@@ -77420,10 +77420,10 @@
 	},
 /area/station/science/robotics)
 "qZK" = (
-/obj/machinery/computer/shuttle/mining{
-	dir = 4
+/turf/simulated/floor/plasteel{
+	dir = 5;
+	icon_state = "brown"
 	},
-/turf/simulated/floor/plasteel,
 /area/station/supply/miningdock)
 "qZN" = (
 /turf/simulated/wall/r_wall,
@@ -79319,6 +79319,11 @@
 	id = "Skynet_heavy"
 	},
 /obj/structure/lattice/catwalk,
+/obj/structure/fans/tiny/cargoshield,
+/obj/machinery/door/poddoor/shutters{
+	layer = 5;
+	name = "Cargo Bay Hangar"
+	},
 /turf/simulated/floor/plating,
 /area/station/supply/storage)
 "rZE" = (
@@ -88183,8 +88188,10 @@
 /turf/simulated/floor/plating,
 /area/station/science/toxins/mixing)
 "wPp" = (
-/obj/effect/spawner/window/reinforced/grilled,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "brown"
+	},
 /area/station/supply/miningdock)
 "wPs" = (
 /obj/machinery/computer/mech_bay_power_console{
@@ -106796,11 +106803,11 @@ cwA
 pcH
 bnK
 mmE
-blQ
-bxb
-bxb
-bxb
-bxb
+bKw
+bIW
+bIW
+bIW
+bIW
 qlY
 qlY
 qlY
@@ -106813,8 +106820,8 @@ qlY
 qlY
 qlY
 qlY
-bxb
-bxb
+bIW
+bIW
 aaa
 aaa
 aaa
@@ -107071,7 +107078,7 @@ kQY
 llF
 bKz
 bKz
-bxb
+bIW
 aaa
 aaa
 aaa
@@ -107328,7 +107335,7 @@ bYy
 bKz
 bKz
 bKz
-bxb
+bIW
 aaa
 aaa
 aaa
@@ -107585,7 +107592,7 @@ bKz
 bKz
 bKz
 bKz
-bxb
+bIW
 aaa
 aaa
 aaa
@@ -107842,7 +107849,7 @@ bKz
 bKz
 bKz
 bKz
-bxb
+bIW
 aaa
 aaa
 aaa
@@ -108099,7 +108106,7 @@ bTu
 bTu
 bTu
 bCf
-bxb
+bIW
 aaa
 aaa
 aaa
@@ -108356,7 +108363,7 @@ tEt
 bCf
 bKz
 bzP
-bxb
+bIW
 aaa
 aaa
 aaa
@@ -108613,7 +108620,7 @@ mDy
 bzP
 bKz
 bzP
-bxb
+bIW
 aaa
 aaa
 aaa
@@ -112185,13 +112192,13 @@ blT
 bwy
 bnw
 blQ
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bYH
+bIX
+bIX
+bIX
+bIX
+bIX
+cJO
 bfx
 vsR
 lje
@@ -112442,13 +112449,13 @@ blR
 bww
 bnK
 blQ
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+wPp
+cfb
+cfb
+bzG
+bzG
+bzG
+bKC
 bfx
 bDQ
 lje
@@ -112699,13 +112706,13 @@ blR
 bwy
 bvF
 blQ
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+wPp
+cfb
+cfb
+cfb
+cfb
+cfb
+bzE
 bfx
 fzd
 uSw
@@ -112956,13 +112963,13 @@ blR
 bGX
 bCj
 blQ
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+wPp
+cfb
+cfb
+bzG
+bzG
+bzG
+bKC
 bfx
 bfx
 bMy
@@ -113213,14 +113220,14 @@ blR
 bwy
 cho
 blQ
-aaa
-aaa
-aaa
-bDR
-aaa
-aaa
-aaa
-bJi
+qZK
+bBp
+bBp
+bBp
+bBp
+bBp
+jVv
+cam
 bMJ
 bQm
 bOp
@@ -113470,12 +113477,12 @@ bsn
 mQd
 bnK
 blQ
-bIX
-wPp
-wPp
-bIW
-wPp
-wPp
+cam
+cam
+qus
+cam
+cam
+cam
 cam
 cam
 bNM
@@ -113728,10 +113735,10 @@ bwy
 bnK
 cam
 byy
-bYH
-qZK
 cfb
-wPp
+cfb
+cfb
+cam
 bHc
 bHc
 bHc
@@ -113985,8 +113992,8 @@ vVK
 blQ
 cam
 byk
-bzG
-bzG
+cfb
+cfb
 cfb
 qus
 bXh
@@ -114499,7 +114506,7 @@ bDJ
 bnK
 cam
 byl
-bzG
+cfb
 rqF
 cfb
 cam
@@ -114511,7 +114518,7 @@ bPW
 bOt
 bOw
 bUU
-cJO
+bOw
 bPW
 bPW
 bPW
@@ -114756,7 +114763,7 @@ bwA
 bnK
 cam
 byl
-bzG
+cfb
 cfb
 cfb
 mSV
@@ -115013,13 +115020,13 @@ sZe
 bnK
 cam
 byl
-bzG
+cfb
 cfb
 cfb
 qus
 cfb
 cfb
-bKC
+bzE
 bFx
 bPW
 bFA
@@ -115274,7 +115281,7 @@ bzK
 bBp
 bCE
 cam
-bBp
+bJi
 bBp
 jVv
 cam
