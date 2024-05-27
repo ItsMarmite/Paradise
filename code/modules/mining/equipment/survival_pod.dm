@@ -301,6 +301,15 @@
 	name = "air flow blocker"
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	invisibility = INVISIBILITY_ABSTRACT
+
+/obj/structure/fans/tiny/cargoshield
+	name = "Cargo Bay Shield"
+	desc = "An energy shield keeping the money in."
+	layer = TURF_LAYER+3
+	density = FALSE
+	icon = 'icons/effects/effects.dmi'
+	icon_state = "shield-old"
+
 //Signs
 /obj/structure/sign/mining
 	name = "nanotrasen mining corps sign"
