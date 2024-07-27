@@ -58,8 +58,8 @@ GLOBAL_LIST_EMPTY(monkey_recyclers)
 	if(default_deconstruction_screwdriver(user, "grinder_open", "grinder", O))
 		return
 
-	if(exchange_parts(user, O))
-		return
+	if(istype(O, /obj/item/storage/part_replacer))
+		return ..()
 
 	if(default_unfasten_wrench(user, O, time = 4 SECONDS))
 		power_change()
@@ -73,14 +73,16 @@ GLOBAL_LIST_EMPTY(monkey_recyclers)
 			cycle_through++
 			switch(cycle_through)
 				if(1)
-					cube_type = /obj/item/food/snacks/monkeycube/farwacube
+					cube_type = /obj/item/food/snacks/monkeycube/nian_wormecube
 				if(2)
-					cube_type = /obj/item/food/snacks/monkeycube/wolpincube
+					cube_type = /obj/item/food/snacks/monkeycube/farwacube
 				if(3)
-					cube_type = /obj/item/food/snacks/monkeycube/stokcube
+					cube_type = /obj/item/food/snacks/monkeycube/wolpincube
 				if(4)
-					cube_type = /obj/item/food/snacks/monkeycube/neaeracube
+					cube_type = /obj/item/food/snacks/monkeycube/stokcube
 				if(5)
+					cube_type = /obj/item/food/snacks/monkeycube/neaeracube
+				if(6)
 					cube_type = /obj/item/food/snacks/monkeycube
 					cycle_through = 0
 			to_chat(user, "<span class='notice'>You change the monkeycube type to [initial(cube_type.name)].</span>")
@@ -97,7 +99,7 @@ GLOBAL_LIST_EMPTY(monkey_recyclers)
 		if(ishuman(grabbed))
 			var/mob/living/carbon/human/target = grabbed
 			if(issmall(target))
-				if(target.stat == 0)
+				if(target.stat == CONSCIOUS)
 					to_chat(user, "<span class='warning'>The monkey is struggling far too much to put it in the recycler.</span>")
 				else
 					user.drop_item()
@@ -109,9 +111,8 @@ GLOBAL_LIST_EMPTY(monkey_recyclers)
 					animate(src, pixel_x = pixel_x + offset, time = 0.2, loop = 200) //start shaking
 					use_power(500)
 					grinded++
-					sleep(50)
-					pixel_x = initial(pixel_x)
 					to_chat(user, "<span class='notice'>The machine now has [grinded] monkey\s worth of material stored.</span>")
+					addtimer(VARSET_CALLBACK(src, pixel_x, initial(pixel_x)), 5 SECONDS)
 			else
 				to_chat(user, "<span class='warning'>The machine only accepts monkeys!</span>")
 		else

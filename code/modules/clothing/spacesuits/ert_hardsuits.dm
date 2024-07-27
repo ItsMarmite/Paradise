@@ -105,6 +105,7 @@
 
 /obj/item/clothing/suit/space/hardsuit/ert/security/Initialize(mapload)
 	. = ..()
+	ADD_TRAIT(src, TRAIT_HYPOSPRAY_IMMUNE, ROUNDSTART_TRAIT)
 	ADD_TRAIT(src, TRAIT_RSG_IMMUNE, ROUNDSTART_TRAIT)
 
 //Engineer
@@ -120,6 +121,7 @@
 	name = "elite emergency response team engineer helmet"
 	max_heat_protection_temperature = FIRE_IMMUNITY_MAX_TEMP_PROTECT
 	armor = list(MELEE = 40, BULLET = 15, LASER = 20, ENERGY = 5, BOMB = 15, RAD = INFINITY, FIRE = 200, ACID = 200)
+	flags_2 = RAD_PROTECT_CONTENTS_2
 	icon_state = "hardsuit0-gammaengineer"
 	item_color = "gammaengineer"
 
@@ -136,6 +138,7 @@
 	max_heat_protection_temperature = FIRE_IMMUNITY_MAX_TEMP_PROTECT
 	icon_state = "ert_gengineer"
 	armor = list(MELEE = 40, BULLET = 15, LASER = 20, ENERGY = 5, BOMB = 15, RAD = INFINITY, FIRE = 200, ACID = 200)
+	flags_2 = RAD_PROTECT_CONTENTS_2
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/ert/engineer/gamma
 	slowdown = 0
 
@@ -154,6 +157,7 @@
 
 /obj/item/clothing/suit/space/hardsuit/ert/medical/Initialize(mapload)
 	. = ..()
+	ADD_TRAIT(src, TRAIT_HYPOSPRAY_IMMUNE, ROUNDSTART_TRAIT)
 	ADD_TRAIT(src, TRAIT_RSG_IMMUNE, ROUNDSTART_TRAIT)
 
 //Janitor
