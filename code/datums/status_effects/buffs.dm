@@ -46,11 +46,13 @@
 		qdel(src)
 		return
 	var/grace_heal = bloodlust * 0.05
-	owner.adjustBruteLoss(-grace_heal)
-	owner.adjustFireLoss(-grace_heal)
-	owner.adjustToxLoss(-grace_heal)
-	owner.adjustOxyLoss(-(grace_heal * 2))
-	owner.adjustCloneLoss(-grace_heal)
+
+	var/mob/living/carbon/human/owner_human = owner
+	owner_human.adjustBruteLoss(-grace_heal, robotic = TRUE)
+	owner_human.adjustFireLoss(-grace_heal, robotic = TRUE)
+	owner_human.adjustToxLoss(-grace_heal)
+	owner_human.adjustOxyLoss(-(grace_heal * 2))
+	owner_human.adjustCloneLoss(-grace_heal)
 
 /datum/status_effect/his_grace/on_remove()
 	add_attack_logs(owner, owner, "lost His Grace's stun immunity", ATKLOG_ALL)
@@ -92,9 +94,12 @@
 	var/found_someone = FALSE
 
 	for(var/mob/living/L in oview(9, owner))
-		found_someone = TRUE
 		playsound(owner, 'sound/magic/teleport_diss.ogg', 50, TRUE)
 		L.Beam(owner, "grabber_beam", time = 1 SECONDS, maxdistance = 9)
+		if(L.can_block_magic(MAGIC_RESISTANCE))
+			to_chat(L, "<span class='warning'>You shake off the tendrils that try to wrap around you!</span>")
+			continue
+		found_someone = TRUE
 		L.apply_status_effect(STATUS_EFFECT_VOID_PRICE)
 	if(found_someone)
 		owner.visible_message("<span class='warning'>The violet light around [owner] glows black... and shoots off to those around [owner.p_them()]!</span>", "<span class='warning'>The tendrils around you cinch tightly... but then unwravel and fly at others!</span>")
@@ -319,7 +324,7 @@
 
 
 //Hippocratic Oath: Applied when the Rod of Asclepius is activated.
-/datum/status_effect/hippocraticOath
+/datum/status_effect/hippocratic_oath
 	id = "Hippocratic Oath"
 	status_type = STATUS_EFFECT_UNIQUE
 	duration = -1
@@ -332,19 +337,19 @@
 	/// Max heal points for the rod to spend on healing people
 	var/max_heal_points = 50
 
-/datum/status_effect/hippocraticOath/on_apply()
+/datum/status_effect/hippocratic_oath/on_apply()
 	//Makes the user passive, it's in their oath not to harm!
 	ADD_TRAIT(owner, TRAIT_PACIFISM, "hippocraticOath")
 	var/datum/atom_hud/H = GLOB.huds[DATA_HUD_MEDICAL_ADVANCED]
 	H.add_hud_to(owner)
 	return ..()
 
-/datum/status_effect/hippocraticOath/on_remove()
+/datum/status_effect/hippocratic_oath/on_remove()
 	REMOVE_TRAIT(owner, TRAIT_PACIFISM, "hippocraticOath")
 	var/datum/atom_hud/H = GLOB.huds[DATA_HUD_MEDICAL_ADVANCED]
 	H.remove_hud_from(owner)
 
-/datum/status_effect/hippocraticOath/tick()
+/datum/status_effect/hippocratic_oath/tick()
 	// Death transforms you into a snake after a short grace period
 	if(owner.stat == DEAD)
 		if(deathTick < 4)
@@ -386,7 +391,7 @@
 		if(!heal_points)
 			break
 
-/datum/status_effect/hippocraticOath/proc/heal(mob/living/L)
+/datum/status_effect/hippocratic_oath/proc/heal(mob/living/L)
 	var/starting_points = heal_points
 	var/force_particle = FALSE
 
@@ -417,7 +422,7 @@
 	if(starting_points < heal_points || force_particle)
 		new /obj/effect/temp_visual/heal(get_turf(L), COLOR_HEALING_GREEN)
 
-/datum/status_effect/hippocraticOath/proc/heal_human(mob/living/carbon/human/H)
+/datum/status_effect/hippocratic_oath/proc/heal_human(mob/living/carbon/human/H)
 	if(H.getBruteLoss() || H.getFireLoss() || H.getOxyLoss() || H.getToxLoss() || H.getBrainLoss() || H.getStaminaLoss() || H.getCloneLoss()) // Avoid counting burn wounds
 		H.adjustBruteLoss(-3.5, robotic = TRUE)
 		H.adjustFireLoss(-3.5, robotic = TRUE)

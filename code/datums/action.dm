@@ -314,7 +314,7 @@
 /datum/action/item_action/toggle_barrier_spread
 	name = "Toggle Barrier Spread"
 
-/datum/action/item_action/equip_unequip_TED_Gun
+/datum/action/item_action/equip_unequip_ted_gun
 	name = "Equip/Unequip TED Gun"
 
 /datum/action/item_action/toggle_paddles
@@ -435,7 +435,7 @@
 /datum/action/item_action/noir
 	name = "Noir"
 
-/datum/action/item_action/YEEEAAAAAHHHHHHHHHHHHH
+/datum/action/item_action/yeeeaaaaahhhhhhhhhhhhh
 	name = "YEAH!"
 
 /datum/action/item_action/laugh_track
@@ -578,6 +578,10 @@
 
 	var/obj/item/clothing/shoes/magboots/gravity/G = target
 	G.dash(usr)
+
+/datum/action/item_action/toogle_camera_flash
+	name = "Toggle camera flash"
+	desc = "Toggles the camera's flash, which will fully light up the photo. Turn this off if you want the ambient light."
 
 ///prset for organ actions
 /datum/action/item_action/organ_action

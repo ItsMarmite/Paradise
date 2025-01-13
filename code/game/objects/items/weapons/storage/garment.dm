@@ -15,7 +15,6 @@
 		/obj/item/clothing/suit/space,
 		/obj/item/clothing/mask/cigarette,
 		/obj/item/clothing/mask/facehugger, //Why would you do this
-		/obj/item/clothing/neck/cloak,
 		/obj/item/clothing/accessory/medal,
 		/obj/item/clothing/suit/armor/riot,
 		/obj/item/clothing/suit/armor/reactive,
@@ -40,7 +39,7 @@
 	new /obj/item/clothing/suit/armor/vest/capcarapace/jacket/tunic(src)
 	new /obj/item/clothing/suit/armor/vest/capcarapace/coat(src)
 	new /obj/item/clothing/suit/armor/vest/capcarapace/coat/white(src)
-	new /obj/item/clothing/suit/mantle/armor/captain(src)
+	new /obj/item/clothing/neck/cloak/captain_mantle(src)
 	new /obj/item/clothing/under/rank/captain(src)
 	new /obj/item/clothing/under/rank/captain/parade(src)
 	new /obj/item/clothing/under/rank/captain/dress(src)
@@ -61,7 +60,7 @@
 	new /obj/item/clothing/head/hop(src)
 	new /obj/item/clothing/head/beret/hop(src)
 	new /obj/item/clothing/neck/cloak/head_of_personnel(src)
-	new /obj/item/clothing/suit/mantle/armor/hop(src)
+	new /obj/item/clothing/neck/cloak/hop_mantle(src)
 	new /obj/item/clothing/suit/armor/vest(src)
 	new /obj/item/clothing/suit/hopcoat(src)
 	new /obj/item/clothing/under/rank/civilian/hop(src)
@@ -84,12 +83,12 @@
 	desc = "A bag for storing extra clothes and shoes. This one belongs to the head of security."
 
 /obj/item/storage/bag/garment/head_of_security/populate_contents()
-	new /obj/item/clothing/head/HoS(src)
+	new /obj/item/clothing/head/hos(src)
 	new /obj/item/clothing/head/beret/hos(src)
 	new /obj/item/clothing/neck/cloak/head_of_security(src)
 	new /obj/item/clothing/suit/armor/hos(src)
 	new /obj/item/clothing/suit/armor/hos/alt(src)
-	new /obj/item/clothing/suit/mantle/armor(src)
+	new /obj/item/clothing/neck/cloak/hos_mantle(src)
 	new /obj/item/clothing/under/rank/security/head_of_security(src)
 	new /obj/item/clothing/under/rank/security/formal/head_of_security(src)
 	new /obj/item/clothing/under/rank/security/head_of_security/corporate(src)
@@ -108,7 +107,7 @@
 	new /obj/item/clothing/neck/cloak/research_director(src)
 	new /obj/item/clothing/under/rank/rnd/research_director(src)
 	new /obj/item/clothing/suit/storage/labcoat/rd(src)
-	new /obj/item/clothing/suit/mantle/labcoat(src)
+	new /obj/item/clothing/neck/cloak/rd_mantle(src)
 	new /obj/item/clothing/suit/storage/labcoat(src)
 	new /obj/item/clothing/shoes/white(src)
 	new /obj/item/clothing/gloves/color/latex(src)
@@ -134,7 +133,7 @@
 	new /obj/item/clothing/under/rank/medical/scrubs/green(src)
 	new /obj/item/clothing/under/rank/medical/scrubs/purple(src)
 	new /obj/item/clothing/suit/storage/labcoat/cmo(src)
-	new /obj/item/clothing/suit/mantle/labcoat/chief_medical_officer(src)
+	new /obj/item/clothing/neck/cloak/cmo_mantle(src)
 	new /obj/item/clothing/shoes/white(src)
 	new /obj/item/clothing/shoes/brown	(src)
 	new /obj/item/clothing/gloves/color/latex/nitrile(src)
@@ -152,7 +151,7 @@
 	new /obj/item/clothing/neck/cloak/chief_engineer(src)
 	new /obj/item/clothing/under/rank/engineering/chief_engineer(src)
 	new /obj/item/clothing/under/rank/engineering/chief_engineer/skirt(src)
-	new /obj/item/clothing/suit/mantle/chief_engineer(src)
+	new /obj/item/clothing/neck/cloak/ce_mantle(src)
 	new /obj/item/clothing/suit/storage/hazardvest/ce(src)
 	new /obj/item/clothing/shoes/brown(src)
 	new /obj/item/clothing/glasses/welding/superior(src)
@@ -215,7 +214,7 @@
 	new /obj/item/clothing/glasses/hud/security/sunglasses(src)
 	new /obj/item/clothing/glasses/hud/health/sunglasses(src)
 	new /obj/item/clothing/glasses/hud/skills/sunglasses(src)
-	new /obj/item/clothing/accessory/blue(src)
+	new /obj/item/clothing/neck/tie/blue(src)
 	new /obj/item/clothing/head/helmet/space/plasmaman/blueshield(src)
 	new /obj/item/clothing/under/plasmaman/blueshield(src)
 
@@ -235,7 +234,7 @@
 	new /obj/item/clothing/neck/cloak/quartermaster(src)
 	new /obj/item/clothing/head/hardhat/orange(src)
 	new /obj/item/clothing/suit/qmcoat(src)
-	new /obj/item/clothing/suit/mantle/qm(src)
+	new /obj/item/clothing/neck/cloak/qm_mantle(src)
 	new /obj/item/clothing/suit/storage/hazardvest/qm(src)
 	new /obj/item/clothing/gloves/color/black(src)
 	new /obj/item/tank/internals/emergency_oxygen/double(src)
@@ -274,7 +273,7 @@
 	new /obj/item/clothing/head/det_hat(src)
 	new /obj/item/clothing/shoes/brown(src)
 	new /obj/item/clothing/suit/armor/vest/det_suit(src)
-	new /obj/item/clothing/accessory/black(src)
+	new /obj/item/clothing/neck/tie/black(src)
 	new /obj/item/clothing/accessory/holster/armpit(src)
 	new /obj/item/clothing/glasses/sunglasses/yeah(src)
 
@@ -292,14 +291,9 @@
 	new /obj/item/clothing/suit/witchhunter(src)
 	new /obj/item/clothing/head/witchhunter_hat(src)
 	new /obj/item/clothing/suit/holidaypriest(src)
-	new /obj/item/clothing/under/dress/wedding/bride_white(src)
 	new /obj/item/clothing/head/helmet/riot/knight/templar(src)
 	new /obj/item/clothing/suit/armor/riot/knight/templar(src)
 	new /obj/item/clothing/suit/storage/labcoat(src)
-	new /obj/item/clothing/gloves/ring/silver(src)
-	new /obj/item/clothing/gloves/ring/silver(src)
-	new /obj/item/clothing/gloves/ring/gold(src)
-	new /obj/item/clothing/gloves/ring/gold(src)
 	new /obj/item/clothing/head/helmet/space/plasmaman/chaplain(src)
 	new /obj/item/clothing/under/plasmaman/chaplain(src)
 
@@ -316,7 +310,7 @@
 	new /obj/item/clothing/shoes/laceup(src)
 	new /obj/item/clothing/glasses/hud/health(src)
 	new /obj/item/clothing/glasses/hud/skills(src)
-	new /obj/item/clothing/accessory/blue(src)
+	new /obj/item/clothing/neck/tie/blue(src)
 	new /obj/item/clothing/head/helmet/space/plasmaman(src)
 	new /obj/item/clothing/under/plasmaman(src)
 

@@ -21,7 +21,7 @@
 	/// the number that is added to the failure_prob, which is the probability of whether it will spread or not
 	var/adding_failure = 50
 
-/obj/item/resonator/attack_self(mob/user)
+/obj/item/resonator/attack_self__legacy__attackchain(mob/user)
 	if(mode == RESONATOR_MODE_AUTO)
 		to_chat(user, "<span class='notice'>You set the [name]'s fields to detonate only after you hit it with [src].</span>")
 		mode = RESONATOR_MODE_MANUAL
@@ -37,7 +37,7 @@
 	fieldlimit = 6
 	quick_burst_mod = 1
 
-/obj/item/resonator/upgraded/attack_self(mob/user)
+/obj/item/resonator/upgraded/attack_self__legacy__attackchain(mob/user)
 	if(mode == RESONATOR_MODE_AUTO)
 		to_chat(user, "<span class='notice'>You set [src]'s fields to detonate only after being attacked by [src].</span>")
 		mode = RESONATOR_MODE_MANUAL
@@ -93,7 +93,11 @@
 	if(mode == RESONATOR_MODE_MATRIX)
 		icon_state = "shield2"
 		name = "resonance matrix"
-		RegisterSignal(src, COMSIG_MOVABLE_CROSSED, PROC_REF(burst))
+		RegisterSignal(src, COMSIG_ATOM_ENTERED, PROC_REF(burst))
+		var/static/list/loc_connections = list(
+				COMSIG_ATOM_ENTERED = PROC_REF(burst),
+		)
+		AddElement(/datum/element/connect_loc, loc_connections)
 	. = ..()
 	creator = set_creator
 	parent_resonator = set_resonator
@@ -126,7 +130,7 @@
 	resonance_damage *= damage_multiplier
 
 /obj/effect/temp_visual/resonance/proc/burst()
-	SIGNAL_HANDLER  // COMSIG_MOVABLE_CROSSED
+	SIGNAL_HANDLER  // COMSIG_ATOM_ENTERED
 	if(rupturing)
 		return
 	rupturing = TRUE

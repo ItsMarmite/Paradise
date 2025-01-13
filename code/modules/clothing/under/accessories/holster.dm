@@ -24,7 +24,7 @@
 	else
 		return TRUE
 
-/obj/item/clothing/accessory/holster/attack_self()
+/obj/item/clothing/accessory/holster/attack_self__legacy__attackchain()
 	var/holsteritem = usr.get_active_hand()
 	if(!holstered)
 		holster(holsteritem, usr)
@@ -50,8 +50,8 @@
 		return
 
 	holstered = W
-	user.unEquip(holstered)
-	holstered.loc = src
+	user.unequip(holstered)
+	holstered.forceMove(src)
 	holstered.add_fingerprint(user)
 	user.visible_message("<span class='notice'>[user] holsters [holstered].</span>", "<span class='notice'>You holster [holstered].</span>")
 
@@ -80,7 +80,7 @@
 
 	..(user)
 
-/obj/item/clothing/accessory/holster/attackby(obj/item/W as obj, mob/user as mob, params)
+/obj/item/clothing/accessory/holster/attackby__legacy__attackchain(obj/item/W as obj, mob/user as mob, params)
 	holster(W, user)
 
 /obj/item/clothing/accessory/holster/emp_act(severity)

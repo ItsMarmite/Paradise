@@ -75,7 +75,7 @@
 		/obj/item/encryptionkey/syndicate, // 10TC
 		/obj/item/reagent_containers/drinks/drinkingglass/alliescocktail, // 0TC
 		/obj/item/storage/box/syndie_kit/pen_bomb, // 30 TC
-		/obj/item/CQC_manual) // 50tc
+		/obj/item/cqc_manual) // 50tc
 
 /// 145TC + RCD & Mesons Autoimplanter
 /obj/item/storage/box/syndie_kit/bundle/infiltrator
@@ -136,8 +136,8 @@
 		/obj/item/encryptionkey/binary, // 25TC
 		/obj/item/card/id/syndicate, // 10TC
 		/obj/item/storage/box/syndie_kit/emp, // 10TC
-		/obj/item/aiModule/toyAI, // 0TC
-		/obj/item/aiModule/syndicate, // 15TC
+		/obj/item/ai_module/toy_ai, // 0TC
+		/obj/item/ai_module/syndicate, // 15TC
 		/obj/item/storage/box/syndie_kit/camera_bug, // 5TC
 		/obj/item/bio_chip_implanter/freedom/prototype, // 10TC
 		/obj/item/storage/belt/military/traitor/hacker, // 15TC + AI detector for 5 TC
@@ -154,7 +154,7 @@
 		/obj/item/bio_chip_implanter/shock, // 50TC
 		/obj/item/dnainjector/telemut/darkbundle, // 0TC
 		/obj/item/clothing/suit/hooded/chaplain_hoodie, // 0TC
-		/obj/item/clothing/glasses/meson/engine/tray, // 0TC
+		/obj/item/clothing/glasses/meson/engine/atmos, // 0TC
 		/obj/item/clothing/mask/chameleon/voice_change, // 10TC
 		/obj/item/card/id/syndicate, // 10TC
 		/obj/item/clothing/shoes/chameleon/noslip, // 10TC
@@ -222,7 +222,7 @@
 		/obj/item/encryptionkey/syndicate, // 10TC
 		/obj/item/clothing/under/syndicate/combat, //0TC
 		/obj/item/clothing/accessory/holster, // 0TC
-		/obj/item/clothing/accessory/scarf/red, //0TC
+		/obj/item/clothing/neck/scarf/red, //0TC
 		/obj/item/clothing/head/beret, // 0TC
 		/obj/item/clothing/gloves/combat, // 0TC
 		/obj/item/clothing/shoes/combat) // 0TC
@@ -455,7 +455,7 @@
 /obj/item/storage/box/syndie_kit/safecracking/populate_contents()
 	new /obj/item/clothing/gloves/color/latex/nitrile(src)
 	new /obj/item/clothing/mask/balaclava(src)
-	new /obj/item/clothing/accessory/stethoscope(src)
+	new /obj/item/clothing/neck/stethoscope(src)
 	new /obj/item/book/manual/wiki/hacking(src)
 
 /obj/item/storage/box/syndie_kit/chameleon
@@ -472,6 +472,7 @@
 	new /obj/item/radio/headset/chameleon(src)
 	new /obj/item/pda/chameleon(src)
 	new /obj/item/clothing/mask/chameleon(src)
+	new /obj/item/clothing/neck/chameleon(src)
 
 /obj/item/storage/box/syndie_kit/chameleon/nuke
 	name = "operative's chameleon kit"
@@ -488,6 +489,7 @@
 	new /obj/item/pda/chameleon(src)
 	new /obj/item/stamp/chameleon(src)
 	new /obj/item/clothing/mask/chameleon/voice_change(src)
+	new /obj/item/clothing/neck/chameleon(src)
 
 /obj/item/storage/box/syndie_kit/dart_gun
 	name = "dart gun kit"

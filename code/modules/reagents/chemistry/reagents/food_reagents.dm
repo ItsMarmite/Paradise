@@ -360,7 +360,7 @@
 	color = "#302000" // rgb: 48, 32, 0
 	taste_description = "oil"
 
-/datum/reagent/consumbale/olivepaste
+/datum/reagent/consumable/olivepaste
 	name = "Olive Paste"
 	id = "olivepaste"
 	description = "A mushy pile of freshly ground olives."
@@ -635,7 +635,7 @@
 
 /datum/reagent/consumable/cheese/reaction_turf(turf/T, volume)
 	if(volume >= 5 && !isspaceturf(T))
-		new /obj/item/food/cheesewedge(T)
+		new /obj/item/food/cheesewedge/presliced(T)
 
 /datum/reagent/consumable/fake_cheese
 	name = "Cheese substitute"
