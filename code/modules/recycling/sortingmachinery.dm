@@ -1,4 +1,4 @@
-/obj/structure/big_delivery
+/obj/structure/bigDelivery
 	name = "large parcel"
 	desc = "A big wrapped package."
 	icon = 'icons/obj/storage.dmi'
@@ -10,19 +10,19 @@
 	var/giftwrapped = FALSE
 	var/sortTag = 1
 
-/obj/structure/big_delivery/Destroy()
+/obj/structure/bigDelivery/Destroy()
 	var/turf/T = get_turf(src)
 	for(var/atom/movable/AM in contents)
 		AM.forceMove(T)
 	return ..()
 
-/obj/structure/big_delivery/ex_act(severity)
+/obj/structure/bigDelivery/ex_act(severity)
 	for(var/atom/movable/AM in contents)
 		AM.ex_act()
 		CHECK_TICK
 	..()
 
-/obj/structure/big_delivery/attack_hand(mob/user as mob)
+/obj/structure/bigDelivery/attack_hand(mob/user as mob)
 	playsound(loc, 'sound/items/poster_ripped.ogg', 50, 1)
 	if(wrapped)
 		wrapped.forceMove(get_turf(src))
@@ -35,9 +35,9 @@
 
 	qdel(src)
 
-/obj/structure/big_delivery/attackby__legacy__attackchain(obj/item/W as obj, mob/user as mob, params)
-	if(istype(W, /obj/item/dest_tagger))
-		var/obj/item/dest_tagger/O = W
+/obj/structure/bigDelivery/attackby(obj/item/W as obj, mob/user as mob, params)
+	if(istype(W, /obj/item/destTagger))
+		var/obj/item/destTagger/O = W
 
 		if(sortTag != O.currTag)
 			var/tag = uppertext(GLOB.TAGGERLOCATIONS[O.currTag])
@@ -45,8 +45,8 @@
 			sortTag = O.currTag
 			playsound(loc, 'sound/machines/twobeep.ogg', 100, 1)
 
-	else if(istype(W, /obj/item/shipping_package))
-		var/obj/item/shipping_package/sp = W
+	else if(istype(W, /obj/item/shippingPackage))
+		var/obj/item/shippingPackage/sp = W
 		if(sp.sealed)
 			return
 		else
@@ -74,7 +74,7 @@
 	else
 		return ..()
 
-/obj/item/small_delivery
+/obj/item/smallDelivery
 	name = "small parcel"
 	desc = "A small wrapped package."
 	icon = 'icons/obj/storage.dmi'
@@ -83,19 +83,19 @@
 	var/giftwrapped = FALSE
 	var/sortTag = 1
 
-/obj/item/small_delivery/ex_act(severity)
+/obj/item/smallDelivery/ex_act(severity)
 	for(var/atom/movable/AM in contents)
 		AM.ex_act()
 		CHECK_TICK
 	..()
 
-/obj/item/small_delivery/emp_act(severity)
+/obj/item/smallDelivery/emp_act(severity)
 	..()
 	for(var/i in contents)
 		var/atom/A = i
 		A.emp_act(severity)
 
-/obj/item/small_delivery/attack_self__legacy__attackchain(mob/user)
+/obj/item/smallDelivery/attack_self(mob/user)
 	if(wrapped?.loc == src) //sometimes items can disappear. For example, bombs. --rastaf0
 		wrapped.forceMove(get_turf(src))
 		if(ishuman(user))
@@ -103,9 +103,9 @@
 	playsound(src, 'sound/items/poster_ripped.ogg', 50, TRUE)
 	qdel(src)
 
-/obj/item/small_delivery/attackby__legacy__attackchain(obj/item/W as obj, mob/user as mob, params)
-	if(istype(W, /obj/item/dest_tagger))
-		var/obj/item/dest_tagger/O = W
+/obj/item/smallDelivery/attackby(obj/item/W as obj, mob/user as mob, params)
+	if(istype(W, /obj/item/destTagger))
+		var/obj/item/destTagger/O = W
 
 		if(sortTag != O.currTag)
 			var/tag = uppertext(GLOB.TAGGERLOCATIONS[O.currTag])
@@ -113,8 +113,8 @@
 			sortTag = O.currTag
 			playsound(loc, 'sound/machines/twobeep.ogg', 100, 1)
 
-	else if(istype(W, /obj/item/shipping_package))
-		var/obj/item/shipping_package/sp = W
+	else if(istype(W, /obj/item/shippingPackage))
+		var/obj/item/shippingPackage/sp = W
 		if(sp.sealed)
 			return
 		else
@@ -139,7 +139,7 @@
 	else
 		return ..()
 
-/obj/item/stack/package_wrap
+/obj/item/stack/packageWrap
 	name = "package wrapper"
 	icon = 'icons/obj/stacks/miscellaneous.dmi'
 	icon_state = "deliveryPaper"
@@ -148,9 +148,9 @@
 	amount = 25
 	max_amount = 25
 	resistance_flags = FLAMMABLE
-	var/static/list/no_wrap = list(/obj/item/small_delivery, /obj/structure/big_delivery, /obj/item/evidencebag, /obj/structure/closet/body_bag)
+	var/static/list/no_wrap = list(/obj/item/smallDelivery, /obj/structure/bigDelivery, /obj/item/evidencebag, /obj/structure/closet/body_bag)
 
-/obj/item/stack/package_wrap/pre_attack(atom/A, mob/living/user, params)
+/obj/item/stack/packageWrap/pre_attack(atom/A, mob/living/user, params)
 	. = ..()
 	if(!in_range(A, user))
 		return
@@ -162,10 +162,10 @@
 	if(is_type_in_list(target, no_wrap))
 		return
 
-	if(istype(target, /obj/item/stack/package_wrap) && user.a_intent != INTENT_HARM)
+	if(istype(target, /obj/item/stack/packageWrap) && user.a_intent != INTENT_HARM)
 		return
 
-	if(is_type_in_list(A.loc, list(/obj/item/small_delivery, /obj/structure/big_delivery)))
+	if(is_type_in_list(A.loc, list(/obj/item/smallDelivery, /obj/structure/bigDelivery)))
 		return
 
 	if(target.anchored)
@@ -174,12 +174,12 @@
 	if(target in user)
 		return
 
-	if(isitem(target) && !(isstorage(target) && !istype(target,/obj/item/storage/box) && !istype(target, /obj/item/shipping_package)))
+	if(isitem(target) && !(isstorage(target) && !istype(target,/obj/item/storage/box) && !istype(target, /obj/item/shippingPackage)))
 		var/obj/item/O = target
 		if(!use(1))
 			return FALSE
 
-		var/obj/item/small_delivery/P = new /obj/item/small_delivery(get_turf(O.loc)) //Aaannd wrap it up!
+		var/obj/item/smallDelivery/P = new /obj/item/smallDelivery(get_turf(O.loc)) //Aaannd wrap it up!
 		if(!isturf(O.loc))
 			if(user.client)
 				user.client.screen -= O
@@ -194,14 +194,14 @@
 		add_fingerprint(user)
 
 	else if(istype(target, /obj/structure/closet/crate))
-		var/obj/structure/big_delivery/D = wrap_closet(target, user)
+		var/obj/structure/bigDelivery/D = wrap_closet(target, user)
 		if(!D)
 			return FALSE
 		D.icon_state = "deliverycrate"
 
 	else if(istype(target, /obj/structure/closet))
 		var/obj/structure/closet/C = target
-		var/obj/structure/big_delivery/D = wrap_closet(target, user)
+		var/obj/structure/bigDelivery/D = wrap_closet(target, user)
 		if(!D)
 			return FALSE
 		D.init_welded = C.welded
@@ -225,7 +225,7 @@
 	return FALSE
 
 // Separate proc to avoid copy pasting the code twice
-/obj/item/stack/package_wrap/proc/wrap_closet(obj/structure/closet/C, mob/user)
+/obj/item/stack/packageWrap/proc/wrap_closet(obj/structure/closet/C, mob/user)
 	if(C.opened)
 		return
 	if(amount < 3)
@@ -233,12 +233,12 @@
 		return
 	if(!do_after_once(user, 1.5 SECONDS, target = C) || C.opened || !use(3)) // Checking these again since it's after a delay
 		return
-	var/obj/structure/big_delivery/P = new(get_turf(C))
+	var/obj/structure/bigDelivery/P = new(get_turf(C))
 	P.wrapped = C
 	C.loc = P
 	return P
 
-/obj/item/dest_tagger
+/obj/item/destTagger
 	name = "destination tagger"
 	desc = "Used to set the destination of properly wrapped packages."
 	icon = 'icons/obj/device.dmi'
@@ -254,25 +254,25 @@
 	//disposals must always be 1, since anything that's untagged will automatically go to disposals, or sort_type = list(1) --Superxpdude
 	var/datum/ui_module/destination_tagger/destination_tagger
 
-/obj/item/dest_tagger/Initialize(mapload)
+/obj/item/destTagger/Initialize(mapload)
 	. = ..()
 	destination_tagger = new(src)
 
-/obj/item/dest_tagger/Destroy()
+/obj/item/destTagger/Destroy()
 	QDEL_NULL(destination_tagger)
 	return ..()
 
-/obj/item/dest_tagger/attack_self__legacy__attackchain(mob/user)
+/obj/item/destTagger/attack_self(mob/user)
 	add_fingerprint(user)
 	ui_interact(user)
 
-/obj/item/dest_tagger/ui_state(mob/user)
+/obj/item/destTagger/ui_state(mob/user)
 	return GLOB.default_state
 
-/obj/item/dest_tagger/ui_interact(mob/user, datum/tgui/ui = null)
+/obj/item/destTagger/ui_interact(mob/user, datum/tgui/ui = null)
 	destination_tagger.ui_interact(user)
 
-/obj/machinery/disposal/delivery_chute
+/obj/machinery/disposal/deliveryChute
 	name = "delivery chute"
 	desc = "A chute for big and small packages alike!"
 	density = TRUE
@@ -281,20 +281,20 @@
 	deconstructs_to = PIPE_DISPOSALS_CHUTE
 	var/can_deconstruct = FALSE
 
-/obj/machinery/disposal/delivery_chute/Initialize(mapload)
+/obj/machinery/disposal/deliveryChute/Initialize(mapload)
 	. = ..()
 
 	trunk = locate() in loc
 	if(trunk)
 		trunk.linked = src	// link the pipe trunk to self
 
-/obj/machinery/disposal/delivery_chute/interact()
+/obj/machinery/disposal/deliveryChute/interact()
 	return
 
-/obj/machinery/disposal/delivery_chute/update()
+/obj/machinery/disposal/deliveryChute/update()
 	return
 
-/obj/machinery/disposal/delivery_chute/CanPass(atom/movable/mover, border_dir)
+/obj/machinery/disposal/deliveryChute/CanPass(atom/movable/mover, turf/target)
 	// If the mover is a thrownthing passing through space, remove its thrown datum,
 	// ingest it like normal, and mark the chute as not passible.
 	// This prevents the mover from Entering the chute's turf
@@ -307,7 +307,7 @@
 
 	. = ..()
 
-/obj/machinery/disposal/delivery_chute/Bumped(atom/movable/AM) //Go straight into the chute
+/obj/machinery/disposal/deliveryChute/Bumped(atom/movable/AM) //Go straight into the chute
 	if(isprojectile(AM)	|| isAI(AM) || QDELETED(AM))
 		return
 
@@ -336,17 +336,17 @@
 		M.loc = src
 	flush()
 
-/obj/machinery/disposal/delivery_chute/flush()
+/obj/machinery/disposal/deliveryChute/flush()
 	flushing = 1
 	flick("intake-closing", src)
 	var/deliveryCheck = 0
 	var/obj/structure/disposalholder/H = new(src)	// virtual holder object which actually
 													// travels through the pipes.
-	for(var/obj/structure/big_delivery/O in src)
+	for(var/obj/structure/bigDelivery/O in src)
 		deliveryCheck = 1
-	for(var/obj/item/small_delivery/O in src)
+	for(var/obj/item/smallDelivery/O in src)
 		deliveryCheck = 1
-	for(var/obj/item/shipping_package/O in src)
+	for(var/obj/item/shippingPackage/O in src)
 		deliveryCheck = 1
 		if(!O.sealed)		//unsealed shipping packages will default to disposals
 			O.sortTag = 1
@@ -370,14 +370,14 @@
 	update()
 	return
 
-/obj/machinery/disposal/delivery_chute/screwdriver_act(mob/user, obj/item/I)
+/obj/machinery/disposal/deliveryChute/screwdriver_act(mob/user, obj/item/I)
 	. = TRUE
 	if(!I.use_tool(src, user, 0, volume = I.tool_volume))
 		return
 	can_deconstruct = !can_deconstruct
 	to_chat(user, "You [can_deconstruct ? "unfasten": "fasten"] the screws around the power connection.")
 
-/obj/machinery/disposal/delivery_chute/welder_act(mob/user, obj/item/I)
+/obj/machinery/disposal/deliveryChute/welder_act(mob/user, obj/item/I)
 	. = TRUE
 	if(!can_deconstruct)
 		return
@@ -396,7 +396,7 @@
 		C.density = TRUE
 		qdel(src)
 
-/obj/item/shipping_package
+/obj/item/shippingPackage
 	name = "Shipping package"
 	desc = "A pre-labeled package for shipping an item to coworkers."
 	icon = 'icons/obj/boxes.dmi'
@@ -405,7 +405,7 @@
 	var/sortTag = 1
 	var/sealed = 0
 
-/obj/item/shipping_package/attackby__legacy__attackchain(obj/item/O, mob/user, params)
+/obj/item/shippingPackage/attackby(obj/item/O, mob/user, params)
 	if(sealed)
 		if(is_pen(O))
 			var/str = tgui_input_text(user, "Intended recipient?", "Address", max_length = MAX_NAME_LEN)
@@ -418,7 +418,7 @@
 	if(wrapped)
 		to_chat(user, "<span class='notice'>[src] already contains \a [wrapped].</span>")
 		return
-	if(isitem(O) && !isstorage(O) && !istype(O, /obj/item/shipping_package))
+	if(isitem(O) && !isstorage(O) && !istype(O, /obj/item/shippingPackage))
 		if(!user.canUnEquip(O))
 			to_chat(user, "<span class='warning'>[O] is stuck to your hand, you cannot put it in [src]!</span>")
 			return
@@ -426,16 +426,17 @@
 			to_chat(user, "<span class='notice'>[O] is too large to fit in [src].</span>")
 		else
 			wrapped = O
-			user.transfer_item_to(O, src)
+			user.unEquip(O)
+			O.forceMove(src)
 			O.add_fingerprint(usr)
 			add_fingerprint(usr)
 			to_chat(user, "<span class='notice'>You put [O] in [src].</span>")
 
-/obj/item/shipping_package/attack_self__legacy__attackchain(mob/user)
+/obj/item/shippingPackage/attack_self(mob/user)
 	if(sealed)
 		to_chat(user, "<span class='notice'>You tear open [src], dropping the contents onto the floor.</span>")
 		playsound(loc, 'sound/items/poster_ripped.ogg', 50, 1)
-		user.unequip(src)
+		user.unEquip(src)
 		wrapped.forceMove(get_turf(user))
 		wrapped = null
 		qdel(src)
@@ -454,10 +455,10 @@
 		if(tgui_alert(user, "Do you want to tear up the package?", "Shipping", list("Yes", "No")) == "Yes")
 			to_chat(user, "<span class='notice'>You shred [src].</span>")
 			playsound(loc, 'sound/items/poster_ripped.ogg', 50, 1)
-			user.drop_item_to_ground(src)
+			user.unEquip(src)
 			qdel(src)
 
-/obj/item/shipping_package/update_desc()
+/obj/item/shippingPackage/update_desc()
 	. = ..()
 	desc = "A pre-labeled package for shipping an item to coworkers."
 	if(sortTag)
@@ -465,6 +466,6 @@
 	if(!sealed)
 		desc += " The package is not sealed."
 
-/obj/item/shipping_package/Destroy()
+/obj/item/shippingPackage/Destroy()
 	QDEL_NULL(wrapped)
 	return ..()

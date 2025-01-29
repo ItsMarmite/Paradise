@@ -88,9 +88,6 @@
 	///Has the projectile been fired?
 	var/has_been_fired = FALSE
 
-	/// Does this projectile hit living non dense mobs?
-	var/always_hit_living_nondense = FALSE
-
 	//Hitscan
 	var/hitscan = FALSE //Whether this is hitscan. If it is, speed is basically ignored.
 	var/list/beam_segments //assoc list of datum/point_precise or datum/point_precise/vector, start = end. Used for hitscan effect generation.
@@ -137,13 +134,6 @@
 
 /obj/item/projectile/New()
 	return ..()
-
-/obj/item/projectile/Initialize(mapload)
-	. = ..()
-	var/static/list/loc_connections = list(
-		COMSIG_ATOM_ENTERED = PROC_REF(on_atom_entered)
-	)
-	AddElement(/datum/element/connect_loc, loc_connections)
 
 /obj/item/projectile/proc/Range()
 	range--
@@ -269,7 +259,10 @@
 	beam_index = point_cache
 	beam_segments[beam_index] = null
 
-/obj/item/projectile/Bump(atom/A)
+/obj/item/projectile/Bump(atom/A, yes)
+	if(!yes) //prevents double bumps.
+		return
+
 	if(check_ricochet(A) && check_ricochet_flag(A) && ricochets < ricochets_max && is_reflectable(REFLECTABILITY_PHYSICAL))
 		if(hitscan && ricochets_max > 10)
 			ricochets_max = 10 //I do not want a chucklefuck editing this higher, sorry.
@@ -436,10 +429,10 @@
 	xo = new_x - curloc.x
 	set_angle(get_angle(curloc, original))
 
-/// A mob moving on a tile with a projectile is hit by it.
-/obj/item/projectile/proc/on_atom_entered(datum/source, atom/movable/entered)
-	if(isliving(entered) && entered.density && !checkpass(PASSMOB))
-		Bump(entered, 1)
+/obj/item/projectile/Crossed(atom/movable/AM, oldloc) //A mob moving on a tile with a projectile is hit by it.
+	..()
+	if(isliving(AM) && AM.density && !checkpass(PASSMOB))
+		Bump(AM, 1)
 
 /obj/item/projectile/Destroy()
 	if(hitscan)

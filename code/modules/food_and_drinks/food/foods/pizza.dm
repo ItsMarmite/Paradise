@@ -356,7 +356,7 @@
 	open = !open
 	update_appearance(UPDATE_DESC|UPDATE_ICON)
 
-/obj/item/pizzabox/attack_self__legacy__attackchain(mob/user)
+/obj/item/pizzabox/attack_self(mob/user)
 	if(length(boxes) > 0)
 		return
 	open = !open
@@ -364,7 +364,7 @@
 		is_messy = TRUE
 	update_appearance(UPDATE_DESC|UPDATE_ICON)
 
-/obj/item/pizzabox/attackby__legacy__attackchain(obj/item/I, mob/user, params)
+/obj/item/pizzabox/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/pizzabox/))
 		var/obj/item/pizzabox/box = I
 		if(!box.open && !open)
@@ -506,9 +506,9 @@
 			icon_state = "pizzabox_bomb"
 
 /obj/item/pizzabox/pizza_bomb/AltClick(mob/user)
-	attack_self__legacy__attackchain(user)
+	attack_self(user)
 
-/obj/item/pizzabox/pizza_bomb/attack_self__legacy__attackchain(mob/user)
+/obj/item/pizzabox/pizza_bomb/attack_self(mob/user)
 	if(pizza_bomb_status == PIZZA_BOMB_NOT_ARMED)
 		open = TRUE
 		update_appearance(UPDATE_NAME|UPDATE_DESC|UPDATE_ICON)
@@ -575,10 +575,8 @@
 	if(!HAS_TRAIT(src, TRAIT_CMAGGED))
 		to_chat(user, "<span class='notice'>You smear the bananium ooze all over the pizza bomb's internals! You think you smell a bit of tomato sauce.</span>")
 		ADD_TRAIT(src, TRAIT_CMAGGED, CLOWN_EMAG)
-		return TRUE
-	return FALSE
 
-/obj/item/pizzabox/pizza_bomb/attackby__legacy__attackchain(obj/item/I, mob/user, params)
+/obj/item/pizzabox/pizza_bomb/wirecutter_act(mob/living/user, obj/item/I)
 	if(!open)
 		return
 	. = TRUE
@@ -607,7 +605,7 @@
 			return
 		user.visible_message("<span class='notice'>[user] starts removing the payload and wires from [src].</span>")
 		if(I.use_tool(src, user, 4 SECONDS, volume = 50))
-			user.unequip(src)
+			user.unEquip(src)
 			user.visible_message("<span class='notice'>[user] removes the insides of [src]!</span>")
 			var/obj/item/stack/cable_coil/C = new /obj/item/stack/cable_coil(src.loc)
 			C.amount = 3

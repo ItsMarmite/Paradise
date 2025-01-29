@@ -196,9 +196,6 @@
 	var/list/autohiss_extra_map = null
 	var/list/autohiss_exempt = null
 
-	/// What plushie the species will turn into if turned into a plushie.
-	var/plushie_type = /obj/item/toy/plushie/humanplushie
-
 /datum/species/New()
 	unarmed = new unarmed_type()
 	if(!sprite_sheet_name)
@@ -269,9 +266,7 @@
 		new mutantears(H)
 
 /datum/species/proc/breathe(mob/living/carbon/human/H)
-	var/datum/organ/lungs/lung = H.get_int_organ_datum(ORGAN_DATUM_LUNGS)
 	if(HAS_TRAIT(H, TRAIT_NOBREATH))
-		lung?.clear_alerts(H)
 		return TRUE
 
 ////////////////
@@ -370,7 +365,7 @@
 			continue
 		var/obj/item/thing = H.get_item_by_slot(slot_id)
 		if(thing && (!thing.species_exception || !is_type_in_list(src, thing.species_exception)))
-			H.drop_item_to_ground(thing)
+			H.unEquip(thing)
 	if(H.hud_used)
 		H.hud_used.update_locked_slots()
 	H.ventcrawler = ventcrawler
@@ -580,7 +575,7 @@
 		target.visible_message("<span class='danger'>[user] has knocked down [target]!</span>", \
 						"<span class='userdanger'>[user] has knocked down [target]!</span>")
 		target.KnockDown(4 SECONDS)
-	SEND_SIGNAL(target, COMSIG_ATTACK_BY)
+	SEND_SIGNAL(target, COMSIG_PARENT_ATTACKBY)
 
 /datum/species/proc/disarm(mob/living/carbon/human/user, mob/living/carbon/human/target, datum/martial_art/attacker_style)
 	if(user == target)

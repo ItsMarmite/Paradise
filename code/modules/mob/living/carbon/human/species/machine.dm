@@ -74,8 +74,6 @@
 		"is frying their own circuits!",
 		"is blocking their ventilation port!")
 
-	plushie_type = /obj/item/toy/plushie/ipcplushie
-
 
 /datum/species/machine/on_species_gain(mob/living/carbon/human/H)
 	..()

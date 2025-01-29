@@ -52,7 +52,8 @@
 		if(!is_pen(P))
 			return
 		to_chat(user, "<span class='notice'>You slide [P] into [src].</span>")
-		user.transfer_item_to(P, src)
+		user.unEquip(P)
+		P.forceMove(src)
 		containedpen = P
 	else
 		if(!containedpen)
@@ -93,9 +94,9 @@
 			break
 	. += "clipboard_over"
 
-/obj/item/clipboard/attackby__legacy__attackchain(obj/item/W, mob/user)
+/obj/item/clipboard/attackby(obj/item/W, mob/user)
 	if(isPaperwork(W)) //If it's a photo, paper bundle, or piece of paper, place it on the clipboard.
-		user.unequip(W)
+		user.unEquip(W)
 		W.forceMove(src)
 		to_chat(user, "<span class='notice'>You clip [W] onto [src].</span>")
 		playsound(loc, "pageturn", 50, 1)
@@ -108,14 +109,14 @@
 			return
 		if(!Adjacent(user) || user.incapacitated())
 			return
-		toppaper.attackby__legacy__attackchain(W, user)
+		toppaper.attackby(W, user)
 	else if(istype(W, /obj/item/stamp) && toppaper) //We can stamp the topmost piece of paper
-		toppaper.attackby__legacy__attackchain(W, user)
+		toppaper.attackby(W, user)
 		update_icon()
 	else
 		return ..()
 
-/obj/item/clipboard/attack_self__legacy__attackchain(mob/user)
+/obj/item/clipboard/attack_self(mob/user)
 	showClipboard(user)
 
 /obj/item/clipboard/Topic(href, href_list)
@@ -141,7 +142,7 @@
 		if(!isPaperwork(P))
 			return
 		if(is_pen(I) && isPaperwork(P) != PHOTO) //Because you can't write on photos that aren't in your hand
-			P.attackby__legacy__attackchain(I, usr)
+			P.attackby(I, usr)
 		else if(isPaperwork(P) == PAPERWORK) //Why can't these be subtypes of paper
 			P.examine(usr)
 		else if(isPaperwork(P) == PHOTO)

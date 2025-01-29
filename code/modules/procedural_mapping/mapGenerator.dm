@@ -1,4 +1,4 @@
-/datum/map_generator
+/datum/mapGenerator
 
 	//Map information
 	var/list/map = list()
@@ -6,13 +6,13 @@
 	//mapGeneratorModule information
 	var/list/modules = list()
 
-/datum/map_generator/New()
+/datum/mapGenerator/New()
 	..()
 	initialiseModules()
 
 //Defines the region the map represents, sets map
 //Returns the map
-/datum/map_generator/proc/defineRegion(turf/Start, turf/End, replace = 0)
+/datum/mapGenerator/proc/defineRegion(turf/Start, turf/End, replace = 0)
 	if(!checkRegion(Start, End))
 		return 0
 
@@ -25,7 +25,7 @@
 
 //Defines the region the map represents, as a CIRCLE!, sets map
 //Returns the map
-/datum/map_generator/proc/defineCircularRegion(turf/Start, turf/End, replace = 0)
+/datum/mapGenerator/proc/defineCircularRegion(turf/Start, turf/End, replace = 0)
 	if(!checkRegion(Start, End))
 		return 0
 
@@ -60,13 +60,13 @@
 
 
 //Empties the map list, he's dead jim.
-/datum/map_generator/proc/undefineRegion()
+/datum/mapGenerator/proc/undefineRegion()
 	map = list() //bai bai
 
 
 //Checks for and Rejects bad region coordinates
 //Returns 1/0
-/datum/map_generator/proc/checkRegion(turf/Start, turf/End)
+/datum/mapGenerator/proc/checkRegion(turf/Start, turf/End)
 	. = 1
 
 	if(!Start || !End)
@@ -81,29 +81,29 @@
 
 
 //Requests the mapGeneratorModule(s) to (re)generate
-/datum/map_generator/proc/generate()
+/datum/mapGenerator/proc/generate()
 	syncModules()
 	if(!modules || !length(modules))
 		return
-	for(var/datum/map_generator_module/mod in modules)
+	for(var/datum/mapGeneratorModule/mod in modules)
 		spawn(0)
 			mod.generate()
 
 
 //Requests the mapGeneratorModule(s) to (re)generate this one turf
-/datum/map_generator/proc/generateOneTurf(turf/T)
+/datum/mapGenerator/proc/generateOneTurf(turf/T)
 	if(!T)
 		return
 	syncModules()
 	if(!modules || !length(modules))
 		return
-	for(var/datum/map_generator_module/mod in modules)
+	for(var/datum/mapGeneratorModule/mod in modules)
 		spawn(0)
 			mod.place(T)
 
 
 //Replaces all paths in the module list with actual module datums
-/datum/map_generator/proc/initialiseModules()
+/datum/mapGenerator/proc/initialiseModules()
 	for(var/path in modules)
 		if(ispath(path))
 			modules.Remove(path)
@@ -112,8 +112,8 @@
 
 
 //Sync mapGeneratorModule(s) to mapGenerator
-/datum/map_generator/proc/syncModules()
-	for(var/datum/map_generator_module/mod in modules)
+/datum/mapGenerator/proc/syncModules()
+	for(var/datum/mapGeneratorModule/mod in modules)
 		mod.sync(src)
 
 
@@ -129,7 +129,7 @@
 	if(!check_rights(R_MAINTAINER))
 		return
 
-	var/datum/map_generator/nature/N = new()
+	var/datum/mapGenerator/nature/N = new()
 	var/startInput = clean_input("Start turf of Map, (X;Y;Z)", "Map Gen Settings", "1;1;1")
 	var/endInput = clean_input("End turf of Map (X;Y;Z)", "Map Gen Settings", "[world.maxx];[world.maxy];[mob ? mob.z : 1]")
 	//maxx maxy and current z so that if you fuck up, you only fuck up one entire z level instead of the entire universe
@@ -170,7 +170,7 @@
 		theCluster =  MAP_GENERATOR_CLUSTER_CHECK_NONE
 
 	if(theCluster)
-		for(var/datum/map_generator_module/M in N.modules)
+		for(var/datum/mapGeneratorModule/M in N.modules)
 			M.clusterCheckFlags = theCluster
 
 

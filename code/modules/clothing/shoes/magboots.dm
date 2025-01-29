@@ -34,7 +34,7 @@
 		return
 	check_mag_pulse(user, removing = TRUE)
 
-/obj/item/clothing/shoes/magboots/attack_self__legacy__attackchain(mob/user)
+/obj/item/clothing/shoes/magboots/attack_self(mob/user)
 	toggle_magpulse(user)
 
 /obj/item/clothing/shoes/magboots/proc/toggle_magpulse(mob/user, no_message)
@@ -101,7 +101,7 @@
 
 /obj/item/clothing/shoes/magboots/advance/Initialize(mapload)
 	. = ..()
-	AddElement(/datum/element/high_value_item)
+	RegisterSignal(src, COMSIG_PARENT_QDELETING, PROC_REF(alert_admins_on_destroy))
 
 /obj/item/clothing/shoes/magboots/syndie
 	name = "blood-red magboots"
@@ -272,12 +272,12 @@
 	cell = null
 	update_icon()
 
-/obj/item/clothing/shoes/magboots/gravity/attackby__legacy__attackchain(obj/item/I, mob/user, params)
+/obj/item/clothing/shoes/magboots/gravity/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/stock_parts/cell))
 		if(cell)
 			to_chat(user, "<span class='warning'>[src] already has a cell!</span>")
 			return
-		if(!user.drop_item_to_ground(I))
+		if(!user.unEquip(I))
 			return
 		I.forceMove(src)
 		cell = I

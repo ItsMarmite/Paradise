@@ -61,8 +61,6 @@
 		"pulls out a secret stash of herbicide and takes a hearty swig!",
 		"is pulling themselves apart!")
 
-	plushie_type = /obj/item/toy/plushie/dionaplushie
-
 /datum/species/diona/can_understand(mob/other)
 	if(isnymph(other))
 		return TRUE

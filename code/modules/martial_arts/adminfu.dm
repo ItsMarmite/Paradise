@@ -1,7 +1,7 @@
 /datum/martial_art/adminfu
 	name = "Way of the Dancing Admin"
 	has_explaination_verb = TRUE
-	combos = list(/datum/martial_combo/healing_palm)
+	combos = list(/datum/martial_combo/adminfu/healing_palm)
 	weight = 99999999 //Matt Malvor?
 
 /datum/martial_art/adminfu/harm_act(mob/living/carbon/human/A, mob/living/carbon/human/D)
@@ -40,7 +40,7 @@
 	icon_state ="scroll2"
 	var/used = FALSE
 
-/obj/item/adminfu_scroll/attack_self__legacy__attackchain(mob/user as mob)
+/obj/item/adminfu_scroll/attack_self(mob/user as mob)
 	if(!ishuman(user))
 		return
 	if(!used)

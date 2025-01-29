@@ -127,12 +127,12 @@
 	item_state = "hardhat0_yellow"
 	dog_fashion = /datum/dog_fashion/head/hardhat
 
-/obj/item/clothing/head/collectable/hos
+/obj/item/clothing/head/collectable/HoS
 	name = "collectable HoS hat"
 	desc = "Now you can beat prisoners, set silly sentences and arrest for no reason too!"
 	icon_state = "hos_cap"
 
-/obj/item/clothing/head/collectable/hop
+/obj/item/clothing/head/collectable/HoP
 	name = "collectable HoP hat"
 	desc = "It's your turn to demand excessive paperwork, signatures, stamps, and hire more clowns! Papers, please!"
 	icon_state = "hopcap"

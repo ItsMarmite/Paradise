@@ -18,7 +18,8 @@
 					thing.throw_at(get_edge_target_turf(src, pick(GLOB.alldirs)), rand(1, 3), 5)
 
 	for(var/obj/item/I in get_equipped_items(include_pockets = TRUE))
-		drop_item_to_ground(I, force = TRUE)
+		unEquip(I, TRUE)
+		I.forceMove(get_turf(src))
 		if(!QDELETED(I)) // This is in case moving to the turf deletes the atom.
 			I.throw_at(get_edge_target_turf(src, pick(GLOB.alldirs)), rand(1, 3), 5)
 

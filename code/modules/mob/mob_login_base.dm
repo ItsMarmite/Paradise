@@ -81,4 +81,3 @@
 	update_client_colour(0)
 	update_morgue()
 	client.init_verbs()
-	SEND_SIGNAL(src, COMSIG_MOB_LOGIN)

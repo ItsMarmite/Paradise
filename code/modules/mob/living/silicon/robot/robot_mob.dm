@@ -57,8 +57,6 @@ GLOBAL_LIST_INIT(robot_verbs_default, list(
 	var/custom_panel = null
 	/// Robot skins with non-default sprites for an open service panel.
 	var/list/custom_panel_names = list("Cricket", "Rover")
-	/// Robot skins with different sprites for open panels for each module.
-	var/list/variable_custom_panels = list("Rover-Serv", "Rover-Medi")
 	/// Robot skins with multiple variants for different modules. They require special handling to make their eyes display.
 	var/list/custom_eye_names = list("Cricket", "Standard")
 	/// Has the robot been emagged?
@@ -459,15 +457,14 @@ GLOBAL_LIST_INIT(robot_verbs_default, list(
 			)
 		if("Medical")
 			module_sprites = list(
+				"Basic" = image('icons/mob/robots.dmi', "Medbot"),
 				"Surgeon" = image('icons/mob/robots.dmi', "surgeon"),
 				"Advanced Droid" = image('icons/mob/robots.dmi', "droid-medical"),
+				"Needles" = image('icons/mob/robots.dmi', "medicalrobot"),
 				"Standard" = image('icons/mob/robots.dmi', "Standard-Medi"),
 				"Noble-MED" = image('icons/mob/robots.dmi', "Noble-MED"),
 				"Cricket" = image('icons/mob/robots.dmi', "Cricket-MEDI"),
-				"Rover" = image('icons/mob/robots.dmi', "Rover-Medi"),
-				"Qualified Doctor" = image('icons/mob/robots.dmi', "qualified_doctor"),
-				"Needles" = image('icons/mob/robots.dmi', "medicalrobot"),
-				"Basic" = image('icons/mob/robots.dmi', "Medbot")
+				"Qualified Doctor" = image('icons/mob/robots.dmi', "qualified_doctor")
 			)
 		if("Mining")
 			module_sprites = list(
@@ -483,15 +480,14 @@ GLOBAL_LIST_INIT(robot_verbs_default, list(
 			)
 		if("Service")
 			module_sprites = list(
+				"Waitress" = image('icons/mob/robots.dmi', "Service"),
 				"Kent" = image('icons/mob/robots.dmi', "toiletbot"),
-				"Noble-SRV" = image('icons/mob/robots.dmi', "Noble-SRV"),
-				"Standard" = image('icons/mob/robots.dmi', "Standard-Serv"),
-				"Cricket" = image('icons/mob/robots.dmi', "Cricket-SERV"),
-				"Rover" = image('icons/mob/robots.dmi', "Rover-Serv"),
 				"Bro" = image('icons/mob/robots.dmi', "Brobot"),
 				"Rich" = image('icons/mob/robots.dmi', "maximillion"),
-				"Waitress" = image('icons/mob/robots.dmi', "Service"),
-				"Default" = image('icons/mob/robots.dmi', "Service2")
+				"Default" = image('icons/mob/robots.dmi', "Service2"),
+				"Standard" = image('icons/mob/robots.dmi', "Standard-Serv"),
+				"Noble-SRV" = image('icons/mob/robots.dmi', "Noble-SRV"),
+				"Cricket" = image('icons/mob/robots.dmi', "Cricket-SERV")
 			)
 		if("Combat")
 			module_sprites = list(
@@ -537,11 +533,8 @@ GLOBAL_LIST_INIT(robot_verbs_default, list(
   */
 /mob/living/silicon/robot/proc/robot_module_hat_offset(module)
 	switch(module)
-		if("Engineering", "Miner_old", "JanBot2", "Medbot", "engineerrobot", "maximillion", "secborg", "Hydrobot")
-			can_be_hatted = TRUE // Their base sprite USED to already come with a hat
-			can_wear_restricted_hats = TRUE
-		if("Rover-Medi", "Rover-Jani", "Rover-Engi", "Rover-Serv")
-			can_be_hatted = FALSE
+		if("Engineering", "Miner_old", "JanBot2", "Medbot", "engineerrobot", "maximillion", "secborg", "Rover-Jani", "Rover-Engi", "Hydrobot")
+			can_be_hatted = FALSE // Their base sprite already comes with a hat
 			hat_offset_y = -1
 		if("Noble-CLN", "Noble-SRV", "Noble-DIG", "Noble-MED", "Noble-SEC", "Noble-ENG", "Noble-STD")
 			can_be_hatted = TRUE
@@ -923,7 +916,7 @@ GLOBAL_LIST_INIT(robot_verbs_default, list(
 	return 2
 
 
-/mob/living/silicon/robot/attackby__legacy__attackchain(obj/item/W, mob/user, params)
+/mob/living/silicon/robot/attackby(obj/item/W, mob/user, params)
 	// Check if the user is trying to insert another component like a radio, actuator, armor etc.
 	if(istype(W, /obj/item/robot_parts/robot_component) && opened)
 		for(var/V in components)
@@ -981,7 +974,7 @@ GLOBAL_LIST_INIT(robot_verbs_default, list(
 
 	else if(istype(W, /obj/item/encryptionkey/) && opened)
 		if(radio)//sanityyyyyy
-			radio.attackby__legacy__attackchain(W,user)//GTFO, you have your own procs
+			radio.attackby(W,user)//GTFO, you have your own procs
 		else
 			to_chat(user, "Unable to locate a radio.")
 
@@ -1135,7 +1128,7 @@ GLOBAL_LIST_INIT(robot_verbs_default, list(
 
 
 
-/mob/living/silicon/robot/attacked_by__legacy__attackchain(obj/item/I, mob/living/user, def_zone)
+/mob/living/silicon/robot/attacked_by(obj/item/I, mob/living/user, def_zone)
 	if(I.force && I.damtype != STAMINA && stat != DEAD) //only sparks if real damage is dealt.
 		spark_system.start()
 	..()
@@ -1272,9 +1265,7 @@ GLOBAL_LIST_INIT(robot_verbs_default, list(
 		var/panelprefix = "ov"
 		if(custom_sprite) //Custom borgs also have custom panels, heh
 			panelprefix = "[ckey]"
-		if(icon_state in variable_custom_panels) //For individual borg modules with different panels
-			panelprefix = icon_state
-		else if(custom_panel in custom_panel_names) //For default borgs with different panels
+		if(custom_panel in custom_panel_names) //For default borgs with different panels
 			panelprefix = custom_panel
 		if(wiresexposed)
 			overlays += "[panelprefix]-openpanel +w"
@@ -1306,7 +1297,7 @@ GLOBAL_LIST_INIT(robot_verbs_default, list(
 	if(href_list["mod"])
 		var/obj/item/O = locate(href_list["mod"])
 		if(istype(O) && (O.loc == src))
-			O.attack_self__legacy__attackchain(src)
+			O.attack_self(src)
 		return 1
 
 	if(href_list["act"])
@@ -1458,10 +1449,8 @@ GLOBAL_LIST_INIT(robot_verbs_default, list(
 	set category = "IC"
 
 	var/obj/item/W = get_active_hand()
-	if(W.new_attack_chain)
-		W.activate_self(src)
-	else
-		W.attack_self__legacy__attackchain(src)
+	if(W)
+		W.attack_self(src)
 
 /mob/living/silicon/robot/proc/SetLockdown(state = TRUE)
 	// They stay locked down if their wire is cut.
@@ -1814,8 +1803,3 @@ GLOBAL_LIST_INIT(robot_verbs_default, list(
 	if(ourapc.malfai && !(src in ourapc.malfai.connected_robots))
 		return FALSE
 	return TRUE
-
-/mob/living/silicon/robot/plushify(plushie_override, curse_time)
-	if(curse_time == -1)
-		QDEL_NULL(mmi)
-	return ..()

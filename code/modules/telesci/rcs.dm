@@ -10,14 +10,14 @@
 	desc = "A device used to teleport crates and closets to cargo telepads."
 	icon = 'icons/obj/telescience.dmi'
 	icon_state = "rcs"
-	item_state = "rcs"
+	item_state = "rcd"
 	flags = CONDUCT
 	force = 10.0
 	throwforce = 10.0
 	throw_speed = 2
 	throw_range = 5
 	toolspeed = 1
-	usesound = 'sound/weapons/flash.ogg'
+	usesound = 'sound/machines/click.ogg'
 	/// Power cell (10000W)
 	var/obj/item/stock_parts/cell/high/rcell = null
 	/// Selected telepad
@@ -46,7 +46,7 @@
 /**
   * Used to select telepad location.
   */
-/obj/item/rcs/attack_self__legacy__attackchain(mob/user)
+/obj/item/rcs/attack_self(mob/user)
 	if(teleporting)
 		to_chat(user, "<span class='warning'>Error: Unable to change destination while in use.</span>")
 		return
@@ -124,7 +124,7 @@
 
 /obj/item/rcs/proc/teleport(mob/user, obj/structure/closet/C, target)
 	to_chat(user, "<span class='notice'>Teleporting [C]...</span>")
-	playsound(get_turf(src), usesound, 25, TRUE)
+	playsound(src, usesound, 50, TRUE)
 	teleporting = TRUE
 	if(!do_after(user, 50 * toolspeed, target = C))
 		teleporting = FALSE
@@ -132,6 +132,6 @@
 
 	teleporting = FALSE
 	rcell.use(chargecost)
-	playsound(get_turf(src), 'sound/weapons/emitter2.ogg', 25, TRUE)
+	do_sparks(5, TRUE, C)
 	do_teleport(C, target)
 	to_chat(user, "<span class='notice'>Teleport successful. [round(rcell.charge/chargecost)] charge\s left.</span>")

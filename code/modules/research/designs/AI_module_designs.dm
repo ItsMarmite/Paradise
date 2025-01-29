@@ -9,7 +9,7 @@
 	req_tech = list("programming" = 5, "materials" = 4)
 	build_type = IMPRINTER
 	materials = list(MAT_GLASS = 1000, MAT_GOLD = 100)
-	build_path = /obj/item/ai_module/freeform
+	build_path = /obj/item/aiModule/freeform
 	category = list("AI Modules")
 
 /datum/design/onecrewmember_module
@@ -19,7 +19,7 @@
 	req_tech = list("programming" = 6, "materials" = 4)
 	build_type = IMPRINTER
 	materials = list(MAT_GLASS = 1000, MAT_DIAMOND = 100)
-	build_path = /obj/item/ai_module/one_crew_member
+	build_path = /obj/item/aiModule/oneCrewMember
 	category = list("AI Modules")
 
 /datum/design/oxygen_module
@@ -29,7 +29,7 @@
 	req_tech = list("programming" = 4, "biotech" = 2, "materials" = 4)
 	build_type = IMPRINTER
 	materials = list(MAT_GLASS = 1000, MAT_GOLD = 100)
-	build_path = /obj/item/ai_module/oxygen
+	build_path = /obj/item/aiModule/oxygen
 	category = list("AI Modules")
 
 /datum/design/protectstation_module
@@ -39,7 +39,7 @@
 	req_tech = list("programming" = 5, "materials" = 4)
 	build_type = IMPRINTER
 	materials = list(MAT_GLASS = 1000, MAT_GOLD = 100)
-	build_path = /obj/item/ai_module/protect_station
+	build_path = /obj/item/aiModule/protectStation
 	category = list("AI Modules")
 
 /datum/design/purge_module
@@ -49,7 +49,7 @@
 	req_tech = list("programming" = 5, "materials" = 6)
 	build_type = IMPRINTER
 	materials = list(MAT_GLASS = 1000, MAT_DIAMOND = 100)
-	build_path = /obj/item/ai_module/purge
+	build_path = /obj/item/aiModule/purge
 	category = list("AI Modules")
 
 /datum/design/quarantine_module
@@ -59,7 +59,7 @@
 	req_tech = list("programming" = 3, "biotech" = 2, "materials" = 4)
 	build_type = IMPRINTER
 	materials = list(MAT_GLASS = 1000, MAT_GOLD = 100)
-	build_path = /obj/item/ai_module/quarantine
+	build_path = /obj/item/aiModule/quarantine
 	category = list("AI Modules")
 
 /datum/design/reset_module
@@ -69,7 +69,7 @@
 	req_tech = list("programming" = 4, "materials" = 6)
 	build_type = IMPRINTER
 	materials = list(MAT_GLASS = 1000, MAT_GOLD = 100)
-	build_path = /obj/item/ai_module/reset
+	build_path = /obj/item/aiModule/reset
 	category = list("AI Modules")
 
 /datum/design/safeguard_module
@@ -79,7 +79,7 @@
 	req_tech = list("programming" = 3, "materials" = 3)
 	build_type = IMPRINTER
 	materials = list(MAT_GLASS = 1000, MAT_GOLD = 100)
-	build_path = /obj/item/ai_module/safeguard
+	build_path = /obj/item/aiModule/safeguard
 	category = list("AI Modules")
 
 /datum/design/antimov_module
@@ -89,7 +89,7 @@
 	req_tech = list("programming" = 5, "syndicate" = 2, "materials" = 5)
 	build_type = IMPRINTER
 	materials = list(MAT_GLASS = 1000, MAT_DIAMOND = 100)
-	build_path = /obj/item/ai_module/antimov
+	build_path = /obj/item/aiModule/antimov
 	category = list("AI Modules")
 
 /datum/design/pranksimov_module
@@ -99,7 +99,7 @@
 	req_tech = list("programming" = 5, "syndicate" = 2, "materials" = 5)
 	build_type = IMPRINTER
 	materials = list(MAT_GLASS = 1000, MAT_BANANIUM = 100)
-	build_path = /obj/item/ai_module/pranksimov
+	build_path = /obj/item/aiModule/pranksimov
 	category = list("AI Modules")
 
 /datum/design/asimov
@@ -109,7 +109,7 @@
 	req_tech = list("programming" = 3, "materials" = 5)
 	build_type = IMPRINTER
 	materials = list(MAT_GLASS = 1000, MAT_DIAMOND = 100)
-	build_path = /obj/item/ai_module/asimov
+	build_path = /obj/item/aiModule/asimov
 	category = list("AI Modules")
 
 /datum/design/corporate_module
@@ -119,7 +119,7 @@
 	req_tech = list("programming" = 5, "materials" = 5)
 	build_type = IMPRINTER
 	materials = list(MAT_GLASS = 1000, MAT_DIAMOND = 100)
-	build_path = /obj/item/ai_module/corp
+	build_path = /obj/item/aiModule/corp
 	category = list("AI Modules")
 
 /datum/design/crewsimov
@@ -129,7 +129,7 @@
 	req_tech = list("programming" = 3, "materials" = 5)
 	build_type = IMPRINTER
 	materials = list(MAT_GLASS = 1000, MAT_DIAMOND = 100)
-	build_path = /obj/item/ai_module/crewsimov
+	build_path = /obj/item/aiModule/crewsimov
 	category = list("AI Modules")
 
 /datum/design/freeformcore_module
@@ -139,7 +139,7 @@
 	req_tech = list("programming" = 6, "materials" = 6)
 	build_type = IMPRINTER
 	materials = list(MAT_GLASS = 1000, MAT_DIAMOND = 100)
-	build_path = /obj/item/ai_module/freeformcore
+	build_path = /obj/item/aiModule/freeformcore
 	category = list("AI Modules")
 
 /datum/design/paladin_module
@@ -149,7 +149,7 @@
 	req_tech = list("programming" = 5, "materials" = 5)
 	build_type = IMPRINTER
 	materials = list(MAT_GLASS = 1000, MAT_DIAMOND = 100)
-	build_path = /obj/item/ai_module/paladin
+	build_path = /obj/item/aiModule/paladin
 	category = list("AI Modules")
 
 /datum/design/tyrant_module
@@ -159,5 +159,5 @@
 	req_tech = list("programming" = 5, "syndicate" = 2, "materials" = 5)
 	build_type = IMPRINTER
 	materials = list(MAT_GLASS = 1000, MAT_DIAMOND = 100)
-	build_path = /obj/item/ai_module/tyrant
+	build_path = /obj/item/aiModule/tyrant
 	category = list("AI Modules")

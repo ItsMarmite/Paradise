@@ -10,7 +10,6 @@
 	actions_types = list(/datum/action/item_action/flip_cap)
 	dog_fashion = /datum/dog_fashion/head/softcap
 	sprite_sheets = list(
-		"Kidan" = 'icons/mob/clothing/species/kidan/head/softcap.dmi',
 		"Vox" = 'icons/mob/clothing/species/vox/head/softcap.dmi'
 		)
 	dyeable = TRUE
@@ -20,7 +19,7 @@
 	flipped = FALSE
 	..()
 
-/obj/item/clothing/head/soft/attack_self__legacy__attackchain(mob/user)
+/obj/item/clothing/head/soft/attack_self(mob/user)
 	flip(user)
 
 /obj/item/clothing/head/soft/proc/flip(mob/user)

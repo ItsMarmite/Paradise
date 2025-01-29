@@ -66,7 +66,7 @@
 	qdel(O)
 
 // takes care of plant insertion and conversion to biomass, and start composting what was inserted
-/obj/machinery/compost_bin/attackby__legacy__attackchain(obj/item/O, mob/user, params)
+/obj/machinery/compost_bin/attackby(obj/item/O, mob/user, params)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 
@@ -103,7 +103,7 @@
 		if(biomass >= biomass_capacity && potassium >= potassium_capacity)
 			to_chat(user, "<span class='warning'>[src] can't hold any more biomass, and its contents are saturated with potassium!</span>")
 			return
-		if(!user.drop_item_to_ground(O))
+		if(!user.unEquip(O))
 			return
 
 		O.forceMove(src)

@@ -43,11 +43,6 @@ GLOBAL_LIST_EMPTY(conveyor_switches)
 		var/obj/machinery/conveyor_switch/S = I
 		S.link_conveyers(src)
 
-	var/static/list/loc_connections = list(
-		COMSIG_ATOM_ENTERED = PROC_REF(on_atom_entered)
-	)
-	AddElement(/datum/element/connect_loc, loc_connections)
-
 /obj/machinery/conveyor/Destroy()
 	GLOB.conveyor_belts -= src
 	return ..()
@@ -57,7 +52,7 @@ GLOBAL_LIST_EMPTY(conveyor_switches)
 	update_move_direction()
 
 // attack with item, place item on conveyor
-/obj/machinery/conveyor/attackby__legacy__attackchain(obj/item/I, mob/user)
+/obj/machinery/conveyor/attackby(obj/item/I, mob/user)
 	if(stat & BROKEN)
 		return ..()
 
@@ -204,9 +199,10 @@ GLOBAL_LIST_EMPTY(conveyor_switches)
 	else if(still_stuff_to_move && !speed_process)
 		makeSpeedProcess()
 
-/obj/machinery/conveyor/proc/on_atom_entered(datum/source, atom/movable/entered)
-	if(!speed_process && !entered.anchored)
+/obj/machinery/conveyor/Crossed(atom/movable/AM, oldloc)
+	if(!speed_process && !AM.anchored)
 		makeSpeedProcess()
+	..()
 
 /obj/machinery/conveyor/proc/move_thing(atom/movable/AM)
 	affecting.Remove(AM)
@@ -429,7 +425,7 @@ GLOBAL_LIST_EMPTY(conveyor_switches)
 	w_class = WEIGHT_CLASS_BULKY
 	var/id
 
-/obj/item/conveyor_construct/attackby__legacy__attackchain(obj/item/I, mob/user, params)
+/obj/item/conveyor_construct/attackby(obj/item/I, mob/user, params)
 	..()
 	if(!istype(I, /obj/item/conveyor_switch_construct))
 		return
@@ -437,7 +433,7 @@ GLOBAL_LIST_EMPTY(conveyor_switches)
 	to_chat(user, "<span class='notice'>You link [src] to [C].</span>")
 	id = C.id
 
-/obj/item/conveyor_construct/afterattack__legacy__attackchain(turf/T, mob/user, proximity)
+/obj/item/conveyor_construct/afterattack(turf/T, mob/user, proximity)
 	if(!proximity)
 		return
 	if(user.incapacitated())
@@ -472,7 +468,7 @@ GLOBAL_LIST_EMPTY(conveyor_switches)
 		id = world.time + rand() //this couldn't possibly go wrong
 
 
-/obj/item/conveyor_switch_construct/afterattack__legacy__attackchain(turf/T, mob/user, proximity)
+/obj/item/conveyor_switch_construct/afterattack(turf/T, mob/user, proximity)
 	if(!proximity)
 		return
 	if(user.incapacitated())
@@ -491,7 +487,7 @@ GLOBAL_LIST_EMPTY(conveyor_switches)
 	transfer_fingerprints_to(NC)
 	qdel(src)
 
-/obj/item/conveyor_switch_construct/attackby__legacy__attackchain(obj/item/I, mob/user)
+/obj/item/conveyor_switch_construct/attackby(obj/item/I, mob/user)
 	if(!istype(I, /obj/item/conveyor_switch_construct))
 		return ..()
 	var/obj/item/conveyor_switch_construct/S = I
