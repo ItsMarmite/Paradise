@@ -118,7 +118,7 @@
 
 		else if(istype(player, /mob/dead) || ((src in player.languages) && check_special_condition(player, speaker)))
 			to_chat(player, msg)
-			if((flags & HIVEMIND) && (flags & HIVEMIND_RUNECHAT) && player?.client?.prefs.toggles2 & PREFTOGGLE_2_RUNECHAT)
+			if((flags & HIVEMIND) && (flags & HIVEMIND_RUNECHAT))
 				player.create_chat_message(player, "[speaker_mask], [format_message(message)]")
 
 /datum/language/proc/check_special_condition(mob/other, mob/living/speaker)
@@ -317,13 +317,13 @@
 /datum/language/slime
 	name = "Bubblish"
 	desc = "The language of slimes. It's a mixture of bubbling noises and pops. Very difficult to speak without mechanical aid for humans."
-	speech_verb = "burbles"
-	ask_verb = "pops softly"
-	exclaim_verbs = list("fizzes")
+	speech_verb = "bubbles and pops"
+	ask_verb = "bubbles and pops"
+	exclaim_verbs = list("bubbles and pops")
 	colour = "slime"
 	key = "f"
 	flags = RESTRICTED | WHITELISTED
-	syllables = list("zlu", "gl", "oo", "shl", "bl", "wob", "lur", "wh", "zz", "spl", "mur", "fl", "dro", "fru", "slu", "gle", "flo")
+	syllables = list("blob","plop","pop","bop","boop")
 
 /datum/language/slime/get_random_name(gender)
 	var/new_name

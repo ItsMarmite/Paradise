@@ -237,7 +237,13 @@
 	if(isAntag(user))
 		. += "<span class='warning'>An APC can be emagged to unlock it, this will keep it in it's refresh state, making very obvious something is wrong.</span>"
 
+<<<<<<< HEAD
 /obj/machinery/power/apc/item_interaction(mob/living/user, obj/item/used, list/modifiers)
+=======
+//attack with an item - open/close cover, insert cell, or (un)lock interface
+/obj/machinery/power/apc/attackby(obj/item/W, mob/living/user, params)
+
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 	if(issilicon(user) && get_dist(src, user) > 1)
 		attack_hand(user)
 		return ITEM_INTERACT_COMPLETE

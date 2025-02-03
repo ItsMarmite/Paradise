@@ -1,4 +1,4 @@
-/mob/CanPass(atom/movable/mover, border_dir)
+/mob/CanPass(atom/movable/mover, turf/target)
 	var/horizontal = FALSE
 	if(isliving(src))
 		var/mob/living/L = src
@@ -21,7 +21,11 @@
 	return (!mover.density || !density || horizontal)
 
 /mob/proc/projectile_hit_check(obj/item/projectile/P)
+<<<<<<< HEAD
 	return !(P.always_hit_living_nondense && (stat != DEAD) && !isLivingSSD(src)) && !density
+=======
+	return !density
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 
 /client/verb/toggle_throw_mode()
 	set hidden = 1

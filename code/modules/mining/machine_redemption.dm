@@ -180,8 +180,13 @@
 		message_sent = TRUE
 
 // Interactions
+<<<<<<< HEAD
 /obj/machinery/mineral/ore_redemption/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	if(istype(used, /obj/item/storage/part_replacer))
+=======
+/obj/machinery/mineral/ore_redemption/attackby(obj/item/I, mob/user, params)
+	if(istype(I, /obj/item/storage/part_replacer))
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 		return ..()
 
 	if(!has_power())

@@ -69,18 +69,22 @@
 	category = CAT_FOOD
 	subcategory = CAT_SANDWICH
 
-/datum/crafting_recipe/sushi_ebi
+/datum/crafting_recipe/sushi_Ebi
 	name = "Ebi Sushi"
 	reqs = list(
 		/obj/item/food/boiledrice = 1,
 		/obj/item/food/boiled_shrimp = 1,
 		/obj/item/stack/seaweed = 1,
 	)
+<<<<<<< HEAD
 	result = list(/obj/item/food/sliced/sushi_ebi)
+=======
+	result = list(/obj/item/food/sushi_Ebi)
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 	category = CAT_FOOD
 	subcategory = CAT_SUSHI
 
-/datum/crafting_recipe/ebi_maki
+/datum/crafting_recipe/Ebi_maki
 	name = "Ebi Maki Roll"
 	reqs = list(
 		/obj/item/food/boiledrice = 1,
@@ -88,22 +92,26 @@
 		/obj/item/stack/seaweed = 1,
 	)
 	pathtools = list(/obj/item/kitchen/sushimat)
-	result = list(/obj/item/food/sliceable/ebi_maki)
+	result = list(/obj/item/food/sliceable/Ebi_maki)
 	category = CAT_FOOD
 	subcategory = CAT_SUSHI
 
-/datum/crafting_recipe/sushi_ikura
+/datum/crafting_recipe/sushi_Ikura
 	name = "Ikura Sushi"
 	reqs = list(
 		/obj/item/food/boiledrice = 1,
 		/obj/item/fish_eggs/salmon = 1,
 		/obj/item/stack/seaweed = 1,
 	)
+<<<<<<< HEAD
 	result = list(/obj/item/food/sliced/sushi_ikura)
+=======
+	result = list(/obj/item/food/sushi_Ikura)
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 	category = CAT_FOOD
 	subcategory = CAT_SUSHI
 
-/datum/crafting_recipe/ikura_maki
+/datum/crafting_recipe/Ikura_maki
 	name = "Ikura Maki Roll"
 	reqs = list(
 		/obj/item/food/boiledrice = 1,
@@ -111,22 +119,26 @@
 		/obj/item/stack/seaweed = 1,
 	)
 	pathtools = list(/obj/item/kitchen/sushimat)
-	result = list(/obj/item/food/sliceable/ikura_maki)
+	result = list(/obj/item/food/sliceable/Ikura_maki)
 	category = CAT_FOOD
 	subcategory = CAT_SUSHI
 
-/datum/crafting_recipe/sushi_inari
+/datum/crafting_recipe/sushi_Inari
 	name = "Inari Sushi"
 	reqs = list(
 		/obj/item/food/boiledrice = 1,
 		/obj/item/food/fried_tofu = 1,
 		/obj/item/stack/seaweed = 1,
 	)
+<<<<<<< HEAD
 	result = list(/obj/item/food/sliced/sushi_inari)
+=======
+	result = list(/obj/item/food/sushi_Inari)
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 	category = CAT_FOOD
 	subcategory = CAT_SUSHI
 
-/datum/crafting_recipe/inari_maki
+/datum/crafting_recipe/Inari_maki
 	name = "Inari Maki Roll"
 	reqs = list(
 		/obj/item/food/boiledrice = 1,
@@ -134,22 +146,26 @@
 		/obj/item/stack/seaweed = 1,
 	)
 	pathtools = list(/obj/item/kitchen/sushimat)
-	result = list(/obj/item/food/sliceable/inari_maki)
+	result = list(/obj/item/food/sliceable/Inari_maki)
 	category = CAT_FOOD
 	subcategory = CAT_SUSHI
 
-/datum/crafting_recipe/sushi_sake
+/datum/crafting_recipe/sushi_Sake
 	name = "Sake Sushi"
 	reqs = list(
 		/obj/item/food/boiledrice = 1,
 		/obj/item/food/salmonmeat = 1,
 		/obj/item/stack/seaweed = 1,
 	)
+<<<<<<< HEAD
 	result = list(/obj/item/food/sliced/sushi_sake)
+=======
+	result = list(/obj/item/food/sushi_Sake)
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 	category = CAT_FOOD
 	subcategory = CAT_SUSHI
 
-/datum/crafting_recipe/sake_maki
+/datum/crafting_recipe/Sake_maki
 	name = "Sake Maki Roll"
 	reqs = list(
 		/obj/item/food/boiledrice = 1,
@@ -157,22 +173,26 @@
 		/obj/item/stack/seaweed = 1,
 	)
 	pathtools = list(/obj/item/kitchen/sushimat)
-	result = list(/obj/item/food/sliceable/sake_maki)
+	result = list(/obj/item/food/sliceable/Sake_maki)
 	category = CAT_FOOD
 	subcategory = CAT_SUSHI
 
-/datum/crafting_recipe/sushi_smoked_salmon
+/datum/crafting_recipe/sushi_SmokedSalmon
 	name = "Smoked Salmon Sushi"
 	reqs = list(
 		/obj/item/food/boiledrice = 1,
 		/obj/item/food/salmonsteak = 1,
 		/obj/item/stack/seaweed = 1,
 	)
+<<<<<<< HEAD
 	result = list(/obj/item/food/sliced/sushi_smoked_salmon)
+=======
+	result = list(/obj/item/food/sushi_SmokedSalmon)
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 	category = CAT_FOOD
 	subcategory = CAT_SUSHI
 
-/datum/crafting_recipe/smoked_salmon_maki
+/datum/crafting_recipe/SmokedSalmon_maki
 	name = "Smoked Salmon Maki Roll"
 	reqs = list(
 		/obj/item/food/boiledrice = 1,
@@ -180,22 +200,26 @@
 		/obj/item/stack/seaweed = 1,
 	)
 	pathtools = list(/obj/item/kitchen/sushimat)
-	result = list(/obj/item/food/sliceable/smoked_salmon_maki)
+	result = list(/obj/item/food/sliceable/SmokedSalmon_maki)
 	category = CAT_FOOD
 	subcategory = CAT_SUSHI
 
-/datum/crafting_recipe/sushi_masago
+/datum/crafting_recipe/sushi_Masago
 	name = "Masago Sushi"
 	reqs = list(
 		/obj/item/food/boiledrice = 1,
 		/obj/item/fish_eggs/goldfish = 1,
 		/obj/item/stack/seaweed = 1,
 	)
+<<<<<<< HEAD
 	result = list(/obj/item/food/sliced/sushi_masago)
+=======
+	result = list(/obj/item/food/sushi_Masago)
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 	category = CAT_FOOD
 	subcategory = CAT_SUSHI
 
-/datum/crafting_recipe/masago_maki
+/datum/crafting_recipe/Masago_maki
 	name = "Masago Maki Roll"
 	reqs = list(
 		/obj/item/food/boiledrice = 1,
@@ -203,22 +227,26 @@
 		/obj/item/stack/seaweed = 1,
 	)
 	pathtools = list(/obj/item/kitchen/sushimat)
-	result = list(/obj/item/food/sliceable/masago_maki)
+	result = list(/obj/item/food/sliceable/Masago_maki)
 	category = CAT_FOOD
 	subcategory = CAT_SUSHI
 
-/datum/crafting_recipe/sushi_tobiko
+/datum/crafting_recipe/sushi_Tobiko
 	name = "Tobiko Sushi"
 	reqs = list(
 		/obj/item/food/boiledrice = 1,
 		/obj/item/fish_eggs/shark = 1,
 		/obj/item/stack/seaweed = 1,
 	)
+<<<<<<< HEAD
 	result = list(/obj/item/food/sliced/sushi_tobiko)
+=======
+	result = list(/obj/item/food/sushi_Tobiko)
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 	category = CAT_FOOD
 	subcategory = CAT_SUSHI
 
-/datum/crafting_recipe/tobiko_maki
+/datum/crafting_recipe/Tobiko_maki
 	name = "Tobiko Maki Roll"
 	reqs = list(
 		/obj/item/food/boiledrice = 1,
@@ -226,45 +254,61 @@
 		/obj/item/stack/seaweed = 1,
 	)
 	pathtools = list(/obj/item/kitchen/sushimat)
-	result = list(/obj/item/food/sliceable/tobiko_maki)
+	result = list(/obj/item/food/sliceable/Tobiko_maki)
 	category = CAT_FOOD
 	subcategory = CAT_SUSHI
 
-/datum/crafting_recipe/sushi_tobiko_egg
+/datum/crafting_recipe/sushi_TobikoEgg
 	name = "Tobiko and Egg Sushi"
 	reqs = list(
+<<<<<<< HEAD
 		/obj/item/food/sliced/sushi_tobiko = 1,
 		/obj/item/food/egg = 1,
 		/obj/item/stack/seaweed = 1,
 	)
 	result = list(/obj/item/food/sliced/sushi_tobiko_egg)
+=======
+		/obj/item/food/sushi_Tobiko = 1,
+		/obj/item/food/egg = 1,
+		/obj/item/stack/seaweed = 1,
+	)
+	result = list(/obj/item/food/sushi_TobikoEgg)
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 	category = CAT_FOOD
 	subcategory = CAT_SUSHI
 
-/datum/crafting_recipe/tobiko_egg_maki
+/datum/crafting_recipe/TobikoEgg_maki
 	name = "Tobiko and Egg Maki Roll"
 	reqs = list(
+<<<<<<< HEAD
 		/obj/item/food/sliced/sushi_tobiko = 4,
+=======
+		/obj/item/food/sushi_Tobiko = 4,
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 		/obj/item/food/egg = 4,
 		/obj/item/stack/seaweed = 1,
 	)
 	pathtools = list(/obj/item/kitchen/sushimat)
-	result = list(/obj/item/food/sliceable/tobiko_egg_maki)
+	result = list(/obj/item/food/sliceable/TobikoEgg_maki)
 	category = CAT_FOOD
 	subcategory = CAT_SUSHI
 
-/datum/crafting_recipe/sushi_tai
+/datum/crafting_recipe/sushi_Tai
 	name = "Tai Sushi"
 	reqs = list(
 		/obj/item/food/boiledrice = 1,
 		/obj/item/food/catfishmeat = 1,
 		/obj/item/stack/seaweed = 1,
 	)
+<<<<<<< HEAD
 	result = list(/obj/item/food/sliced/sushi_tai)
+=======
+	result = list(/obj/item/food/sushi_Tai)
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 	category = CAT_FOOD
 	subcategory = CAT_SUSHI
 
-/datum/crafting_recipe/tai_maki
+/datum/crafting_recipe/Tai_maki
 	name = "Tai Maki Roll"
 	reqs = list(
 		/obj/item/food/boiledrice = 1,
@@ -272,7 +316,7 @@
 		/obj/item/stack/seaweed = 1,
 	)
 	pathtools = list(/obj/item/kitchen/sushimat)
-	result = list(/obj/item/food/sliceable/tai_maki)
+	result = list(/obj/item/food/sliceable/Tai_maki)
 	category = CAT_FOOD
 	subcategory = CAT_SUSHI
 

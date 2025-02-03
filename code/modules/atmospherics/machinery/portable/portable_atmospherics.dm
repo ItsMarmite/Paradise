@@ -41,6 +41,8 @@
 		air_contents.react()
 		return
 
+	update_icon()
+
 /obj/machinery/atmospherics/portable/Destroy()
 	SSair.atmos_machinery -= src
 	disconnect()
@@ -68,8 +70,6 @@
 
 	anchored = TRUE //Prevent movement
 
-	update_icon()
-
 	return TRUE
 
 /obj/machinery/atmospherics/portable/disconnect()
@@ -80,8 +80,6 @@
 
 	connected_port.connected_device = null
 	connected_port = null
-
-	update_icon()
 
 	return TRUE
 
@@ -120,8 +118,13 @@
 	update_icon()
 	return TRUE
 
+<<<<<<< HEAD
 /obj/machinery/atmospherics/portable/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	if(istype(used, /obj/item/tank))
+=======
+/obj/machinery/atmospherics/portable/attackby(obj/item/W, mob/user, params)
+	if(istype(W, /obj/item/tank))
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 		if(!(stat & BROKEN))
 			if(!user.drop_item())
 				return ITEM_INTERACT_COMPLETE
@@ -157,8 +160,13 @@
 		else
 			to_chat(user, "<span class='notice'>Nothing happens.</span>")
 
+<<<<<<< HEAD
 /obj/machinery/atmospherics/portable/attacked_by(obj/item/attacker, mob/living/user)
 	if(attacker.force < 10 && !(stat & BROKEN))
+=======
+/obj/machinery/atmospherics/portable/attacked_by(obj/item/I, mob/user)
+	if(I.force < 10 && !(stat & BROKEN))
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 		take_damage(0)
 	else
 		add_fingerprint(user)

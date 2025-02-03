@@ -102,7 +102,11 @@
 	if(charge_level > 0)
 		. += "smes-og[charge_level]"
 
+<<<<<<< HEAD
 /obj/machinery/power/smes/item_interaction(mob/living/user, obj/item/used, list/modifiers)
+=======
+/obj/machinery/power/smes/attackby(obj/item/I, mob/user, params)
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 	// Opening using screwdriver
 	if(default_deconstruction_screwdriver(user, "[initial(icon_state)]-o", initial(icon_state), used))
 		update_icon()

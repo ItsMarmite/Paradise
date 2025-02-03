@@ -76,8 +76,13 @@ Note: Must be placed west/left of and R&D console to function.
 		A = A / max(1, (being_built.materials[M] * efficiency_coeff))
 	return A
 
+<<<<<<< HEAD
 /obj/machinery/r_n_d/protolathe/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	if(istype(used, /obj/item/storage/part_replacer))
+=======
+/obj/machinery/r_n_d/protolathe/attackby(obj/item/O as obj, mob/user as mob, params)
+	if(istype(O, /obj/item/storage/part_replacer))
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 		return ..()
 
 	if(default_deconstruction_screwdriver(user, "protolathe_t", "protolathe", used))

@@ -43,7 +43,11 @@
 	to_chat(user, "<span class='warning'>The station AI is not to interact with these devices.</span>")
 	return
 
+<<<<<<< HEAD
 /obj/machinery/keycard_auth/item_interaction(mob/living/user, obj/item/used, list/modifiers)
+=======
+/obj/machinery/keycard_auth/attackby(obj/item/W, mob/user, params)
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 	if(stat & (NOPOWER|BROKEN))
 		to_chat(user, "This device is not powered.")
 		return ITEM_INTERACT_COMPLETE

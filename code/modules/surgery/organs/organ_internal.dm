@@ -204,14 +204,14 @@
 /obj/item/organ/internal/proc/render()
 	return
 
-/obj/item/organ/internal/attack__legacy__attackchain(mob/living/carbon/M, mob/user)
+/obj/item/organ/internal/attack(mob/living/carbon/M, mob/user)
 	if(M == user && ishuman(user))
 		var/mob/living/carbon/human/H = user
 		var/obj/item/food/S = prepare_eat()
 		if(S)
 			H.drop_item()
 			H.put_in_active_hand(S)
-			S.attack__legacy__attackchain(H, H)
+			S.attack(H, H)
 			qdel(src)
 	else
 		..()
@@ -319,8 +319,13 @@
 			var/mob/living/carbon/human/H = owner
 			if(isobj(H.shoes))
 				var/thingy = H.shoes
+<<<<<<< HEAD
 				if(H.drop_item_to_ground(H.shoes))
 					GLOB.move_manager.move_away(thingy, H, 15, 2)
+=======
+				if(H.unEquip(H.shoes))
+					walk_away(thingy,H,15,2)
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 					spawn(20)
 						if(thingy)
 							GLOB.move_manager.stop_looping(thingy)

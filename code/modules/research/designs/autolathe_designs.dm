@@ -404,7 +404,7 @@
 	id = "fixovein"
 	build_type = AUTOLATHE
 	materials = list(MAT_METAL = 5000, MAT_GLASS = 3000)
-	build_path = /obj/item/fix_o_vein
+	build_path = /obj/item/FixOVein
 	category = list("initial", "Medical")
 
 /datum/design/bonegel
@@ -548,7 +548,7 @@
 	id = "stethoscope"
 	build_type = AUTOLATHE
 	materials = list(MAT_METAL = 500)
-	build_path = /obj/item/clothing/neck/stethoscope
+	build_path = /obj/item/clothing/accessory/stethoscope
 	category = list("initial", "Medical")
 
 /datum/design/timer
@@ -769,14 +769,6 @@
 	build_path = /obj/item/ammo_casing/shotgun/incendiary
 	category = list("hacked", "Security")
 
-/datum/design/laser_slug
-	name = "Laser Slug"
-	id = "laser_slug"
-	build_type = AUTOLATHE
-	materials = list(MAT_METAL = 4000, MAT_GLASS = 4000) //Power comes at a price of 4000 glass
-	build_path = /obj/item/ammo_casing/shotgun/laserslug
-	category = list("hacked", "Security")
-
 /datum/design/buckshot
 	name = "Buckshot Shell"
 	id = "buckshot"
@@ -886,7 +878,7 @@
 	id = "desttagger"
 	build_type = AUTOLATHE
 	materials = list(MAT_METAL = 250, MAT_GLASS = 150)
-	build_path = /obj/item/dest_tagger
+	build_path = /obj/item/destTagger
 	category = list("initial", "Electronics")
 
 /datum/design/handlabeler

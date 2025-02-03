@@ -118,9 +118,8 @@
 				RegisterSignal(mod.wearer, COMSIG_ATOM_EXITED, PROC_REF(on_exit))
 				RegisterSignal(mod.wearer, COMSIG_MOB_WILLINGLY_DROP, PROC_REF(dropkey))
 			else
-				to_chat(mod.wearer, "<span class='warning'>You cannot extend [device]!</span>")
-				if(device.loc != src)
-					device.forceMove(src)
+				to_chat(mod.wearer, "<span class='warning'>You can not extend the [device]!</span>")
+				mod.wearer.drop_item()
 				return FALSE
 		else
 			var/used_button = "Middle Click"
@@ -148,7 +147,8 @@
 			to_chat(mod.wearer, "<span class='notice'>[src] deactivated.</span>")
 
 		if(device)
-			mod.wearer.transfer_item_to(device, src, force = TRUE)
+			mod.wearer.unEquip(device, 1)
+			device.forceMove(src)
 			UnregisterSignal(mod.wearer, COMSIG_ATOM_EXITED)
 			UnregisterSignal(mod.wearer, COMSIG_MOB_WILLINGLY_DROP)
 		else
@@ -304,9 +304,9 @@
 		return
 	var/image/final_overlay
 	if(sprite_sheets && sprite_sheets[user.dna.species.sprite_sheet_name])
-		final_overlay = image(icon = sprite_sheets[user.dna.species.sprite_sheet_name], icon_state = used_overlay, layer = -HEAD_LAYER + 0.1)
+		final_overlay = image(icon = sprite_sheets[user.dna.species.sprite_sheet_name], icon_state = used_overlay, layer = EFFECTS_LAYER)
 	else
-		final_overlay = image(icon = overlay_icon_file, icon_state = used_overlay, layer = -HEAD_LAYER + 0.1)
+		final_overlay = image(icon = overlay_icon_file, icon_state = used_overlay, layer = EFFECTS_LAYER)
 	if(mod_color_overide)
 		final_overlay.color = mod_color_overide
 	. += final_overlay
@@ -397,7 +397,7 @@
 		return FALSE
 	return TRUE
 
-/obj/item/mod/module/anomaly_locked/attackby__legacy__attackchain(obj/item/item, mob/living/user, params)
+/obj/item/mod/module/anomaly_locked/attackby(obj/item/item, mob/living/user, params)
 	if(item.type in accepted_anomalies)
 		if(core)
 			to_chat(user, "<span class='warning'>A core is already installed!</span>")

@@ -128,7 +128,8 @@
 	p.tiny = photocopy.tiny
 	p.img = photocopy.img
 	p.desc = photocopy.desc
-	p.scatter_atom()
+	p.pixel_x = rand(-10, 10)
+	p.pixel_y = rand(-10, 10)
 	if(photocopy.scribble)
 		p.scribble = photocopy.scribble
 	return p
@@ -169,7 +170,8 @@
 	else if(folder)
 		p.forceMove(folder)
 	p.desc = "You see [copymob]'s ass on the photo."
-	p.scatter_atom()
+	p.pixel_x = rand(-10, 10)
+	p.pixel_y = rand(-10, 10)
 	p.img = temp_img
 	var/icon/small_img = icon(temp_img) //Icon() is needed or else temp_img will be rescaled too >.>
 	var/icon/ic = icon('icons/obj/items.dmi',"photo")
@@ -218,7 +220,8 @@
 
 	P.icon_state = "paper_words"
 	P.name = bundle.name
-	P.scatter_atom()
+	P.pixel_y = rand(-8, 8)
+	P.pixel_x = rand(-9, 9)
 	return P
 
 /obj/machinery/photocopier/proc/remove_document()
@@ -474,8 +477,13 @@
 	use_power(active_power_consumption)
 	COOLDOWN_START(src, copying_cooldown, PHOTOCOPIER_DELAY)
 
+<<<<<<< HEAD
 /obj/machinery/photocopier/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	if(istype(used, /obj/item/paper) || istype(used, /obj/item/photo) || istype(used, /obj/item/paper_bundle))
+=======
+/obj/machinery/photocopier/attackby(obj/item/O, mob/user, params)
+	if(istype(O, /obj/item/paper) || istype(O, /obj/item/photo) || istype(O, /obj/item/paper_bundle))
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 		if(!copyitem)
 			user.drop_item()
 			copyitem = used

@@ -65,12 +65,21 @@
 /obj/machinery/computer/library/attack_ghost(mob/user)
 	ui_interact(user)
 
+<<<<<<< HEAD
 /obj/machinery/computer/library/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	if(istype(used, /obj/item/book))
 		select_book(used)
 		return ITEM_INTERACT_COMPLETE
 	if(istype(used, /obj/item/barcodescanner))
 		var/obj/item/barcodescanner/B = used
+=======
+/obj/machinery/computer/library/attackby(obj/item/O, mob/user, params)
+	if(istype(O, /obj/item/book))
+		select_book(O)
+		return
+	if(istype(O, /obj/item/barcodescanner))
+		var/obj/item/barcodescanner/B = O
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 		if(!B.connect(src))
 			playsound(src, 'sound/machines/synth_no.ogg', 15, TRUE)
 			to_chat(user, "<span class='warning'>ERROR: No Connection Established!</span>")

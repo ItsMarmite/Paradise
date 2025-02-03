@@ -66,11 +66,15 @@
 	qdel(O)
 
 // takes care of plant insertion and conversion to biomass, and start composting what was inserted
+<<<<<<< HEAD
 /obj/machinery/compost_bin/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	// TODO: This feels off, no where else do we have a blanket "print a
 	// message for any other kind of item interaction attempt" that's keyed to intent
 	// See if this can be made more sensible after everything's been migrated
 	// to the new attack chain
+=======
+/obj/machinery/compost_bin/attackby(obj/item/O, mob/user, params)
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 
@@ -106,9 +110,15 @@
 	if(istype(used, /obj/item/food/grown))
 		if(biomass >= biomass_capacity && potassium >= potassium_capacity)
 			to_chat(user, "<span class='warning'>[src] can't hold any more biomass, and its contents are saturated with potassium!</span>")
+<<<<<<< HEAD
 			return ITEM_INTERACT_COMPLETE
 		if(!user.drop_item_to_ground(used))
 			return ITEM_INTERACT_COMPLETE
+=======
+			return
+		if(!user.unEquip(O))
+			return
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 
 		used.forceMove(src)
 		make_biomass(used)

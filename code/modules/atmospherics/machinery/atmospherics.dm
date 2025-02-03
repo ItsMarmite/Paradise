@@ -256,7 +256,11 @@ Pipelines + Other Objects -> Pipe network
 	return FALSE
 
 //(De)construction
+<<<<<<< HEAD
 /obj/machinery/atmospherics/item_interaction(mob/living/user, obj/item/used, list/modifiers)
+=======
+/obj/machinery/atmospherics/attackby(obj/item/W, mob/user)
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 	var/turf/T = get_turf(src)
 	if(T.transparent_floor)
 		to_chat(user, "<span class='danger'>You can't interact with something that's under the floor!</span>")

@@ -49,8 +49,13 @@
 	..()
 	ActivationReaction(user,"touch")
 
+<<<<<<< HEAD
 /obj/machinery/anomalous_crystal/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	ActivationReaction(user, "weapon")
+=======
+/obj/machinery/anomalous_crystal/attackby(obj/item/I, mob/user, params)
+	ActivationReaction(user,"weapon")
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 	return ..()
 
 /obj/machinery/anomalous_crystal/bullet_act(obj/item/projectile/P, def_zone)

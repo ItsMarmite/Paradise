@@ -75,19 +75,12 @@ In my current plan for it, 'solid' will be defined as anything with density == 1
 /obj/effect/immovablerod/singularity_pull()
 	return
 
-/obj/effect/immovablerod/Move(turf/newloc, direction)
-	if(!istype(newloc))
-		return ..()
-
-	if(!direction)
-		direction = get_dir(src, newloc)
-	forceMove(newloc)
-	setDir(direction)
-
+/obj/effect/immovablerod/Bump(atom/clong)
 	if(prob(10))
 		playsound(src, 'sound/effects/bang.ogg', 50, TRUE)
 		audible_message("CLANG")
 
+<<<<<<< HEAD
 	clong_turf(newloc)
 	if(isnull(newloc))
 		// The turf is dead, long live the turf!
@@ -103,11 +96,17 @@ In my current plan for it, 'solid' will be defined as anything with density == 1
 		// Keep hitting stuff until there's nothing dense or we randomly go through it.
 		if(!hit_something_dense || prob(25))
 			break
+=======
+	if(clong && prob(25))
+		x = clong.x
+		y = clong.y
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 
-/obj/effect/immovablerod/proc/clong_turf(turf/victim)
-	if(!victim.density)
-		return
+	if(isturf(clong) || isobj(clong))
+		if(clong.density)
+			clong.ex_act(EXPLODE_HEAVY)
 
+<<<<<<< HEAD
 	if(iswallturf(victim))
 		var/turf/simulated/wall/W = victim
 		W.take_damage(rand(W.damage_cap * wall_damage_min_fraction, W.damage_cap * wall_damage_max_fraction))
@@ -120,12 +119,17 @@ In my current plan for it, 'solid' will be defined as anything with density == 1
 	else if(ismob(victim))
 		if(ishuman(victim))
 			var/mob/living/carbon/human/H = victim
+=======
+	else if(ismob(clong))
+		if(ishuman(clong))
+			var/mob/living/carbon/human/H = clong
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 			H.visible_message("<span class='danger'>[H.name] is penetrated by an immovable rod!</span>",
 				"<span class='userdanger'>The rod penetrates you!</span>",
 				"<span class ='danger'>You hear a CLANG!</span>")
 			H.adjustBruteLoss(160)
-		if(victim.density || prob(10))
-			victim.ex_act(EXPLODE_HEAVY)
+		if(clong.density || prob(10))
+			clong.ex_act(EXPLODE_HEAVY)
 
 /obj/effect/immovablerod/event
 	wall_damage_min_fraction = 0.33
@@ -137,10 +141,16 @@ In my current plan for it, 'solid' will be defined as anything with density == 1
 	var/floor_graze_chance = 50
 
 /obj/effect/immovablerod/event/Move()
+	var/atom/oldloc = loc
 	. = ..()
+	if(prob(floor_rip_chance))
+		var/turf/simulated/floor/T = get_turf(oldloc)
+		if(istype(T))
+			T.ex_act(EXPLODE_HEAVY)
 	if(loc == end)
 		qdel(src)
 
+<<<<<<< HEAD
 /obj/effect/immovablerod/event/clong_turf(turf/victim)
 	if(!isfloorturf(victim))
 		return ..()
@@ -151,6 +161,8 @@ In my current plan for it, 'solid' will be defined as anything with density == 1
 	else if(prob(floor_graze_chance))
 		T.ex_act(EXPLODE_LIGHT)
 
+=======
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 /obj/effect/immovablerod/deadchat_plays(mode = DEADCHAT_DEMOCRACY_MODE, cooldown = 6 SECONDS)
 	return AddComponent(/datum/component/deadchat_control/immovable_rod, mode, list(), cooldown)
 

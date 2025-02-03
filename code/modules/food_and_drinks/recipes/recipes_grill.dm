@@ -124,7 +124,7 @@
 	)
 	result = /obj/item/food/wingfangchu
 
-/datum/recipe/grill/human_kebab
+/datum/recipe/grill/human/kebab
 	items = list(
 		/obj/item/stack/rods,
 		/obj/item/food/meat/human,
@@ -172,95 +172,139 @@
 	being_cooked.reagents.del_reagent("carpotoxin")
 	return being_cooked
 
-/datum/recipe/grill/sushi_tamago
+/datum/recipe/grill/sushi_Tamago
 	reagents = list("sake" = 5)
 	items = list(
 		/obj/item/food/egg,
 		/obj/item/food/boiledrice,
 		/obj/item/stack/seaweed
 	)
+<<<<<<< HEAD
 	result = /obj/item/food/sliced/sushi_tamago
+=======
+	result = /obj/item/food/sushi_Tamago
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 
-/datum/recipe/grill/sushi_unagi
+/datum/recipe/grill/sushi_Unagi
 	reagents = list("sake" = 5)
 	items = list(
 		/obj/item/fish/electric_eel,
 		/obj/item/food/boiledrice,
 		/obj/item/stack/seaweed
 	)
-	result = /obj/item/food/sushi_unagi
+	result = /obj/item/food/sushi_Unagi
 
-/datum/recipe/grill/sushi_ebi
+/datum/recipe/grill/sushi_Ebi
 	items = list(
 		/obj/item/food/boiledrice,
 		/obj/item/food/boiled_shrimp,
 		/obj/item/stack/seaweed
 	)
+<<<<<<< HEAD
 	result = /obj/item/food/sliced/sushi_ebi
+=======
+	result = /obj/item/food/sushi_Ebi
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 
-/datum/recipe/grill/sushi_ikura
+/datum/recipe/grill/sushi_Ikura
 	items = list(
 		/obj/item/food/boiledrice,
 		/obj/item/fish_eggs/salmon,
 		/obj/item/stack/seaweed
 	)
+<<<<<<< HEAD
 	result = /obj/item/food/sliced/sushi_ikura
+=======
+	result = /obj/item/food/sushi_Ikura
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 
-/datum/recipe/grill/sushi_inari
+/datum/recipe/grill/sushi_Inari
 	items = list(
 		/obj/item/food/boiledrice,
 		/obj/item/food/fried_tofu,
 		/obj/item/stack/seaweed
 	)
+<<<<<<< HEAD
 	result = /obj/item/food/sliced/sushi_inari
+=======
+	result = /obj/item/food/sushi_Inari
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 
-/datum/recipe/grill/sushi_sake
+/datum/recipe/grill/sushi_Sake
 	items = list(
 		/obj/item/food/boiledrice,
 		/obj/item/food/salmonmeat,
 		/obj/item/stack/seaweed
 	)
+<<<<<<< HEAD
 	result = /obj/item/food/sliced/sushi_sake
+=======
+	result = /obj/item/food/sushi_Sake
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 
-/datum/recipe/grill/sushi_smoked_salmon
+/datum/recipe/grill/sushi_SmokedSalmon
 	items = list(
 		/obj/item/food/boiledrice,
 		/obj/item/food/salmonsteak,
 		/obj/item/stack/seaweed
 	)
+<<<<<<< HEAD
 	result = /obj/item/food/sliced/sushi_smoked_salmon
+=======
+	result = /obj/item/food/sushi_SmokedSalmon
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 
-/datum/recipe/grill/sushi_masago
+/datum/recipe/grill/sushi_Masago
 	items = list(
 		/obj/item/food/boiledrice,
 		/obj/item/fish_eggs/goldfish,
 		/obj/item/stack/seaweed
 	)
+<<<<<<< HEAD
 	result = /obj/item/food/sliced/sushi_masago
+=======
+	result = /obj/item/food/sushi_Masago
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 
-/datum/recipe/grill/sushi_tobiko
+/datum/recipe/grill/sushi_Tobiko
 	items = list(
 		/obj/item/food/boiledrice,
 		/obj/item/fish_eggs/shark,
 		/obj/item/stack/seaweed
 	)
+<<<<<<< HEAD
 	result = /obj/item/food/sliced/sushi_tobiko
+=======
+	result = /obj/item/food/sushi_Tobiko
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 
-/datum/recipe/grill/sushi_tobiko_egg
+/datum/recipe/grill/sushi_TobikoEgg
 	items = list(
+<<<<<<< HEAD
 		/obj/item/food/sliced/sushi_tobiko,
 		/obj/item/food/egg,
 		/obj/item/stack/seaweed
 	)
 	result = /obj/item/food/sliced/sushi_tobiko_egg
+=======
+		/obj/item/food/sushi_Tobiko,
+		/obj/item/food/egg,
+		/obj/item/stack/seaweed
+	)
+	result = /obj/item/food/sushi_TobikoEgg
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 
-/datum/recipe/grill/sushi_tai
+/datum/recipe/grill/sushi_Tai
 	items = list(
 		/obj/item/food/boiledrice,
 		/obj/item/food/catfishmeat,
 		/obj/item/stack/seaweed
 	)
+<<<<<<< HEAD
 	result = /obj/item/food/sliced/sushi_tai
+=======
+	result = /obj/item/food/sushi_Tai
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 
 /datum/recipe/grill/goliath
 	items = list(/obj/item/food/monstermeat/goliath)

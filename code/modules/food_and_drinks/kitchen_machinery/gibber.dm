@@ -93,9 +93,15 @@
 
 	startgibbing(user)
 
+<<<<<<< HEAD
 /obj/machinery/gibber/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	if(istype(used, /obj/item/grab))
 		var/obj/item/grab/G = used
+=======
+/obj/machinery/gibber/attackby(obj/item/P, mob/user, params)
+	if(istype(P, /obj/item/grab))
+		var/obj/item/grab/G = P
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 		if(G.state < 2)
 			to_chat(user, "<span class='danger'>You need a better grip to do that!</span>")
 			return ITEM_INTERACT_COMPLETE
@@ -402,14 +408,16 @@
 				continue
 		if(O.flags & NODROP || stealthmode)
 			qdel(O) //they are already dead by now
-		H.transfer_item_to(O, loc)
+		H.unEquip(O)
+		O.loc = loc
 		O.throw_at(get_edge_target_turf(src, gib_throw_dir), rand(1, 5), 15)
 		sleep(1)
 
 	for(var/obj/item/clothing/C in H)
 		if(C.flags & NODROP || stealthmode)
 			qdel(C)
-		H.transfer_item_to(C, loc)
+		H.unEquip(C)
+		C.loc = loc
 		C.throw_at(get_edge_target_turf(src, gib_throw_dir), rand(1, 5), 15)
 		sleep(1)
 

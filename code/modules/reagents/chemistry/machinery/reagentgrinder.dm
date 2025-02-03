@@ -157,9 +157,15 @@
 		return
 	default_unfasten_wrench(user, I)
 
+<<<<<<< HEAD
 /obj/machinery/reagentgrinder/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	if(istype(used, /obj/item/storage/part_replacer))
 		. = ..()
+=======
+/obj/machinery/reagentgrinder/attackby(obj/item/I, mob/user, params)
+	if(istype(I, /obj/item/storage/part_replacer))
+		..()
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 		SStgui.update_uis(src)
 		return ITEM_INTERACT_COMPLETE
 

@@ -188,7 +188,11 @@
 		return P
 	return 0
 
+<<<<<<< HEAD
 /obj/machinery/processor/item_interaction(mob/living/user, obj/item/used, list/modifiers)
+=======
+/obj/machinery/processor/attackby(obj/item/O, mob/user, params)
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 	if(processing)
 		to_chat(user, "<span class='warning'>\the [src] is already processing something!</span>")
 		return ITEM_INTERACT_COMPLETE

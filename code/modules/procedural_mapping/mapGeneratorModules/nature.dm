@@ -3,18 +3,18 @@
 
 
 //Pine Trees
-/datum/map_generator_module/pine_trees
+/datum/mapGeneratorModule/pineTrees
 	spawnableAtoms = list(/obj/structure/flora/tree/pine = 30)
 
 //Dead Trees
-/datum/map_generator_module/dead_trees
+/datum/mapGeneratorModule/deadTrees
 	spawnableAtoms = list(/obj/structure/flora/tree/dead = 10)
 
 //Random assortment of bushes
-/datum/map_generator_module/rand_bushes
+/datum/mapGeneratorModule/randBushes
 	spawnableAtoms = list()
 
-/datum/map_generator_module/rand_bushes/New()
+/datum/mapGeneratorModule/randBushes/New()
 	..()
 	spawnableAtoms = typesof(/obj/structure/flora/ausbushes)
 	for(var/i in spawnableAtoms)
@@ -22,16 +22,16 @@
 
 
 //Random assortment of rocks and rockpiles
-/datum/map_generator_module/rand_rocks
+/datum/mapGeneratorModule/randRocks
 	spawnableAtoms = list(/obj/structure/flora/rock = 40, /obj/structure/flora/rock/pile = 20)
 
 
 //Grass turfs
-/datum/map_generator_module/bottom_layer/grass_turfs
+/datum/mapGeneratorModule/bottomLayer/grassTurfs
 	spawnableTurfs = list(/turf/simulated/floor/grass = 100)
 
 
 //Grass tufts with a high spawn chance
-/datum/map_generator_module/dense_layer/grass_tufts
+/datum/mapGeneratorModule/denseLayer/grassTufts
 	spawnableTurfs = list()
 	spawnableAtoms = list(/obj/structure/flora/ausbushes/grassybush = 75)

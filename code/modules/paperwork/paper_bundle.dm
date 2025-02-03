@@ -15,7 +15,6 @@
 	var/screen = 0
 	drop_sound = 'sound/items/handling/paper_drop.ogg'
 	pickup_sound =  'sound/items/handling/paper_pickup.ogg'
-	scatter_distance = 8
 
 /obj/item/paper_bundle/New(default_papers = TRUE)
 	. = ..()
@@ -24,7 +23,7 @@
 		new /obj/item/paper(src)
 		amount += 1
 
-/obj/item/paper_bundle/attackby__legacy__attackchain(obj/item/W as obj, mob/user as mob, params)
+/obj/item/paper_bundle/attackby(obj/item/W as obj, mob/user as mob, params)
 	..()
 	var/obj/item/paper/P
 	if(istype(W, /obj/item/paper))
@@ -40,7 +39,8 @@
 		if(screen == 2)
 			screen = 1
 		to_chat(user, "<span class='notice'>You add [(P.name == "paper") ? "the paper" : P.name] to [(src.name == "paper bundle") ? "the paper bundle" : src.name].</span>")
-		user.transfer_item_to(P, src)
+		user.unEquip(P)
+		P.loc = src
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
 			H.update_inv_l_hand()
@@ -52,12 +52,14 @@
 		if(screen == 2)
 			screen = 1
 		to_chat(user, "<span class='notice'>You add [(W.name == "photo") ? "the photo" : W.name] to [(src.name == "paper bundle") ? "the paper bundle" : src.name].</span>")
-		user.transfer_item_to(W, src)
+		user.unEquip(W)
+		W.loc = src
 
 	else if(W.get_heat())
 		burnpaper(W, user)
 
 	else if(istype(W, /obj/item/paper_bundle))
+		user.unEquip(W)
 		for(var/obj/O in W)
 			O.loc = src
 			O.add_fingerprint(usr)
@@ -71,7 +73,7 @@
 		if(is_pen(W) || istype(W, /obj/item/toy/crayon))
 			usr << browse("", "window=PaperBundle[UID()]") //Closes the dialog
 		P = get_page()
-		P.attackby__legacy__attackchain(W, user, params)
+		P.attackby(W, user, params)
 
 	update_icon()
 
@@ -87,6 +89,8 @@
 		return
 	user.visible_message("<span class='[class]'>[user] burns right through [src], turning it to ash. It flutters through the air before settling on the floor in a heap.</span>", \
 	"<span class='[class]'>You burn right through [src], turning it to ash. It flutters through the air before settling on the floor in a heap.</span>")
+
+	user.unEquip(src)
 
 	new /obj/effect/decal/cleanable/ash(get_turf(src))
 	qdel(src)
@@ -129,7 +133,7 @@
 		+ "[P.scribble ? "<div><br> Written on the back:<br><i>[P.scribble]</i>" : ""]"\
 		+ "</body></html>", "window=PaperBundle[UID()]")
 
-/obj/item/paper_bundle/attack_self__legacy__attackchain(mob/user as mob)
+/obj/item/paper_bundle/attack_self(mob/user as mob)
 	show_content(user)
 	add_fingerprint(usr)
 
@@ -163,7 +167,7 @@
 			to_chat(usr, "<span class='notice'>You remove [W] from the bundle.</span>")
 			if(amount == 1)
 				var/obj/item/paper/P = get_page(1)
-				usr.unequip(src)
+				usr.unEquip(src)
 				usr.put_in_hands(P)
 				usr.unset_machine() // Ensure the bundle GCs
 				for(var/obj/O in src) // just in case we somehow lose something (it's happened, especially with photos)
@@ -185,7 +189,7 @@
 	else
 		to_chat(usr, "<span class='notice'>You need to hold it in your hands to change pages.</span>")
 	if(ismob(loc))
-		attack_self__legacy__attackchain(loc)
+		attack_self(loc)
 
 /obj/item/paper_bundle/AltClick(mob/user)
 	if(in_range(user, src) && !user.incapacitated())
@@ -214,6 +218,7 @@
 		O.plane = initial(O.plane)
 		O.add_fingerprint(user)
 
+	user.unEquip(src)
 	qdel(src)
 
 /obj/item/paper_bundle/update_desc()

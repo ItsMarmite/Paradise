@@ -1,6 +1,6 @@
 
-/datum/map_generator_module
-	var/datum/map_generator/mother = null
+/datum/mapGeneratorModule
+	var/datum/mapGenerator/mother = null
 	var/list/spawnableAtoms = list()
 	var/list/spawnableTurfs = list()
 	var/clusterMax = 5
@@ -10,14 +10,14 @@
 
 
 //Syncs the module up with it's mother
-/datum/map_generator_module/proc/sync(datum/map_generator/mum)
+/datum/mapGeneratorModule/proc/sync(datum/mapGenerator/mum)
 	mother = null
 	if(mum)
 		mother = mum
 
 
 //Generates it's spawnable atoms and turfs
-/datum/map_generator_module/proc/generate()
+/datum/mapGeneratorModule/proc/generate()
 	if(!mother)
 		return
 	var/list/map = mother.map
@@ -26,7 +26,7 @@
 
 
 //Place a spawnable atom or turf on this turf
-/datum/map_generator_module/proc/place(turf/T)
+/datum/mapGeneratorModule/proc/place(turf/T)
 	if(!T)
 		return 0
 
@@ -103,7 +103,7 @@
 
 
 //Checks and Rejects dense turfs
-/datum/map_generator_module/proc/checkPlaceAtom(turf/T)
+/datum/mapGeneratorModule/proc/checkPlaceAtom(turf/T)
 	. = 1
 	if(!T)
 		return 0
@@ -127,19 +127,19 @@
 
 //Settings appropriate for a turf that covers the entire map region, eg a fill colour on a bottom layer in a graphics program.
 //Should only have one of these in your mapGenerator unless you want to waste CPU
-/datum/map_generator_module/bottom_layer
+/datum/mapGeneratorModule/bottomLayer
 	clusterCheckFlags = MAP_GENERATOR_CLUSTER_CHECK_NONE
 	spawnableAtoms = list()//Recommended: No atoms.
 	spawnableTurfs = list(/turf = 100)
 
 //Settings appropriate for turfs/atoms that cover SOME of the map region, sometimes referred to as a splatter layer.
-/datum/map_generator_module/splatter_layer
+/datum/mapGeneratorModule/splatterLayer
 	clusterCheckFlags = MAP_GENERATOR_CLUSTER_CHECK_ALL
 	spawnableAtoms = list(/atom = 30)
 	spawnableTurfs = list(/turf = 30)
 
 //Settings appropriate for turfs/atoms that cover a lot of the map region, eg a dense forest.
-/datum/map_generator_module/dense_layer
+/datum/mapGeneratorModule/denseLayer
 	clusterCheckFlags = MAP_GENERATOR_CLUSTER_CHECK_NONE
 	spawnableAtoms = list(/atom = 75)
 	spawnableTurfs = list(/turf = 75)

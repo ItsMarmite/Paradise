@@ -84,8 +84,3 @@
 	name = "Chinese Supply Crate"
 	contains = list(/obj/item/vending_refill/chinese)
 	containername = "chinese supply crate"
-
-/datum/supply_packs/vending/trainer
-	name = "TrainDrobe Supply Crate"
-	contains = list(/obj/item/vending_refill/traindrobe)
-	containername = "traindrobe supply crate"

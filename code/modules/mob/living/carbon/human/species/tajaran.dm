@@ -56,7 +56,5 @@
 		)
 	autohiss_exempt = list("Siik'tajr")
 
-	plushie_type = /obj/item/toy/plushie/grey_cat
-
 /datum/species/tajaran/handle_death(gibbed, mob/living/carbon/human/H)
 	H.stop_tail_wagging()

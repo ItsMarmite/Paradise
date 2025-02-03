@@ -29,8 +29,13 @@
 	. = ..()
 	create_reagents(500)
 
+<<<<<<< HEAD
 /obj/machinery/icemachine/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	if(istype(used, /obj/item/reagent_containers/glass))
+=======
+/obj/machinery/icemachine/attackby(obj/item/I, mob/user, params)
+	if(istype(I, /obj/item/reagent_containers/glass))
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 		if(beaker)
 			to_chat(user, "<span class='notice'>A container is already inside [src].</span>")
 			return ITEM_INTERACT_COMPLETE

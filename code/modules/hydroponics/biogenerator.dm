@@ -102,11 +102,15 @@
 /obj/machinery/biogenerator/crowbar_act(mob/living/user, obj/item/I)
 	return default_deconstruction_crowbar(user, I)
 
+<<<<<<< HEAD
 /obj/machinery/biogenerator/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	// TODO: This feels off, no where else do we have a blanket "print a
 	// message for any other kind of item interaction attempt" that's keyed to intent
 	// See if this can be made more sensible after everything's been migrated
 	// to the new attack chain
+=======
+/obj/machinery/biogenerator/attackby(obj/item/O, mob/user, params)
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 
@@ -160,9 +164,15 @@
 	else if(is_type_in_typecache(used, acceptable_items))
 		if(length(stored_plants) >= max_storable_plants)
 			to_chat(user, "<span class='warning'>[src] can't hold any more plants!</span>")
+<<<<<<< HEAD
 			return ITEM_INTERACT_COMPLETE
 		if(!user.drop_item_to_ground(used))
 			return ITEM_INTERACT_COMPLETE
+=======
+			return
+		if(!user.unEquip(O))
+			return
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 
 		used.forceMove(src)
 		stored_plants += used

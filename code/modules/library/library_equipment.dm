@@ -32,7 +32,7 @@
 			I.forceMove(src)
 	update_icon(UPDATE_OVERLAYS)
 
-/obj/structure/bookcase/attackby__legacy__attackchain(obj/item/O, mob/user)
+/obj/structure/bookcase/attackby(obj/item/O, mob/user)
 	if(is_type_in_list(O, allowed_books))
 		if(!user.drop_item())
 			return
@@ -199,6 +199,7 @@
 	ui_interact(user)
 
 
+<<<<<<< HEAD
 /obj/machinery/bookbinder/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	if(istype(used, /obj/item/paper))
 		select_paper(used)
@@ -211,6 +212,17 @@
 		return ITEM_INTERACT_COMPLETE
 	if(default_unfasten_wrench(user, used, time = 60))
 		return ITEM_INTERACT_COMPLETE
+=======
+/obj/machinery/bookbinder/attackby(obj/item/I, mob/user)
+	if(istype(I, /obj/item/paper))
+		select_paper(I)
+	if(istype(I, /obj/item/paper_bundle))
+		select_paper_stack(I)
+	if(istype(I, /obj/item/book))
+		select_book(I)
+	if(default_unfasten_wrench(user, I, time = 60))
+		return
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 
 	return ..()
 
@@ -356,7 +368,7 @@
 	var/obj/machinery/computer/library/computer
 	var/mode = BARCODE_MODE_SCAN_SELECT
 
-/obj/item/barcodescanner/attack_self__legacy__attackchain(mob/user)
+/obj/item/barcodescanner/attack_self(mob/user)
 	if(!check_connection(user))
 		return
 	mode++

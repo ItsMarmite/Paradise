@@ -71,7 +71,11 @@
 *   Item Adding
 ********************/
 
+<<<<<<< HEAD
 /obj/machinery/kitchen_machine/item_interaction(mob/living/user, obj/item/used, list/modifiers)
+=======
+/obj/machinery/kitchen_machine/attackby(obj/item/O, mob/user, params)
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 	if(operating)
 		return ITEM_INTERACT_COMPLETE
 
@@ -121,6 +125,7 @@
 
 		for(var/datum/reagent/R in used.reagents.reagent_list)
 			if(!(R.id in GLOB.cooking_reagents[recipe_type]))
+<<<<<<< HEAD
 				to_chat(user, "<span class='alert'>Your [used.name] contains components unsuitable for cookery.</span>")
 				return ITEM_INTERACT_COMPLETE
 		return ..()
@@ -149,6 +154,13 @@
 
 	else if(istype(used, /obj/item/grab))
 		var/obj/item/grab/G = used
+=======
+				to_chat(user, "<span class='alert'>Your [O] contains components unsuitable for cookery.</span>")
+				return TRUE
+
+	else if(istype(O, /obj/item/grab))
+		var/obj/item/grab/G = O
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 		if(HAS_TRAIT(user, TRAIT_PACIFISM))
 			to_chat(user, "<span class='danger'>Slamming [G.affecting] into [src] might hurt them!</span>")
 			return ITEM_INTERACT_COMPLETE

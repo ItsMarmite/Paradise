@@ -43,8 +43,13 @@
 	if(in_range(user, src) || isobserver(user))
 		. += "<span class='notice'>The status display reads: Power generation at <b>[input_power_multiplier*100]%</b>.<br>Shock interval at <b>[zap_cooldown*0.1]</b> seconds.</span>"
 
+<<<<<<< HEAD
 /obj/machinery/power/tesla_coil/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	if(istype(used, /obj/item/assembly/signaler) && panel_open)
+=======
+/obj/machinery/power/tesla_coil/attackby(obj/item/W, mob/user, params)
+	if(istype(W, /obj/item/assembly/signaler) && panel_open)
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 		wires.Interact(user)
 		return ITEM_INTERACT_COMPLETE
 
@@ -130,11 +135,17 @@
 	component_parts += new /obj/item/stock_parts/capacitor(null)
 	RefreshParts()
 
+<<<<<<< HEAD
 /obj/machinery/power/grounding_rod/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	if(exchange_parts(user, used))
 		return ITEM_INTERACT_COMPLETE
 
 	return ..()
+=======
+/obj/machinery/power/grounding_rod/attackby(obj/item/W, mob/user, params)
+	if(exchange_parts(user, W))
+		return
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 
 /obj/machinery/power/grounding_rod/screwdriver_act(mob/user, obj/item/I)
 	. = TRUE

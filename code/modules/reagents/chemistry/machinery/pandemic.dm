@@ -82,7 +82,8 @@
 /obj/machinery/computer/pandemic/proc/create_culture(name, bottle_type = "culture", cooldown = 50)
 	var/obj/item/reagent_containers/glass/bottle/B = new/obj/item/reagent_containers/glass/bottle(loc)
 	B.icon_state = "bottle"
-	B.scatter_atom()
+	B.pixel_x = rand(-3, 3)
+	B.pixel_y = rand(-3, 3)
 	replicator_cooldown(cooldown)
 	B.name = "[name] [bottle_type] bottle"
 	return B
@@ -383,8 +384,13 @@
 /obj/machinery/computer/pandemic/attack_ghost(mob/user)
 	ui_interact(user)
 
+<<<<<<< HEAD
 /obj/machinery/computer/pandemic/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	if(default_unfasten_wrench(user, used, time = 4 SECONDS))
+=======
+/obj/machinery/computer/pandemic/attackby(obj/item/I, mob/user, params)
+	if(default_unfasten_wrench(user, I, time = 4 SECONDS))
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 		power_change()
 		return
 	if((istype(used, /obj/item/reagent_containers) && (used.container_type & OPENCONTAINER)) && user.a_intent != INTENT_HARM)

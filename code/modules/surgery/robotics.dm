@@ -609,7 +609,7 @@
 
 	var/obj/item/mmi/M = tool
 
-	user.drop_item_to_ground(tool)
+	user.unEquip(tool)
 	M.attempt_become_organ(affected,target)
 	return ..()
 

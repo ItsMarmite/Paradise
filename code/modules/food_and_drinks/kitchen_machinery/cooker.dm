@@ -160,7 +160,8 @@
 		oil.name = "fat"
 		oil.desc = "Uh oh, looks like some fat from [src]!"
 		oil.loc = location
-		location.hotspot_expose(700, 1)
+		location.hotspot_expose(700, 50, 1)
+		//TODO have a chance of setting the tile on fire
 
 /obj/machinery/cooker/proc/changename(obj/item/name, obj/item/setme)
 	setme.name = "[thiscooktype] [name.name]"
@@ -179,7 +180,11 @@
 	var/obj/item/food/type = new(get_turf(src))
 	return type
 
+<<<<<<< HEAD
 /obj/machinery/cooker/item_interaction(mob/living/user, obj/item/used, list/modifiers)
+=======
+/obj/machinery/cooker/attackby(obj/item/I, mob/user, params)
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 	if(upgradeable)
 	//Not all cooker types currently support build/upgrade stuff, so not all of it will work well with this
 	//Until we decide whether or not we want to bring back the cereal maker or old grill/oven in some form, this initial check will have to suffice

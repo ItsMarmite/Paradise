@@ -210,7 +210,7 @@
 	ADD_TRAIT(adult.mind, TRAIT_XENOBIO_SPAWNED_HUMAN, ROUNDSTART_TRAIT)
 
 	for(var/obj/item/W in contents)
-		drop_item_to_ground(W)
+		unEquip(W)
 
 	qdel(src)
 	return TRUE

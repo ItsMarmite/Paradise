@@ -13,11 +13,19 @@
 	var/mode = LABEL_MODE_OFF
 	new_attack_chain = TRUE
 
+<<<<<<< HEAD
 /obj/item/hand_labeler/examine(mob/user)
 	. = ..()
 	. += "<span class='notice'>There [labels_left == 1 ? "is" : "are"] [labels_left] label\s remaining.</span>"
 	if(label)
 		. += "<span class='notice'>The label is currently set to \"[label]\".</span>"
+=======
+/obj/item/hand_labeler/afterattack(atom/A, mob/user, proximity)
+	if(!proximity)
+		return
+	if(mode == LABEL_MODE_OFF)	//if it's off, give up.
+		return
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 
 /obj/item/hand_labeler/interact_with_atom(atom/target, mob/living/user, list/modifiers)
 	if(!mode == LABEL_MODE_OFF)
@@ -63,10 +71,14 @@
 	playsound(target, 'sound/items/handling/component_pickup.ogg', 20, TRUE)
 	labels_left--
 
+<<<<<<< HEAD
 /obj/item/hand_labeler/activate_self(mob/user)
 	if(..())
 		return
 
+=======
+/obj/item/hand_labeler/attack_self(mob/user as mob)
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 	// off -> normal
 	// normal or goal -> off
 	mode = !mode
@@ -83,12 +95,18 @@
 	else
 		to_chat(user, "<span class='notice'>You turn off \the [src].</span>")
 
+<<<<<<< HEAD
 /obj/item/hand_labeler/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	if(..())
 		return ITEM_INTERACT_COMPLETE
 
 	if(istype(used, /obj/item/hand_labeler_refill))
 		to_chat(user, "<span class='notice'>You insert [used] into [src].</span>")
+=======
+/obj/item/hand_labeler/attackby(obj/item/I, mob/user, params)
+	if(istype(I, /obj/item/hand_labeler_refill))
+		to_chat(user, "<span class='notice'>You insert [I] into [src].</span>")
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 		user.drop_item()
 		qdel(used)
 		labels_left = initial(labels_left)	//Yes, it's capped at its initial value

@@ -65,8 +65,14 @@
 	else
 		disconnect_from_network()
 
+<<<<<<< HEAD
 /obj/machinery/power/rad_collector/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	if(istype(used, /obj/item/tank/internals/plasma))
+=======
+
+/obj/machinery/power/rad_collector/attackby(obj/item/I, mob/user, params)
+	if(istype(I, /obj/item/tank/internals/plasma))
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 		if(!anchored)
 			to_chat(user, "<span class='warning'>[src] needs to be secured to the floor first.</span>")
 			return ITEM_INTERACT_COMPLETE

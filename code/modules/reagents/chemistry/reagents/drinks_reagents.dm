@@ -538,7 +538,7 @@
 	drink_desc = "Made with real grapes! Shocking!"
 	taste_description = "grape soda"
 
-/datum/reagent/consumable/drink/icecoco
+/datum/reagent/consumable/drink/coco/icecoco
 	name = "Iced Cocoa"
 	id = "icecoco"
 	description = "Hot cocoa and ice, refreshing and cool."

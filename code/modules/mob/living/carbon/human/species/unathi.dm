@@ -62,8 +62,6 @@
 		)
 	autohiss_exempt = list("Sinta'unathi")
 
-	plushie_type = /obj/item/toy/plushie/lizardplushie
-
 /datum/species/unathi/on_species_gain(mob/living/carbon/human/H)
 	..()
 	var/datum/action/innate/unathi_ignite/fire = new()

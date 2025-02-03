@@ -20,7 +20,7 @@
 	if(!original_seed)
 		return FALSE
 
-	if(user && !user.drop_item_to_ground(source_item, silent = TRUE)) //couldn't drop the item
+	if(user && !user.unEquip(source_item, silent = TRUE)) //couldn't drop the item
 		return FALSE
 
 	if(seed_count == -1)
@@ -74,9 +74,15 @@
 	for(var/obj/item/stock_parts/manipulator/M in component_parts)
 		seed_multiplier = M.rating
 
+<<<<<<< HEAD
 /obj/machinery/seed_extractor/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	if(default_deconstruction_screwdriver(user, "sextractor_open", "sextractor", used))
 		return ITEM_INTERACT_COMPLETE
+=======
+/obj/machinery/seed_extractor/attackby(obj/item/O, mob/user, params)
+	if(default_deconstruction_screwdriver(user, "sextractor_open", "sextractor", O))
+		return
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 
 	if(default_unfasten_wrench(user, used, time = 4 SECONDS))
 		return ITEM_INTERACT_COMPLETE

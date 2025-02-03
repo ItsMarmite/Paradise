@@ -123,10 +123,16 @@
 	QDEL_NULL(myseed)
 	return ..()
 
+<<<<<<< HEAD
 /obj/machinery/hydroponics/constructable/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	if(default_deconstruction_screwdriver(user, "hydrotray3", "hydrotray3", used))
 		return ITEM_INTERACT_COMPLETE
 
+=======
+/obj/machinery/hydroponics/constructable/attackby(obj/item/I, mob/user, params)
+	if(default_deconstruction_screwdriver(user, "hydrotray3", "hydrotray3", I))
+		return
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 	return ..()
 
 /obj/machinery/hydroponics/constructable/crowbar_act(mob/user, obj/item/I)
@@ -769,10 +775,17 @@
 	to_chat(user, message.Join(""))
 	doping_chem = new_chem
 
+<<<<<<< HEAD
 /obj/machinery/hydroponics/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	//Called when mob user "attacks" it with object `used`
 	if(istype(used, /obj/item/reagent_containers))  // Syringe stuff (and other reagent containers now too)
 		var/obj/item/reagent_containers/reagent_source = used
+=======
+/obj/machinery/hydroponics/attackby(obj/item/O, mob/user, params)
+	//Called when mob user "attacks" it with object O
+	if(istype(O, /obj/item/reagent_containers))  // Syringe stuff (and other reagent containers now too)
+		var/obj/item/reagent_containers/reagent_source = O
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 		var/target = myseed ? myseed.plantname : src
 
 		if(istype(reagent_source, /obj/item/reagent_containers/syringe))
@@ -830,8 +843,13 @@
 		if(!myseed)
 			if(istype(used, /obj/item/seeds/kudzu))
 				investigate_log("had Kudzu planted in it by [key_name(user)] at ([x],[y],[z])","kudzu")
+<<<<<<< HEAD
 			user.unequip(used)
 			to_chat(user, "<span class='notice'>You plant [used].</span>")
+=======
+			user.unEquip(O)
+			to_chat(user, "<span class='notice'>You plant [O].</span>")
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 			dead = FALSE
 			myseed = used
 			age = 1
@@ -859,12 +877,22 @@
 			to_chat(user, "<span class='warning'>This plot is completely devoid of weeds! It doesn't need uprooting.</span>")
 		return ITEM_INTERACT_COMPLETE
 
+<<<<<<< HEAD
 	else if(istype(used, /obj/item/storage/bag/plants))
 		if(!harvest)
 			attack_hand(user)
 			return ITEM_INTERACT_COMPLETE
 
 		myseed.harvest(user, used)
+=======
+	else if(istype(O, /obj/item/storage/bag/plants))
+		attack_hand(user)
+		var/obj/item/storage/bag/plants/S = O
+		for(var/obj/item/food/grown/G in locate(user.x,user.y,user.z))
+			if(!S.can_be_inserted(G))
+				return
+			S.handle_item_insertion(G, user, TRUE)
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 
 		return ITEM_INTERACT_COMPLETE
 
@@ -996,7 +1024,7 @@
 	update_state()
 
 ///Diona Nymph Related Procs///
-/obj/machinery/hydroponics/CanPass(atom/movable/mover, border_dir) //So nymphs can climb over top of trays.
+/obj/machinery/hydroponics/CanPass(atom/movable/mover, turf/target) //So nymphs can climb over top of trays.
 	if(istype(mover) && mover.checkpass(PASSTABLE))
 		return 1
 	else
@@ -1035,8 +1063,13 @@
 /obj/machinery/hydroponics/soil/update_icon_lights()
 	return // Has no lights
 
+<<<<<<< HEAD
 /obj/machinery/hydroponics/soil/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	if(istype(used, /obj/item/shovel) && !istype(used, /obj/item/shovel/spade)) //Doesn't include spades because of uprooting plants
+=======
+/obj/machinery/hydroponics/soil/attackby(obj/item/O, mob/user, params)
+	if(istype(O, /obj/item/shovel) && !istype(O, /obj/item/shovel/spade)) //Doesn't include spades because of uprooting plants
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 		to_chat(user, "<span class='notice'>You clear up [src]!</span>")
 		qdel(src)
 		return ITEM_INTERACT_COMPLETE

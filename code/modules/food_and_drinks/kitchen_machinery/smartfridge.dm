@@ -177,8 +177,13 @@
 		return TRUE
 	return ..()
 
+<<<<<<< HEAD
 /obj/machinery/smartfridge/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	if(istype(used, /obj/item/storage/part_replacer))
+=======
+/obj/machinery/smartfridge/attackby(obj/item/O, mob/user)
+	if(istype(O, /obj/item/storage/part_replacer))
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 		. = ..()
 		SStgui.update_uis(src)
 		return
@@ -360,14 +365,12 @@
 			else if(ismob(I.loc))
 				var/mob/M = I.loc
 				if(M.get_active_hand() == I)
-					if(M.transfer_item_to(I, src))
-						// TODO: Use COMSIG_ATOM_ENTERED/EXITED to update item quantities
-						// instead of having to fiddle with the values everywhere
-						item_quants[I.name] += 1
-						return TRUE
-					else
+					if(!M.drop_item())
 						to_chat(user, "<span class='warning'>\The [I] is stuck to you!</span>")
 						return FALSE
+				else
+					M.unEquip(I)
+				I.forceMove(src)
 			else
 				I.forceMove(src)
 
@@ -612,7 +615,7 @@
 /obj/machinery/smartfridge/secure/circuits/Initialize(mapload)
 	. = ..()
 	accepted_items_typecache = typecacheof(list(
-		/obj/item/ai_module,
+		/obj/item/aiModule,
 		/obj/item/circuitboard
 	))
 
@@ -642,13 +645,13 @@
 /obj/machinery/smartfridge/secure/circuits/aiupload/experimental
 	name = "\improper Experimental Laws Storage"
 	starting_items = list(
-		/obj/item/ai_module/cctv = 1,
-		/obj/item/ai_module/hippocratic = 1,
-		/obj/item/ai_module/maintain = 1,
-		/obj/item/ai_module/paladin = 1,
-		/obj/item/ai_module/peacekeeper = 1,
-		/obj/item/ai_module/quarantine = 1,
-		/obj/item/ai_module/robocop = 1
+		/obj/item/aiModule/cctv = 1,
+		/obj/item/aiModule/hippocratic = 1,
+		/obj/item/aiModule/maintain = 1,
+		/obj/item/aiModule/paladin = 1,
+		/obj/item/aiModule/peacekeeper = 1,
+		/obj/item/aiModule/quarantine = 1,
+		/obj/item/aiModule/robocop = 1
 	)
 
 /obj/machinery/smartfridge/secure/circuits/aiupload/experimental/Initialize(mapload)
@@ -658,13 +661,13 @@
 /obj/machinery/smartfridge/secure/circuits/aiupload/highrisk
 	name = "\improper High-Risk Laws Storage"
 	starting_items = list(
-		/obj/item/ai_module/freeform = 1,
-		/obj/item/ai_module/freeformcore = 1,
-		/obj/item/ai_module/nanotrasen_aggressive = 1,
-		/obj/item/ai_module/one_crew_member = 1,
-		/obj/item/ai_module/protect_station = 1,
-		/obj/item/ai_module/purge = 1,
-		/obj/item/ai_module/tyrant = 1
+		/obj/item/aiModule/freeform = 1,
+		/obj/item/aiModule/freeformcore = 1,
+		/obj/item/aiModule/nanotrasen_aggressive = 1,
+		/obj/item/aiModule/oneCrewMember = 1,
+		/obj/item/aiModule/protectStation = 1,
+		/obj/item/aiModule/purge = 1,
+		/obj/item/aiModule/tyrant = 1
 	)
 
 /obj/machinery/smartfridge/secure/circuits/aiupload/highrisk/Initialize(mapload)

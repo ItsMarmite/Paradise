@@ -114,8 +114,13 @@
 		return
 	update_icon()
 
+<<<<<<< HEAD
 /obj/machinery/chem_master/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	if(istype(used, /obj/item/storage/part_replacer))
+=======
+/obj/machinery/chem_master/attackby(obj/item/I, mob/user, params)
+	if(istype(I, /obj/item/storage/part_replacer))
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 		return ..()
 
 	if(panel_open)
@@ -575,7 +580,8 @@
 		var/obj/item/reagent_containers/P = new item_type(location)
 		if(!isnull(medicine_name))
 			P.name = "[medicine_name][name_suffix]"
-		P.scatter_atom()
+		P.pixel_x = rand(-7, 7) // Random position
+		P.pixel_y = rand(-7, 7)
 		configure_item(data, reagents, P)
 		reagents.trans_to(P, amount_per_item)
 

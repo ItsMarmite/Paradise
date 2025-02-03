@@ -1,9 +1,6 @@
 /mob/living/carbon/Life(seconds, times_fired)
 	set invisibility = 0
 
-	if(flags & ABSTRACT)
-		return
-
 	if(notransform)
 		return
 
@@ -58,11 +55,7 @@
 
 /datum/milla_safe/carbon_breathe/on_run(mob/living/carbon/carbon)
 	var/turf/T = get_turf(carbon)
-	if(istype(T))
-		carbon.breathe(get_turf_air(T))
-	else
-		var/datum/gas_mixture/vacuum = new()
-		carbon.breathe(vacuum)
+	carbon.breathe(get_turf_air(T))
 
 //Second link in a breath chain, calls check_breath()
 /mob/living/carbon/proc/breathe(datum/gas_mixture/environment)

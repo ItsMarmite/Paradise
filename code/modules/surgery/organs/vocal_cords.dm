@@ -166,8 +166,13 @@ GLOBAL_DATUM_INIT(multispin_words, /regex, regex("like a record baby"))
 				var/mob/living/carbon/human/H = L
 				if(H.check_ear_prot() >= HEARING_PROTECTION_TOTAL)
 					continue
+<<<<<<< HEAD
 			if(istype(L, /mob/camera/eye/ai))
 				var/mob/camera/eye/ai/ai_eye = L
+=======
+			if(istype(L, /mob/camera/aiEye))
+				var/mob/camera/aiEye/ai_eye = L
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 				if(ai_eye.relay_speech && ai_eye.ai)
 					listeners += ai_eye.ai
 			else
@@ -500,7 +505,7 @@ GLOBAL_DATUM_INIT(multispin_words, /regex, regex("like a record baby"))
 	desc = "They carry the voice of an ancient god. This one is enchanted to implant it into yourself when used in hand."
 	var/has_implanted = FALSE
 
-/obj/item/organ/internal/vocal_cords/colossus/wizard/attack_self__legacy__attackchain(mob/living/user)
+/obj/item/organ/internal/vocal_cords/colossus/wizard/attack_self(mob/living/user)
 	if(has_implanted)
 		return
 	user.drop_item()

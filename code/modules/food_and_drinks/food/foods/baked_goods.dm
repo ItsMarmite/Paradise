@@ -79,7 +79,7 @@
 	goal_difficulty = FOOD_GOAL_EASY
 
 /obj/item/food/sliceable/plaincake
-	name = "plain cake"
+	name = "vanilla cake"
 	desc = "A plain cake, not a lie."
 	icon = 'icons/obj/food/bakedgoods.dmi'
 	icon_state = "plaincake"
@@ -91,8 +91,13 @@
 	tastes = list("cake" = 5, "vanilla" = 1, "sweetness" = 2)
 	goal_difficulty = FOOD_GOAL_DUPLICATE
 
+<<<<<<< HEAD
 /obj/item/food/sliced/plain_cake
 	name = "plain cake slice"
+=======
+/obj/item/food/plaincakeslice
+	name = "vanilla cake slice"
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 	desc = "Just a slice of cake, it is enough for everyone."
 	icon = 'icons/obj/food/bakedgoods.dmi'
 	icon_state = "plaincake_slice"

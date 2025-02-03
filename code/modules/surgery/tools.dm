@@ -57,7 +57,7 @@
 	attack_verb = list("burnt")
 	tool_behaviour = TOOL_CAUTERY
 
-/obj/item/cautery/attack__legacy__attackchain(mob/living/target, mob/living/user)
+/obj/item/cautery/attack(mob/living/target, mob/living/user)
 	if(!cigarette_lighter_act(user, target))
 		return ..()
 
@@ -169,7 +169,7 @@
 	damtype = "fire"
 	hitsound = 'sound/weapons/sear.ogg'
 
-/obj/item/scalpel/laser/attack__legacy__attackchain(mob/living/carbon/target, mob/living/user)
+/obj/item/scalpel/laser/attack(mob/living/carbon/target, mob/living/user)
 	if(!cigarette_lighter_act(user, target))
 		return ..()
 
@@ -274,7 +274,7 @@
 /obj/item/bonegel/augment
 	toolspeed = 0.5
 
-/obj/item/fix_o_vein
+/obj/item/FixOVein
 	name = "FixOVein"
 	desc = "An advanced medical device which uses an array of manipulators to reconnect and repair ruptured blood vessels."
 	icon = 'icons/obj/surgery.dmi'
@@ -287,11 +287,11 @@
 	w_class = WEIGHT_CLASS_SMALL
 	tool_behaviour = TOOL_FIXOVEIN
 
-/obj/item/fix_o_vein/Initialize(mapload)
+/obj/item/FixOVein/Initialize(mapload)
 	. = ..()
 	ADD_TRAIT(src, TRAIT_SURGICAL, ROUNDSTART_TRAIT)
 
-/obj/item/fix_o_vein/augment
+/obj/item/FixOVein/augment
 	toolspeed = 0.5
 
 /obj/item/bonesetter

@@ -146,8 +146,13 @@
 	if(!anchored)
 		step(src, get_dir(M, src))
 
+<<<<<<< HEAD
 /obj/machinery/power/emitter/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	if(!istype(used, /obj/item/card/id) && !istype(used, /obj/item/pda))
+=======
+/obj/machinery/power/emitter/attackby(obj/item/I, mob/user, params)
+	if(!istype(I, /obj/item/card/id) && !istype(I, /obj/item/pda))
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 		return ..()
 
 	if(emagged)

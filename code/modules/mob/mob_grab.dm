@@ -254,7 +254,7 @@
 	adjust_position()
 
 
-/obj/item/grab/attack_self__legacy__attackchain(mob/user)
+/obj/item/grab/attack_self(mob/user)
 	s_click(hud)
 
 //Updating pixelshift, position and direction
@@ -377,7 +377,7 @@
 	return 1
 
 
-/obj/item/grab/attack__legacy__attackchain(mob/living/M, mob/living/carbon/user)
+/obj/item/grab/attack(mob/living/M, mob/living/carbon/user)
 	if(!affecting)
 		return
 

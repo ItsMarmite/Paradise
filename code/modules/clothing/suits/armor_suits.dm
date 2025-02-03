@@ -52,9 +52,9 @@
 	item_state = "armor"
 	var/obj/item/clothing/accessory/holobadge/attached_badge
 
-/obj/item/clothing/suit/armor/vest/security/attackby__legacy__attackchain(obj/item/I, mob/user, params)
+/obj/item/clothing/suit/armor/vest/security/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/clothing/accessory/holobadge))
-		if(user.drop_item_to_ground(I))
+		if(user.unEquip(I))
 			add_fingerprint(user)
 			I.forceMove(src)
 			attached_badge = I
@@ -67,7 +67,7 @@
 		return
 	..()
 
-/obj/item/clothing/suit/armor/vest/security/attack_self__legacy__attackchain(mob/user)
+/obj/item/clothing/suit/armor/vest/security/attack_self(mob/user)
 	if(attached_badge)
 		add_fingerprint(user)
 		user.put_in_hands(attached_badge)
@@ -418,7 +418,7 @@
 /obj/item/clothing/suit/armor/reactive/Initialize(mapload, ...)
 	. = ..()
 	cell = new(src)
-	AddElement(/datum/element/high_value_item)
+	RegisterSignal(src, COMSIG_PARENT_QDELETING, PROC_REF(alert_admins_on_destroy))
 
 /obj/item/clothing/suit/armor/reactive/Destroy()
 	QDEL_NULL(cell)
@@ -437,7 +437,7 @@
 	. += "Outside of the strange effects caused by the anomaly core, the armor provides no protection against conventional attacks. \
 	Nanotrasen cannot be held liable for injury and/or death due to misuse or proper operation of the reactive armor."
 
-/obj/item/clothing/suit/armor/reactive/attack_self__legacy__attackchain(mob/user)
+/obj/item/clothing/suit/armor/reactive/attack_self(mob/user)
 	active = !(active)
 	if(disabled)
 		to_chat(user, "<span class='warning'>[src] is disabled and rebooting!</span>")
@@ -683,15 +683,15 @@
 		disable(rand(2, 5))
 		return TRUE
 
-/obj/effect/spawner/reactive_armor
+/// Spawner for random reactive armor
+/obj/item/clothing/suit/armor/reactive/random
 	name = "Random Reactive Armor"
-	icon = 'icons/obj/clothing/suits.dmi'
-	icon_state = "reactiveoff"
 
-/obj/effect/spawner/reactive_armor/Initialize(mapload)
+/obj/item/clothing/suit/armor/reactive/random/Initialize(mapload)
 	. = ..()
-	var/spawnpath = pick(subtypesof(/obj/item/clothing/suit/armor/reactive))
+	var/spawnpath = pick(subtypesof(/obj/item/clothing/suit/armor/reactive) - /obj/item/clothing/suit/armor/reactive/random)
 	new spawnpath(loc)
+	UnregisterSignal(src, COMSIG_PARENT_QDELETING)
 	return INITIALIZE_HINT_QDEL
 
 //All of the armor below is mostly unused

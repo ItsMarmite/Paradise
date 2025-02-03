@@ -46,14 +46,24 @@
 	QDEL_NULL(announcer)
 	return ..()
 
+<<<<<<< HEAD
 /obj/machinery/mineral/labor_prisoner_shuttle_console/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	if(istype(used, /obj/item/card/id/prisoner))
+=======
+/obj/machinery/mineral/labor_prisoner_shuttle_console/attackby(obj/item/I, mob/user, params)
+	if(istype(I, /obj/item/card/id/prisoner))
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 		if(inserted_id_uid)
 			to_chat(user, "<span class='notice'>There's an ID inserted already.</span>")
 			return ITEM_INTERACT_COMPLETE
 
+<<<<<<< HEAD
 		if(!user.drop_item_to_ground(used))
 			return ITEM_INTERACT_COMPLETE
+=======
+		if(!user.unEquip(I))
+			return
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 
 		used.forceMove(src)
 		inserted_id_uid = used.UID()
@@ -109,7 +119,7 @@
 
 			var/obj/item/I = ui.user.get_active_hand()
 			if(istype(I, /obj/item/card/id/prisoner))
-				if(!ui.user.drop_item_to_ground(I))
+				if(!ui.user.unEquip(I))
 					return
 				I.forceMove(src)
 				inserted_id_uid = I.UID()
@@ -173,9 +183,15 @@
 		return
 	user.examinate(src)
 
+<<<<<<< HEAD
 /obj/machinery/mineral/labor_points_checker/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	if(istype(used, /obj/item/card/id/prisoner))
 		var/obj/item/card/id/prisoner/prisoner_id = used
+=======
+/obj/machinery/mineral/labor_points_checker/attackby(obj/item/I, mob/user, params)
+	if(istype(I, /obj/item/card/id/prisoner))
+		var/obj/item/card/id/prisoner/prisoner_id = I
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 		if(!prisoner_id.goal)
 			to_chat(user, "<span class='warning'>Error: No point quota assigned by security, exiting.</span>")
 			return ITEM_INTERACT_COMPLETE

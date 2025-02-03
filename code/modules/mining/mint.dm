@@ -122,8 +122,13 @@
 		if("ejectBag")
 			eject_bag(usr)
 
+<<<<<<< HEAD
 /obj/machinery/mineral/mint/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	if(istype(used, /obj/item/storage/bag/money))
+=======
+/obj/machinery/mineral/mint/attackby(obj/item/I, mob/user, params)
+	if(istype(I, /obj/item/storage/bag/money))
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 		if(money_bag)
 			to_chat(user, "<span class='notice'>There is already a [money_bag.name] inside!</span>")
 			return ITEM_INTERACT_COMPLETE

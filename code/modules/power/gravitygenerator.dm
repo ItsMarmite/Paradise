@@ -152,7 +152,11 @@ GLOBAL_LIST_EMPTY(gravity_generators)
 	update_icon()
 
 // Step 2
+<<<<<<< HEAD
 /obj/machinery/gravity_generator/main/item_interaction(mob/living/user, obj/item/used, list/modifiers)
+=======
+/obj/machinery/gravity_generator/main/attackby(obj/item/I, mob/user, params)
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 	if(construction_state != GRAV_NEEDS_PLASTEEL)
 		return ..()
 

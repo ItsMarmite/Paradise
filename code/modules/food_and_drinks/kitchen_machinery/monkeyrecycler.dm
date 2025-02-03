@@ -54,9 +54,15 @@ GLOBAL_LIST_EMPTY(monkey_recyclers)
 	cube_production = cubes_made
 	required_grind = req_grind
 
+<<<<<<< HEAD
 /obj/machinery/monkey_recycler/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	if(default_deconstruction_screwdriver(user, "grinder_open", "grinder", used))
 		return ITEM_INTERACT_COMPLETE
+=======
+/obj/machinery/monkey_recycler/attackby(obj/item/O, mob/user, params)
+	if(default_deconstruction_screwdriver(user, "grinder_open", "grinder", O))
+		return
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 
 	if(istype(used, /obj/item/storage/part_replacer))
 		return ..()

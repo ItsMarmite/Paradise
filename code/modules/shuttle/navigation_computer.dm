@@ -55,8 +55,13 @@
 		shuttle_port = null
 		return
 
+<<<<<<< HEAD
 	eyeobj = new /mob/camera/eye/shuttle_docker(get_turf(locate("landmark*Observer-Start")), name, src, current_user) // There should always be an observer start landmark
 	var/mob/camera/eye/shuttle_docker/the_eye = eyeobj
+=======
+	eyeobj = new /mob/camera/aiEye/remote/shuttle_docker(get_turf(locate("landmark*Observer-Start")), src) // There should always be an observer start landmark
+	var/mob/camera/aiEye/remote/shuttle_docker/the_eye = eyeobj
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 	the_eye.setDir(shuttle_port.dir)
 	var/turf/origin = locate(shuttle_port.x + x_offset, shuttle_port.y + y_offset, shuttle_port.z)
 	for(var/V in shuttle_port.shuttle_areas)
@@ -77,7 +82,11 @@
 /obj/machinery/computer/camera_advanced/shuttle_docker/give_eye_control(mob/user)
 	..()
 	if(!QDELETED(user) && user.client)
+<<<<<<< HEAD
 		var/mob/camera/eye/shuttle_docker/the_eye = eyeobj
+=======
+		var/mob/camera/aiEye/remote/shuttle_docker/the_eye = eyeobj
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 		var/list/to_add = list()
 		to_add += the_eye.placement_images
 		to_add += the_eye.placed_images
@@ -90,7 +99,11 @@
 /obj/machinery/computer/camera_advanced/shuttle_docker/remove_eye_control(mob/living/user)
 	..()
 	if(!QDELETED(user) && user.client)
+<<<<<<< HEAD
 		var/mob/camera/eye/shuttle_docker/the_eye = eyeobj
+=======
+		var/mob/camera/aiEye/remote/shuttle_docker/the_eye = eyeobj
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 		var/list/to_remove = list()
 		to_remove += the_eye.placement_images
 		to_remove += the_eye.placed_images
@@ -104,8 +117,13 @@
 	if(designating_target_loc || !current_user)
 		return
 
+<<<<<<< HEAD
 	var/mob/camera/eye/shuttle_docker/the_eye = eyeobj
 	var/landing_clear = check_landing_spot()
+=======
+	var/mob/camera/aiEye/remote/shuttle_docker/the_eye = eyeobj
+	var/landing_clear = checkLandingSpot()
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 	if(designate_time && (landing_clear != SHUTTLE_DOCKER_BLOCKED))
 		to_chat(current_user, "<span class='warning'>Targeting transit location, please wait [DisplayTimeText(designate_time)]...</span>")
 		designating_target_loc = the_eye.loc
@@ -163,7 +181,11 @@
 	return TRUE
 
 /obj/machinery/computer/camera_advanced/shuttle_docker/proc/rotateLandingSpot()
+<<<<<<< HEAD
 	var/mob/camera/eye/shuttle_docker/the_eye = eyeobj
+=======
+	var/mob/camera/aiEye/remote/shuttle_docker/the_eye = eyeobj
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 	var/list/image_cache = the_eye.placement_images
 	the_eye.setDir(turn(the_eye.dir, -90))
 	for(var/i in 1 to length(image_cache))
@@ -178,8 +200,13 @@
 	y_offset = -Tmp
 	check_landing_spot()
 
+<<<<<<< HEAD
 /obj/machinery/computer/camera_advanced/shuttle_docker/proc/check_landing_spot()
 	var/mob/camera/eye/shuttle_docker/the_eye = eyeobj
+=======
+/obj/machinery/computer/camera_advanced/shuttle_docker/proc/checkLandingSpot()
+	var/mob/camera/aiEye/remote/shuttle_docker/the_eye = eyeobj
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 	var/turf/eyeturf = get_turf(the_eye)
 	if(!eyeturf)
 		return SHUTTLE_DOCKER_BLOCKED
@@ -254,6 +281,37 @@
 	if(dock)
 		jumpto_ports[dock.id] = TRUE
 
+<<<<<<< HEAD
+=======
+/mob/camera/aiEye/remote/shuttle_docker
+	visible_icon = FALSE
+	use_static = FALSE
+	simulated = FALSE
+	// The Shuttle Docker does not trigger the AI Detector
+	ai_detector_visible = FALSE
+	var/list/placement_images = list()
+	var/list/placed_images = list()
+
+/mob/camera/aiEye/remote/shuttle_docker/Initialize(mapload, obj/machinery/computer/camera_advanced/origin)
+	src.origin = origin
+	return ..()
+
+/mob/camera/aiEye/remote/shuttle_docker/setLoc(T)
+	if(isspaceturf(get_turf(T)) || isspacearea(get_area(T)) || istype(get_area(T), /area/shuttle))
+		..()
+		var/obj/machinery/computer/camera_advanced/shuttle_docker/console = origin
+		console.checkLandingSpot()
+		return
+	else
+		return
+
+/mob/camera/aiEye/remote/shuttle_docker/update_remote_sight(mob/living/user)
+	user.sight = SEE_TURFS
+
+	..()
+	return TRUE
+
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 /datum/action/innate/shuttledocker_rotate
 	name = "Rotate"
 	button_overlay_icon = 'icons/mob/actions/actions_mecha.dmi'
@@ -263,7 +321,11 @@
 	if(QDELETED(target) || !isliving(target))
 		return
 	var/mob/living/C = target
+<<<<<<< HEAD
 	var/mob/camera/eye/remote_eye = C.remote_control
+=======
+	var/mob/camera/aiEye/remote/remote_eye = C.remote_control
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 	var/obj/machinery/computer/camera_advanced/shuttle_docker/origin = remote_eye.origin
 	origin.rotateLandingSpot()
 
@@ -276,7 +338,11 @@
 	if(QDELETED(target) || !isliving(target))
 		return
 	var/mob/living/C = target
+<<<<<<< HEAD
 	var/mob/camera/eye/remote_eye = C.remote_control
+=======
+	var/mob/camera/aiEye/remote/remote_eye = C.remote_control
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 	var/obj/machinery/computer/camera_advanced/shuttle_docker/origin = remote_eye.origin
 	origin.placeLandingSpot(target)
 
@@ -288,7 +354,11 @@
 	if(QDELETED(target) || !isliving(target))
 		return
 	var/mob/living/C = target
+<<<<<<< HEAD
 	var/mob/camera/eye/remote_eye = C.remote_control
+=======
+	var/mob/camera/aiEye/remote/remote_eye = C.remote_control
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 	var/obj/machinery/computer/camera_advanced/shuttle_docker/console = remote_eye.origin
 
 	playsound(console, 'sound/machines/terminal_prompt_deny.ogg', 25, 0)

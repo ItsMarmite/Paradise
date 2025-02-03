@@ -1,3 +1,0 @@
-help: "Use a subtype instead of /area."
-=/area:
-  banned: true

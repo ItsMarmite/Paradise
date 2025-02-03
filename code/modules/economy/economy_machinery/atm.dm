@@ -77,8 +77,13 @@
 /obj/machinery/economy/atm/attack_ghost(mob/user)
 	ui_interact(user)
 
+<<<<<<< HEAD
 /obj/machinery/economy/atm/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	if(istype(used, /obj/item/card/id))
+=======
+/obj/machinery/economy/atm/attackby(obj/item/I, mob/user)
+	if(istype(I, /obj/item/card/id))
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 		if(has_power())
 			handle_id_insert(used, user)
 			return ITEM_INTERACT_COMPLETE
@@ -313,11 +318,10 @@
 
 /obj/machinery/economy/atm/cmag_act(mob/user)
 	if(HAS_TRAIT(src, TRAIT_CMAGGED))
-		return FALSE
+		return
 	playsound(src, "sparks", 75, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 	to_chat(user, "<span class='warning'>Yellow ooze seeps into the [src]'s card slot...</span>")
 	ADD_TRAIT(src, TRAIT_CMAGGED, CLOWN_EMAG)
-	return TRUE
 
 /obj/machinery/economy/atm/examine(mob/user)
 	. = ..()

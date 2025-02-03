@@ -43,5 +43,3 @@
 		"is twisting their own neck!",
 		"makes like a fish and suffocates!",
 		"is strangling themselves with their own tendrils!")
-
-	plushie_type = /obj/item/toy/plushie/skrellplushie

@@ -74,8 +74,13 @@ using metal and glass, it uses glass and reagents (usually sulfuric acis).
 
 	return round(A / max(1, (all_materials[M] * efficiency_coeff)))
 
+<<<<<<< HEAD
 /obj/machinery/r_n_d/circuit_imprinter/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	if(istype(used, /obj/item/storage/part_replacer))
+=======
+/obj/machinery/r_n_d/circuit_imprinter/attackby(obj/item/O as obj, mob/user as mob, params)
+	if(istype(O, /obj/item/storage/part_replacer))
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 		return ..()
 
 	if(panel_open)

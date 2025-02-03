@@ -55,6 +55,7 @@
 	list_reagents = list("nutriment" = 4, "vitamin" = 1, "cheese" = 5)
 	tastes = list("cheese" = 1)
 
+<<<<<<< HEAD
 /obj/item/food/sliceable/cheesewheel/smoked
 	name = "smoked cheese wheel"
 	desc = "A wheel of fancy imported-style smoked cheese."
@@ -122,6 +123,9 @@
 	tastes = list("mild cheese" = 3, "gooeyness" = 1)
 
 /obj/item/food/sliced/cheesewedge/checkpass(passflag)
+=======
+/obj/item/food/cheesewedge/checkpass(passflag)
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 	if((passflag & PASSDOOR) && ismouse(pulledby))
 		return TRUE
 	return ..()
@@ -191,7 +195,7 @@
 	tastes = list("dough" = 1)
 
 // Dough + rolling pin = flat dough
-/obj/item/food/dough/attackby__legacy__attackchain(obj/item/I, mob/user, params)
+/obj/item/food/dough/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/kitchen/rollingpin))
 		if(isturf(loc))
 			new /obj/item/food/sliceable/flatdough(loc)
@@ -246,7 +250,7 @@
 		icon_state = "cookiedough"
 
 // Dough + rolling pin = flat cookie dough // Flat dough + circular cutter = unbaked cookies
-/obj/item/food/cookiedough/attackby__legacy__attackchain(obj/item/I, mob/user, params)
+/obj/item/food/cookiedough/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/kitchen/rollingpin) && !flat)
 		if(isturf(loc))
 			to_chat(user, "<span class='notice'>You flatten [src].</span>")
@@ -272,7 +276,7 @@
 	icon_state = "unbaked_cookies"
 	list_reagents = list("nutriment" = 5, "sugar" = 5)
 
-/obj/item/food/rawcookies/attackby__legacy__attackchain(obj/item/I, mob/user, params)
+/obj/item/food/rawcookies/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/food/choc_pile))
 		if(isturf(loc))
 			new /obj/item/food/rawcookies/chocochips(loc)
@@ -306,7 +310,7 @@
 	goal_difficulty = FOOD_GOAL_EASY
 
 ///Chocolate crumbles/pile
-/obj/item/food/chocolatebar/attackby__legacy__attackchain(obj/item/I, mob/user, params)
+/obj/item/food/chocolatebar/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/kitchen/knife))
 		if(isturf(loc))
 			new /obj/item/food/choc_pile(loc)

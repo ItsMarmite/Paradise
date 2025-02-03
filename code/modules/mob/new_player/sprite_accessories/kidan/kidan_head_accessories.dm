@@ -38,11 +38,11 @@
 
 // Sprites by Travelling Merchant
 
-/datum/sprite_accessory/head_accessory/kidan/kidan_mantie_long
+/datum/sprite_accessory/head_accessory/kidan/kidan_Mantie_Long
 	name = "Mantie Long"
 	icon_state = "Mantie_Long"
 
-/datum/sprite_accessory/head_accessory/kidan/kidan_mantie_curled
+/datum/sprite_accessory/head_accessory/kidan/kidan_Mantie_Curled
 	name = "Mantie Curled"
 	icon_state = "Mantie_Curled"
 

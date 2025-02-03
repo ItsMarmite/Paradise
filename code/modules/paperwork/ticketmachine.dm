@@ -118,8 +118,13 @@
 			maptext_x = 8
 	maptext = "<font face='Small Fonts'>[ticket_number]</font>"
 
+<<<<<<< HEAD
 /obj/machinery/ticket_machine/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	if(istype(used, /obj/item/hand_labeler_refill))
+=======
+/obj/machinery/ticket_machine/attackby(obj/item/I, mob/user, params)
+	if(istype(I, /obj/item/hand_labeler_refill))
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 		if(!(ticket_number >= max_number))
 			to_chat(user, "<span class='notice'>[src] refuses [used]! There [max_number-ticket_number==1 ? "is" : "are"] still [max_number-ticket_number] ticket\s left!</span>")
 			return ITEM_INTERACT_COMPLETE
@@ -215,7 +220,7 @@
 	. = ..()
 	maptext = saved_maptext //For some reason, storage code removes all maptext off objs, this stops its number from being wiped off when taken out of storage.
 
-/obj/item/ticket_machine_ticket/attackby__legacy__attackchain(obj/item/P, mob/living/carbon/human/user, params) //Stolen from papercode
+/obj/item/ticket_machine_ticket/attackby(obj/item/P, mob/living/carbon/human/user, params) //Stolen from papercode
 	..()
 	if(P.get_heat())
 		if(HAS_TRAIT(user, TRAIT_CLUMSY) && prob(10))

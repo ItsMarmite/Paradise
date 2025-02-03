@@ -191,9 +191,15 @@
 		emagged = TRUE
 		return TRUE
 
+<<<<<<< HEAD
 /obj/machinery/power/port_gen/pacman/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	if(istype(used, sheet_path))
 		var/obj/item/stack/addstack = used
+=======
+/obj/machinery/power/port_gen/pacman/attackby(obj/item/O as obj, mob/user as mob)
+	if(istype(O, sheet_path))
+		var/obj/item/stack/addstack = O
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 		var/amount = min((max_sheets - sheets), addstack.amount)
 		if(amount < 1)
 			to_chat(user, "<span class='notice'>[src] is full!</span>")

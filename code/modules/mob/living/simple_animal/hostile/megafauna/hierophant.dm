@@ -470,7 +470,7 @@ Difficulty: Hard
 
 /mob/living/simple_animal/hostile/megafauna/hierophant/devour(mob/living/L)
 	for(var/obj/item/W in L)
-		if(!L.drop_item_to_ground(W))
+		if(!L.unEquip(W))
 			qdel(W)
 	visible_message("<span class='hierophant_warning'>\"[pick(kill_phrases)]\"</span>")
 	visible_message("<span class='hierophant_warning'>[src] annihilates [L]!</span>","<span class='userdanger'>You annihilate [L], restoring your health!</span>")
@@ -600,7 +600,7 @@ Difficulty: Hard
 		QUEUE_SMOOTH_NEIGHBORS(src)
 	return ..()
 
-/obj/effect/temp_visual/hierophant/wall/CanPass(atom/movable/mover, border_dir)
+/obj/effect/temp_visual/hierophant/wall/CanPass(atom/movable/mover, turf/target)
 	if(QDELETED(caster))
 		return FALSE
 	if(mover == caster.pulledby)
@@ -721,10 +721,6 @@ Difficulty: Hard
 		var/turf/simulated/mineral/M = loc
 		M.gets_drilled(caster)
 	INVOKE_ASYNC(src, PROC_REF(blast))
-	var/static/list/loc_connections = list(
-		COMSIG_ATOM_ENTERED = PROC_REF(on_atom_entered)
-	)
-	AddElement(/datum/element/connect_loc, loc_connections)
 
 /obj/effect/temp_visual/hierophant/blast/proc/blast()
 	var/turf/T = get_turf(src)
@@ -737,6 +733,7 @@ Difficulty: Hard
 	sleep(1.3) //slightly forgiving; the burst animation is 1.5 deciseconds
 	bursting = FALSE //we no longer damage crossers
 
+<<<<<<< HEAD
 /obj/effect/temp_visual/hierophant/blast/proc/on_atom_entered(datum/source, atom/movable/entered)
 	if(!bursting)
 		return
@@ -788,6 +785,12 @@ Difficulty: Hard
 		to_chat(target.occupant, "<span class='userdanger'>Your [target.name] is struck by \a [name]!</span>")
 	playsound(target, 'sound/weapons/sear.ogg', 50, TRUE, -4)
 	target.take_damage(damage, BURN, 0, 0)
+=======
+/obj/effect/temp_visual/hierophant/blast/Crossed(atom/movable/AM)
+	..()
+	if(bursting)
+		do_damage(get_turf(src))
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 
 /obj/effect/temp_visual/hierophant/blast/proc/do_damage(turf/T)
 	if(!damage)
@@ -809,7 +812,7 @@ Difficulty: Hard
 /obj/effect/hierophant/ex_act()
 	return
 
-/obj/effect/hierophant/attackby__legacy__attackchain(obj/item/I, mob/user, params)
+/obj/effect/hierophant/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/hierophant_club))
 		var/obj/item/hierophant_club/H = I
 		if(H.timer > world.time)

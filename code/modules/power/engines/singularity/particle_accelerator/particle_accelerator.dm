@@ -164,7 +164,7 @@ So, hopefully this is helpful if any more icons are to be added/changed/wonderin
 			return 1
 	return 0
 
-/obj/structure/particle_accelerator/attackby__legacy__attackchain(obj/item/W, mob/user, params)
+/obj/structure/particle_accelerator/attackby(obj/item/W, mob/user, params)
 	if(!iscoil(W))
 		return ..()
 	if(construction_state == ACCELERATOR_WRENCHED)
@@ -241,8 +241,13 @@ So, hopefully this is helpful if any more icons are to be added/changed/wonderin
 		return
 	dir = turn(dir, 270)
 
+<<<<<<< HEAD
 /obj/machinery/particle_accelerator/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	if(!iscoil(used))
+=======
+/obj/machinery/particle_accelerator/attackby(obj/item/W, mob/user, params)
+	if(!iscoil(W))
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 		return ..()
 	if(construction_state == ACCELERATOR_WRENCHED)
 		var/obj/item/stack/cable_coil/C = used

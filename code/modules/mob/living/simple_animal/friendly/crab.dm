@@ -36,7 +36,7 @@
 	return TRUE
 
 //COFFEE! SQUEEEEEEEEE!
-/mob/living/simple_animal/crab/coffee
+/mob/living/simple_animal/crab/Coffee
 	name = "Coffee"
 	real_name = "Coffee"
 	desc = "It's Coffee, the other pet!"

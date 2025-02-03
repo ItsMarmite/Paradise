@@ -170,12 +170,8 @@
 	. = ..()
 	if(prob(50))
 		icon_state = "stickyweb2"
-	var/static/list/loc_connections = list(
-		COMSIG_ATOM_ENTERED = PROC_REF(on_atom_entered)
-	)
-	AddElement(/datum/element/connect_loc, loc_connections)
 
-/obj/structure/spider/terrorweb/CanPass(atom/movable/mover, border_dir)
+/obj/structure/spider/terrorweb/CanPass(atom/movable/mover, turf/target)
 	if(isterrorspider(mover))
 		return TRUE
 	if(istype(mover, /obj/item/projectile/terrorqueenspit))
@@ -189,9 +185,10 @@
 		return prob(20)
 	return ..()
 
-/obj/structure/spider/terrorweb/proc/on_atom_entered(datum/source, atom/movable/entered)
-	if(isliving(entered) && !isterrorspider(entered))
-		var/mob/living/M = entered
+/obj/structure/spider/terrorweb/Crossed(atom/movable/AM, oldloc)
+	..()
+	if(isliving(AM) && !isterrorspider(AM))
+		var/mob/living/M = AM
 		to_chat(M, "<span class='userdanger'>You get stuck in [src] for a moment.</span>")
 		M.Weaken(8 SECONDS)
 		if(iscarbon(M))

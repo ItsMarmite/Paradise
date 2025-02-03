@@ -43,9 +43,15 @@
 	var/obj/item/food/deepfryholder/type = new(get_turf(src))
 	return type
 
+<<<<<<< HEAD
 /obj/machinery/cooker/deepfryer/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	if(istype(used, /obj/item/reagent_containers/glass) || istype(used, /obj/item/reagent_containers/drinks/ice))
 		var/ice_amount = used.reagents.get_reagent_amount("ice")
+=======
+/obj/machinery/cooker/deepfryer/attackby(obj/item/I, mob/user, params)
+	if(istype(I, /obj/item/reagent_containers/glass) || istype(I, /obj/item/reagent_containers/drinks/ice))
+		var/ice_amount = I.reagents.get_reagent_amount("ice")
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 		if(ice_amount)
 			used.reagents.remove_all(used.reagents.total_volume)
 			add_attack_logs(user, src, "poured [ice_amount]u ice into")

@@ -90,12 +90,20 @@ GLOBAL_LIST_EMPTY(fax_blacklist)
 /obj/machinery/photocopier/faxmachine/attack_ghost(mob/user)
 	ui_interact(user)
 
+<<<<<<< HEAD
 /obj/machinery/photocopier/faxmachine/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	if(istype(used, /obj/item/card/id) && !scan)
 		scan(used)
 		return ITEM_INTERACT_COMPLETE
 	else if(istype(used, /obj/item/paper) || istype(used, /obj/item/photo) || istype(used, /obj/item/paper_bundle))
 		. = ..()
+=======
+/obj/machinery/photocopier/faxmachine/attackby(obj/item/item, mob/user, params)
+	if(istype(item,/obj/item/card/id) && !scan)
+		scan(item)
+	else if(istype(item, /obj/item/paper) || istype(item, /obj/item/photo) || istype(item, /obj/item/paper_bundle))
+		..()
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 		SStgui.update_uis(src)
 		return ITEM_INTERACT_COMPLETE
 	else if(istype(used, /obj/item/folder))
@@ -418,7 +426,7 @@ GLOBAL_LIST_EMPTY(fax_blacklist)
 	var/fax_sound = sound('sound/effects/adminhelp.ogg')
 	for(var/client/C in GLOB.admins)
 		if(check_rights(R_EVENT, 0, C.mob))
-			to_chat(C, msg, MESSAGE_TYPE_ADMINPM)
+			to_chat(C, msg)
 			if(C.prefs.sound & SOUND_ADMINHELP)
 				SEND_SOUND(C, fax_sound)
 

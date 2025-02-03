@@ -62,8 +62,13 @@
 	else
 		stat |= NOPOWER
 
+<<<<<<< HEAD
 /obj/machinery/chem_heater/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	if(istype(used, /obj/item/reagent_containers/glass) && user.a_intent != INTENT_HARM)
+=======
+/obj/machinery/chem_heater/attackby(obj/item/I, mob/user)
+	if(istype(I, /obj/item/reagent_containers/glass) && user.a_intent != INTENT_HARM)
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 		if(beaker)
 			to_chat(user, "<span class='notice'>A beaker is already loaded into the machine.</span>")
 			return ITEM_INTERACT_COMPLETE

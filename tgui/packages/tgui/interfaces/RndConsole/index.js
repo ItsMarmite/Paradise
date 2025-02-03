@@ -6,14 +6,14 @@ import { DataDiskMenu } from './DataDiskMenu';
 import { LatheMenu } from './LatheMenu';
 import { LinkMenu } from './LinkMenu';
 import { SettingsMenu } from './SettingsMenu';
-import { AnalyzerMenu } from './AnalyzerMenu';
+import { DeconstructionMenu } from './DeconstructionMenu';
 
 const Tab = Tabs.Tab;
 
 export const MENU = {
   MAIN: 0,
   DISK: 2,
-  ANALYZE: 3,
+  DESTROY: 3,
   LATHE: 4,
   IMPRINTER: 5,
   SETTINGS: 6,
@@ -32,8 +32,8 @@ const decideTab = (tab) => {
       return <MainMenu />;
     case MENU.DISK:
       return <DataDiskMenu />;
-    case MENU.ANALYZE:
-      return <AnalyzerMenu />;
+    case MENU.DESTROY:
+      return <DeconstructionMenu />;
     case MENU.LATHE:
     case MENU.IMPRINTER:
       return <LatheMenu />;
@@ -58,7 +58,7 @@ export const RndConsole = (properties, context) => {
     return <LinkMenu />;
   }
 
-  const { menu, linked_analyzer, linked_lathe, linked_imprinter, wait_message } = data;
+  const { menu, linked_destroy, linked_lathe, linked_imprinter, wait_message } = data;
 
   return (
     <Window width={800} height={550}>
@@ -68,8 +68,8 @@ export const RndConsole = (properties, context) => {
             <ConsoleTab icon="flask" menu={MENU.MAIN}>
               Research
             </ConsoleTab>
-            {!!linked_analyzer && (
-              <ConsoleTab icon="microscope" menu={MENU.ANALYZE}>
+            {!!linked_destroy && (
+              <ConsoleTab icon="microscope" menu={MENU.DESTROY}>
                 Analyze
               </ConsoleTab>
             )}

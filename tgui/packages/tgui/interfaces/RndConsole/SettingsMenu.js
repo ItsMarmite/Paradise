@@ -38,7 +38,7 @@ const MainSettings = (props, context) => {
 
 const DeviceSettings = (props, context) => {
   const { data, act } = useBackend(context);
-  const { linked_analyzer, linked_lathe, linked_imprinter } = data;
+  const { linked_destroy, linked_lathe, linked_imprinter } = data;
 
   return (
     <Section
@@ -46,12 +46,12 @@ const DeviceSettings = (props, context) => {
       buttons={<Button icon="link" content="Re-sync with Nearby Devices" onClick={() => act('find_device')} />}
     >
       <LabeledList>
-        <LabeledList.Item label="Scientific Analyzer">
+        <LabeledList.Item label="Destructive Analyzer">
           <Button
             icon="unlink"
-            disabled={!linked_analyzer}
-            content={linked_analyzer ? 'Unlink' : 'Undetected'}
-            onClick={() => act('disconnect', { item: 'analyze' })}
+            disabled={!linked_destroy}
+            content={linked_destroy ? 'Unlink' : 'Undetected'}
+            onClick={() => act('disconnect', { item: 'destroy' })}
           />
         </LabeledList.Item>
         <LabeledList.Item label="Protolathe">

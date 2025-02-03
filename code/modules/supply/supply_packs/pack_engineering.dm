@@ -122,8 +122,8 @@
 	containername = "field generator crate"
 
 /datum/supply_packs/engineering/engine/sing_gen
-	name = "Singularity Generator And Console Circuitboard Crate"
-	contains = list(/obj/machinery/the_singularitygen, /obj/item/circuitboard/singulo_monitor)
+	name = "Singularity Generator Crate"
+	contains = list(/obj/machinery/the_singularitygen)
 	cost = 350
 	containername = "singularity generator crate"
 
@@ -156,7 +156,7 @@
 	cost = 100
 	containername = "collector crate"
 
-/datum/supply_packs/engineering/engine/particle_accelerator
+/datum/supply_packs/engineering/engine/PA
 	name = "Particle Accelerator Crate"
 	contains = list(/obj/structure/particle_accelerator/fuel_chamber,
 					/obj/machinery/particle_accelerator/control_box,

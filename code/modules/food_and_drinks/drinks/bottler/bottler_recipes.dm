@@ -19,7 +19,7 @@ There is no excuse to do this wrong now that there is an example for you. --Fals
 */
 
 
-/datum/bottler_recipe/paradise_punch
+/datum/bottler_recipe/Paradise_Punch
 	name = "Paradise Punch"
 	description = "Tastes just how you'd think Paradise would if you could bottle it."
 	ingredients = list(/obj/item/food/grown/grapes,
@@ -27,7 +27,7 @@ There is no excuse to do this wrong now that there is an example for you. --Fals
 					/obj/item/food/grown/cherries)
 	result = "paradise_punch"
 
-/datum/bottler_recipe/applepocalypse
+/datum/bottler_recipe/Applepocalypse
 	name = "Apple-pocalypse"
 	description = "If doomsday came in fruit form, it'd probably be apples."
 	ingredients = list(/obj/item/food/grown/apple,
@@ -35,7 +35,7 @@ There is no excuse to do this wrong now that there is an example for you. --Fals
 					/obj/item/food/grown/apple)
 	result = "apple-pocalypse"
 
-/datum/bottler_recipe/berry_banned
+/datum/bottler_recipe/Berry_Banned
 	name = "Berry Banned"
 	description = "Reason for ban: Excessive Flavor."
 	ingredients = list(/obj/item/food/grown/berries,
@@ -43,7 +43,7 @@ There is no excuse to do this wrong now that there is an example for you. --Fals
 					/obj/item/food/grown/berries)
 	result = "berry_banned"
 
-/datum/bottler_recipe/berry_banned2
+/datum/bottler_recipe/Berry_Banned2
 	name = "Berry Banned"
 	description = "Reason for ban: Excessive Flavor."
 	ingredients = list(/obj/item/food/grown/berries/poison,
@@ -51,7 +51,7 @@ There is no excuse to do this wrong now that there is an example for you. --Fals
 					/obj/item/food/grown/berries/poison)
 	result = "berry_banned2"
 
-/datum/bottler_recipe/blackeye_brew
+/datum/bottler_recipe/Blackeye_Brew
 	name = "Blackeye Brew"
 	description = "Creamy, smooth flavor, just like the bald heads of the masses. Supposedly aged for 30 years."
 	ingredients = list(/obj/item/reagent_containers/drinks/cans/cola,
@@ -59,7 +59,7 @@ There is no excuse to do this wrong now that there is an example for you. --Fals
 					/obj/item/food/frozen/icecream)
 	result = "blackeye_brew"
 
-/datum/bottler_recipe/grape_granade
+/datum/bottler_recipe/Grape_Granade
 	name = "Grape Granade"
 	description = "Exploding with grape flavor and a favorite among ERT members system-wide."
 	ingredients = list(/obj/item/reagent_containers/drinks/cans/grape_juice,
@@ -67,7 +67,7 @@ There is no excuse to do this wrong now that there is an example for you. --Fals
 					/obj/item/flash)
 	result = "grape_granade"
 
-/datum/bottler_recipe/meteor_malt
+/datum/bottler_recipe/Meteor_Malt
 	name = "Meteor Malt"
 	description = "Soft drinks have been detected on collision course with your tastebuds."
 	ingredients = list(/obj/item/stack/ore,

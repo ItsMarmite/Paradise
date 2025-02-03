@@ -55,8 +55,13 @@
 	active_cameras -= cam
 	SScamera.queue(src)
 
+<<<<<<< HEAD:code/modules/mob/camera/chunk.dm
 /// Add a camera eye to the chunk, then update if changed.
 /datum/camerachunk/proc/add(mob/camera/eye/eye, add_images = TRUE)
+=======
+// Add an AI eye to the chunk, then update if changed.
+/datum/camerachunk/proc/add(mob/camera/aiEye/eye, add_images = TRUE)
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb:code/modules/mob/living/silicon/ai/freelook/chunk.dm
 	if(add_images)
 		var/client/client = eye.get_viewer_client()
 		if(client)
@@ -67,11 +72,19 @@
 	if(changed)
 		SScamera.queue(src)
 
+<<<<<<< HEAD:code/modules/mob/camera/chunk.dm
 /datum/camerachunk/proc/eye_destroyed(mob/camera/eye/eye)
 	remove(eye, FALSE)
 
 /// Remove a camera eye from the chunk, then update if changed.
 /datum/camerachunk/proc/remove(mob/camera/eye/eye, remove_images = TRUE)
+=======
+/datum/camerachunk/proc/aiEye_destroyed(mob/camera/aiEye/eye)
+	remove(eye, FALSE)
+
+// Remove an AI eye from the chunk, then update if changed.
+/datum/camerachunk/proc/remove(mob/camera/aiEye/eye, remove_images = TRUE)
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb:code/modules/mob/living/silicon/ai/freelook/chunk.dm
 	if(remove_images)
 		var/client/client = eye.get_viewer_client()
 		if(client)
@@ -132,8 +145,13 @@
 		obscured += t.obscured
 		images_to_add += t.obscured
 
+<<<<<<< HEAD:code/modules/mob/camera/chunk.dm
 	for(var/mob/camera/eye/eye as anything in seenby)
 		var/client/client = eye.get_viewer_client()
+=======
+	for(var/mob/camera/aiEye/eye as anything in seenby)
+		var/client/client = eye.GetViewerClient()
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb:code/modules/mob/living/silicon/ai/freelook/chunk.dm
 		if(client)
 			client.images -= images_to_remove
 			client.images += images_to_add

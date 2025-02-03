@@ -77,9 +77,15 @@
 					qdel(src)
 
 
+<<<<<<< HEAD
 /obj/machinery/power/terminal/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	if(istype(used, /obj/item/wirecutters))
 		dismantle(user, used)
 		return ITEM_INTERACT_COMPLETE
+=======
+/obj/machinery/power/terminal/attackby(obj/item/W, mob/living/user, params)
+	if(istype(W, /obj/item/wirecutters))
+		dismantle(user, W)
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 	else
 		return ..()

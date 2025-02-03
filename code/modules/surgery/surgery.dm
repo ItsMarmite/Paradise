@@ -488,11 +488,9 @@
 /**
  * Get the action that will be performed during this surgery step, in context of the surgery it is a part of.
  *
- * Arguments:
- * * surgery - The main surgery this is being invoked by.
- * * with_tools - Whether to include the tool necessary for the step at the end of the step information.
- * *
+ * * surgery - A surgery in progress.
  */
+<<<<<<< HEAD
 /datum/surgery_step/proc/get_step_information(datum/surgery/surgery, with_tools = FALSE)
 	if(!with_tools)
 		return name
@@ -509,6 +507,10 @@
 
 
 	return "[name] ([english_list(tools, and_text=" or ")])"
+=======
+/datum/surgery_step/proc/get_step_information(datum/surgery/surgery)
+	return name
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 
 /**
  * Spread some nasty germs to an organ.

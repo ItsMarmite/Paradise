@@ -75,7 +75,7 @@
 
 GLOBAL_LIST_INIT(non_simple_animals, typecacheof(list(/mob/living/carbon/human/monkey,/mob/living/carbon/alien)))
 
-/obj/item/dna_probe/afterattack__legacy__attackchain(atom/target, mob/user, proximity)
+/obj/item/dna_probe/afterattack(atom/target, mob/user, proximity)
 	..()
 	if(!proximity || !target)
 		return
@@ -252,9 +252,15 @@ GLOBAL_LIST_INIT(non_simple_animals, typecacheof(list(/mob/living/carbon/human/m
 	if(length(plants) >= plants_max && length(animals) >= animals_max && length(dna) >= dna_max)
 		completed = TRUE
 
+<<<<<<< HEAD
 /obj/machinery/dna_vault/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	if(istype(used, /obj/item/dna_probe))
 		var/obj/item/dna_probe/P = used
+=======
+/obj/machinery/dna_vault/attackby(obj/item/I, mob/user, params)
+	if(istype(I, /obj/item/dna_probe))
+		var/obj/item/dna_probe/P = I
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 		var/uploaded = 0
 		for(var/plant in P.plants)
 			if(!plants[plant])

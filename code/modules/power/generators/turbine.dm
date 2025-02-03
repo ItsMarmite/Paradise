@@ -126,8 +126,13 @@
 		E += M.rating
 	efficiency = E / 6
 
+<<<<<<< HEAD
 /obj/machinery/power/compressor/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	if(default_change_direction_wrench(user, used))
+=======
+/obj/machinery/power/compressor/attackby(obj/item/I, mob/user, params)
+	if(default_change_direction_wrench(user, I))
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 		turbine = null
 		inturf = get_step(src, dir)
 		locate_machinery()
@@ -329,9 +334,15 @@
 		return
 	. += image(icon, "turb-o", FLY_LAYER)
 
+<<<<<<< HEAD
 /obj/machinery/power/turbine/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	if(default_deconstruction_screwdriver(user, initial(icon_state), initial(icon_state), used))
 		return ITEM_INTERACT_COMPLETE
+=======
+/obj/machinery/power/turbine/attackby(obj/item/I, mob/user, params)
+	if(default_deconstruction_screwdriver(user, initial(icon_state), initial(icon_state), I))
+		return
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 
 	if(default_change_direction_wrench(user, used))
 		compressor = null

@@ -76,7 +76,7 @@
 
 	stage = LIGHT_CONSTRUCT_EMPTY_FRAME
 	update_icon(UPDATE_ICON_STATE)
-	new /obj/item/stack/cable_coil(get_turf(loc), 1, COLOR_RED)
+	new /obj/item/stack/cable_coil(get_turf(loc), 1, paramcolor = COLOR_RED)
 	WIRECUTTER_SNIP_MESSAGE
 
 /obj/machinery/light_construct/screwdriver_act(mob/living/user, obj/item/I)
@@ -96,7 +96,11 @@
 	transfer_fingerprints_to(newlight)
 	qdel(src)
 
+<<<<<<< HEAD
 /obj/machinery/light_construct/item_interaction(mob/living/user, obj/item/used, list/modifiers)
+=======
+/obj/machinery/light_construct/attackby(obj/item/W, mob/living/user, params)
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 	add_fingerprint(user)
 	if(istype(used, /obj/item/stack/cable_coil))
 		if(stage != LIGHT_CONSTRUCT_EMPTY_FRAME)
@@ -235,7 +239,7 @@
 	layer = FLY_LAYER
 	max_integrity = 100
 	power_state = ACTIVE_POWER_USE
-	idle_power_consumption = 10  //when in low power mode
+	idle_power_consumption = 2  //when in low power mode
 	active_power_consumption = 20 //when in full power mode
 	power_channel = PW_CHANNEL_LIGHTING //Lights are calc'd via area so they dont need to be in the machine list
 	var/base_state = "tube" // Base description and icon_state
@@ -331,7 +335,6 @@
 	glow_icon_state = "clockwork_tube"
 	base_state = "clockwork_tube"
 	deconstruct_type = /obj/machinery/light_construct/clockwork
-	brightness_color = "#ffbb8d"
 
 /obj/machinery/light/clockwork/small
 	icon_state = "clockwork_bulb1"
@@ -553,8 +556,7 @@
 			burnout()
 			return
 
-	change_power_mode(nightshift_enabled ? IDLE_POWER_USE : ACTIVE_POWER_USE)
-
+	change_power_mode(ACTIVE_POWER_USE)
 	update_icon()
 	set_light(BR, PO, CO)
 	if(play_sound)
@@ -593,7 +595,11 @@
 
 // attack with item - insert light (if right type), otherwise try to break the light
 
+<<<<<<< HEAD
 /obj/machinery/light/item_interaction(mob/living/user, obj/item/used, list/modifiers)
+=======
+/obj/machinery/light/attackby(obj/item/W, mob/living/user, params)
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 	user.changeNext_move(CLICK_CD_MELEE) // This is an ugly hack and I hate it forever
 	//Light replacer code
 	if(istype(used, /obj/item/lightreplacer))
@@ -714,7 +720,12 @@
 		transfer_fingerprints_to(newlight)
 	qdel(src)
 
+<<<<<<< HEAD
 /obj/machinery/light/item_interaction(mob/living/user, obj/item/used, list/modifiers)
+=======
+/obj/machinery/light/attacked_by(obj/item/I, mob/living/user)
+	..()
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 	if(status == LIGHT_BROKEN || status == LIGHT_EMPTY)
 		if(on && (used.flags & CONDUCT))
 			if(prob(12))
@@ -1005,19 +1016,15 @@
 /obj/item/light/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/caltrop, force)
-	var/static/list/loc_connections = list(
-		COMSIG_ATOM_ENTERED = PROC_REF(on_atom_entered)
-	)
-	AddElement(/datum/element/connect_loc, loc_connections)
 
-/obj/item/light/proc/on_atom_entered(datum/source, atom/movable/entered)
-	var/mob/living/living_entered = entered
-	if(istype(living_entered) && has_gravity(loc))
-		if(living_entered.incorporeal_move || HAS_TRAIT(living_entered, TRAIT_FLYING) || living_entered.floating)
+/obj/item/light/Crossed(mob/living/L)
+	if(istype(L) && has_gravity(loc))
+		if(L.incorporeal_move || HAS_TRAIT(L, TRAIT_FLYING) || L.floating)
 			return
 		playsound(loc, 'sound/effects/glass_step.ogg', 50, TRUE)
 		if(status == LIGHT_BURNED || status == LIGHT_OK)
 			shatter()
+	return ..()
 
 /obj/item/light/decompile_act(obj/item/matter_decompiler/C, mob/user)
 	C.stored_comms["glass"] += 1
@@ -1085,7 +1092,7 @@
 
 // attack bulb/tube with object
 // if a syringe, can inject plasma to make it explode. Light replacers eat them.
-/obj/item/light/attackby__legacy__attackchain(obj/item/I, mob/user, params)
+/obj/item/light/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/reagent_containers/syringe))
 		var/obj/item/reagent_containers/syringe/S = I
 
@@ -1106,11 +1113,11 @@
 	else // If it's not a syringe
 		return ..()
 
-/obj/item/light/attack__legacy__attackchain(mob/living/M, mob/living/user, def_zone)
+/obj/item/light/attack(mob/living/M, mob/living/user, def_zone)
 	..()
 	shatter()
 
-/obj/item/light/attack_obj__legacy__attackchain(obj/O, mob/living/user, params)
+/obj/item/light/attack_obj(obj/O, mob/living/user, params)
 	..()
 	shatter()
 

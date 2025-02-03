@@ -227,12 +227,21 @@
 	if(.)
 		investigate_log("was set to [target_pressure] kPa by [key_name(usr)]", "atmos")
 
+<<<<<<< HEAD
 /obj/machinery/atmospherics/trinary/filter/item_interaction(mob/living/user, obj/item/used, list/modifiers)
 	if(is_pen(used))
 		rename_interactive(user, used)
 		return ITEM_INTERACT_COMPLETE
 
 	return ..()
+=======
+/obj/machinery/atmospherics/trinary/filter/attackby(obj/item/W, mob/user, params)
+	if(is_pen(W))
+		rename_interactive(user, W)
+		return
+	else
+		return ..()
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 
 #undef FILTER_NOTHING
 #undef FILTER_TOXINS

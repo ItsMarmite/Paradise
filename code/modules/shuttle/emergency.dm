@@ -36,7 +36,11 @@
 		if(hijack_announce)
 			. += "<span class='warning'>It is probably best to fortify your position as to be uninterrupted during the attempt, given the automatic announcements...</span>"
 
+<<<<<<< HEAD
 /obj/machinery/computer/emergency_shuttle/item_interaction(mob/living/user, obj/item/used, list/modifiers)
+=======
+/obj/machinery/computer/emergency_shuttle/attackby(obj/item/card/id/W, mob/user, params)
+>>>>>>> 9ceda37a45c065c791d79be916749c10c3f554cb
 	if(stat & (BROKEN|NOPOWER))
 		return
 
@@ -150,7 +154,7 @@
 		return FALSE //If you put an AI that isn't malf in it I'm shooting you
 	if(interaction == AI_TRANS_TO_CARD) //No patrick you can't card the AI out of the computer.
 		return
-	AI.linked_core = new /obj/structure/ai_core/deactivated(AI.loc)
+	AI.linked_core = new /obj/structure/AIcore/deactivated(AI.loc)
 	ai_enter_emergency_computer(AI)
 
 /obj/machinery/computer/emergency_shuttle/proc/ai_enter_emergency_computer(mob/living/silicon/ai/AI)
